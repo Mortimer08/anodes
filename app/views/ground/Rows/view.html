@@ -1,0 +1,32 @@
+#{extends '/setup/layout.html' /}
+#{set title:row.name /}
+
+<div>
+    <div>
+        <div>
+            <a href="@{controllers.ground.Rows.list()}">Ряды</a>
+            Сводка
+        </div>
+        <h1>${row.name}</h1>
+        <div>
+            <div>
+                <h2>Сводка</h2>
+                <a href="@{controllers.ground.Rows.show(row.id)}">
+                    Редактировать
+                </a>
+            </div>
+            <div>
+                #{f.spec f:controllers.ground.view.RowField.NAME, v:row.name ?: '-'/}
+            </div>
+            <div>
+                #{f.spec f:controllers.ground.view.RowField.TIER, v:row.tier ?: '-'/}
+            </div>
+        </div>
+    </div>
+    <div>
+        <div>
+            <a href="@{controllers.ground.Rows.show(row.id)}">Редактировать</a>
+            <a href="@{controllers.ground.Rows.delete(row.id)}">Удалить</a>
+        </div>
+    </div>
+</div>

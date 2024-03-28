@@ -1,0 +1,24 @@
+#{extends '/setup/layout.html' /}
+#{set title:'Новый ряд' /}
+
+<div class="">
+    <div>
+        <div >
+            <a href="@{controllers.ground.Rows.list()}">Закрыть</a>
+            ${title}
+        </div>
+        <h1>${title}</h1>
+        #{form @controllers.ground.Rows.create()}
+        <div>
+            <h2>Сводка</h2>
+            <div>
+                #{f.text f:controllers.ground.view.RowField.NAME /}
+            </div>
+            <div>
+                #{f.droplist f:controllers.ground.view.RowField.TIER, items:models.ground.Tier.findAll() /}
+            </div>
+            #{f.save /}
+        </div>
+        #{/form}
+    </div>
+</div>

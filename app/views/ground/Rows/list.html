@@ -1,5 +1,20 @@
 #{extends '/setup/layout.html' /}
 #{set title:'Rows' /}
-#{list rows}
-<th>${_.name}</th>
-#{/ list}
+
+<div>
+    <h1>${title}</h1>
+    <a href="@{controllers.ground.Rows.blank()}">
+        Новый ряд
+    </a>
+</div>
+<div>
+    #{list rows}
+    <div>
+        <th>
+            <a href="@{controllers.ground.Rows.view(_.id)}">
+                ${_.name}
+            </a>
+        </th>
+    </div>
+    #{/ list}
+</div>
