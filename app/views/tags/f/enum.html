@@ -1,0 +1,17 @@
+#{set name:'rq.' + _f.name /}
+<div class="form-item">
+    <label for="${name}">&{_f.title}
+        <span class="hint">#{error name/}</span>
+    </label>
+    <select id="${name}" class="input" name="${name}">
+    #{ifnot _r}
+        <option value="">${_none ?: 'Выберите'}</option>#{/ifnot}
+    %{
+        _e.each {
+        s = it == _v ? 'selected="true"' : ''
+        l = it.toString()
+        }%
+        <option value="${it.name()}" ${s.raw()}>&{l}</option>
+    %{ } }%
+    </select>
+</div>

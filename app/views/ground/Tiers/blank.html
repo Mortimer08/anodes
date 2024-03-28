@@ -1,0 +1,21 @@
+#{extends '/setup/layout.html' /}
+#{set title:'Новая серия' /}
+
+<div class="layout">
+    <div>
+        <div >
+            <a href="@{controllers.ground.Tiers.list()}">Закрыть</a>
+            ${title}
+        </div>
+        <h1>${title}</h1>
+        #{form @controllers.ground.Tiers.create()}
+        <div>
+            <h2>Сводка</h2>
+            <div>
+                #{f.text f:controllers.ground.view.TierField.NAME /}
+            </div>
+            #{f.save /}
+        </div>
+        #{/form}
+    </div>
+</div>

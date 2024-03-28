@@ -1,0 +1,29 @@
+#{extends '/setup/layout.html' /}
+#{set title:tier.name /}
+
+<div>
+    <div>
+        <div>
+            <a href="@{controllers.ground.Tiers.list()}">Серии</a>
+            Сводка
+        </div>
+        <h1>${tier.name}</h1>
+        <div>
+            <div>
+                <h2>Сводка</h2>
+                <a href="@{controllers.ground.Tiers.show(tier.id)}">
+                    Редактировать
+                </a>
+            </div>
+            <div>
+                #{f.spec f:controllers.ground.view.TierField.NAME, v:tier.name ?: '-'/}
+            </div>
+        </div>
+    </div>
+    <div class="sidebar">
+        <div class="todo">
+            <a href="@{controllers.ground.Tiers.show(tier.id)}">Редактировать</a>
+            <a href="@{controllers.ground.Tiers.delete(tier.id)}">Удалить</a>
+        </div>
+    </div>
+</div>

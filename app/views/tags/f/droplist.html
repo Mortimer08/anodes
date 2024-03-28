@@ -1,0 +1,10 @@
+<div class="form-item">
+    <label for="${_f.name}">
+        ${_f.title}
+    </label>
+    <select id="${_f.name}" name="rq.${_f.name}" class="input #{ifError 'rq.' + _f.name}input-error#{/ifError}">
+        #{list items:_items, as:'item'}
+            <option value="${item.id}">${item}</option>
+        #{/list}
+    </select>
+</div>

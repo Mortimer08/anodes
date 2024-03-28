@@ -1,0 +1,7 @@
+<div class="form-item" xmlns="http://www.w3.org/1999/html">
+    <label for="${_f.name}">
+        ${_f.title}
+        <span class="hint hint-error">#{error 'rq.' + _f.name/}</span>
+    </label>
+    <textarea id="${_f.name}" rows="6" name="rq.${_f.name}" class="input #{ifError 'rq.' + _f.name}input-error#{/ifError}">${_v}</textarea>
+</div>

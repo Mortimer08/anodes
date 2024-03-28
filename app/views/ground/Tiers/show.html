@@ -1,0 +1,19 @@
+#{extends '/setup/layout.html' /}
+#{set title:tier.name /}
+
+<div>
+    <a href="@{controllers.ground.Tiers.view(tier.id)}">Закрыть</a>
+    Редактировать
+</div>
+<h1>${tier.name}</h1>
+#{form @controllers.ground.Tiers.save(tier.id)}
+<div>
+    <div>
+        <h2>Сводка</h2>
+    </div>
+    <div>
+        #{f.text f:controllers.ground.view.TierField.NAME, v:tier.name /}
+    </div>
+    #{f.save /}
+</div>
+#{/form}

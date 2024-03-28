@@ -1,4 +1,17 @@
-#{extends 'main.html' /}
+#{extends '/setup/layout.html' /}
 #{set title:'Home' /}
-Hello anodes!
-#{welcome /}
+<div>
+    <a href="@{ground.Anodes.list()}">Anodes</a>
+</div>
+<div>
+    <a href="@{ground.Takes.list()}">Takes</a>
+</div>
+<div>
+    <a href="@{ground.Cells.list()}">Cells</a>
+</div>
+<div>
+    <a href="@{ground.Rows.list()}">Rows</a>
+</div>
+<div>
+    <a href="@{ground.Tiers.list()}">Tiers</a>
+</div>

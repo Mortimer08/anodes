@@ -1,0 +1,8 @@
+<div class="form-item">
+    <label for="${_f.name}">
+    ${_f.title}
+        <span class="hint hint-error">#{error 'rq.' + _f.name/}</span>
+    </label>
+    <input id="${_f.name}" type="password" name="rq.${_f.name}" required
+           class="input #{ifError 'rq.' + _f.name}input-error#{/ifError}" />
+</div>
