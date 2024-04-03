@@ -1,0 +1,22 @@
+#{extends '/setup/layout.html' /}
+#{set title:take.name /}
+
+<div>
+    <a href="@{controllers.ground.Takes.view(take.id)}">Закрыть</a>
+    Редактировать
+</div>
+<h1>${take.name}</h1>
+#{form @controllers.ground.Takes.save(take.id)}
+    <div>
+        <div>
+            <h2>Сводка</h2>
+        </div>
+        <div>
+            #{f.enum f:controllers.ground.view.TakeField.NUMBER, e:models.ground.TakeNumber.values(), v:take.number /}
+        </div>
+        <div>
+            #{f.droplist f:controllers.ground.view.TakeField.CELL, items:models.ground.Cell.findAll(), v:take.cell /}
+        </div>
+        #{f.save /}
+    </div>
+#{/form}

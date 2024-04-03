@@ -4,7 +4,8 @@
     </label>
     <select id="${_f.name}" name="rq.${_f.name}" class="">
         #{list items:_items, as:'item'}
-            <option value="${item.id}">${item}</option>
+            %{s = item ==  _v ? 'selected="true"' : ''}%
+            <option ${s} value="${item.id}">${item}</option>
         #{/list}
     </select>
 </div>

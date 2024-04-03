@@ -3,6 +3,7 @@ package models.ground;
 import common.model.TimeStamped;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -10,6 +11,7 @@ import javax.persistence.Table;
 public class Cell extends TimeStamped {
     public String name;
     public Integer number;
+    @ManyToOne
     public Row row;
 
     public Cell() {

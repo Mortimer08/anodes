@@ -1,0 +1,24 @@
+#{extends '/setup/layout.html' /}
+#{set title:'Новый подъём' /}
+
+<div class="">
+    <div>
+        <div >
+            <a href="@{controllers.ground.Takes.list()}">Закрыть</a>
+            ${title}
+        </div>
+        <h1>${title}</h1>
+        #{form @controllers.ground.Takes.create()}
+        <div>
+            <h2>Сводка</h2>
+            <div>
+                #{f.enum f:controllers.ground.view.TakeField.NUMBER, e:models.ground.TakeNumber.values() /}
+            </div>
+            <div>
+                #{f.droplist f:controllers.ground.view.TakeField.CELL, items:models.ground.Cell.findAll() /}
+            </div>
+            #{f.save /}
+        </div>
+        #{/form}
+    </div>
+</div>

@@ -21,4 +21,8 @@ public class Row extends TimeStamped {
         this.tier = tier;
     }
 
+    @Override
+    public String toString() {
+        return name;
+    }
 }

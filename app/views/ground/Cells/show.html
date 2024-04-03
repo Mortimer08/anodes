@@ -1,0 +1,23 @@
+#{extends '/setup/layout.html' /}
+#{set title:cell.name /}
+
+<div>
+    <a href="@{controllers.ground.Cells.view(cell.id)}">Закрыть</a>
+    Редактировать
+</div>
+<h1>${cell.name}</h1>
+#{form @controllers.ground.Cells.save(cell.id)}
+    <div>
+        <div>
+            <h2>Сводка</h2>
+        </div>
+        <div>
+            #{f.text f:controllers.ground.view.CellField.NUMBER, v:cell.number /}
+        </div>
+        <div>
+            #{f.droplist f:controllers.ground.view.CellField.ROW, items:models.ground.Row.findAll(),
+             selected:cell.row /}
+        </div>
+        #{f.save /}
+    </div>
+#{/form}

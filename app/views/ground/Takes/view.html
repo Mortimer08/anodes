@@ -1,0 +1,32 @@
+#{extends '/setup/layout.html' /}
+#{set title:take.name /}
+
+<div>
+    <div>
+        <div>
+            <a href="@{controllers.ground.Takes.list()}">Подъёмы</a>
+            Сводка
+        </div>
+        <h1>${take.name}</h1>
+        <div>
+            <div>
+                <h2>Сводка</h2>
+                <a href="@{controllers.ground.Takes.show(take.id)}">
+                    Редактировать
+                </a>
+            </div>
+            <div>
+                #{f.spec f:controllers.ground.view.TakeField.NUMBER, v:take.number ?: '-'/}
+            </div>
+            <div>
+                #{f.spec f:controllers.ground.view.TakeField.CELL, v:take.cell ?: '-'/}
+            </div>
+        </div>
+    </div>
+    <div>
+        <div>
+            <a href="@{controllers.ground.Takes.show(take.id)}">Редактировать</a>
+            <a href="@{controllers.ground.Takes.delete(take.id)}">Удалить</a>
+        </div>
+    </div>
+</div>

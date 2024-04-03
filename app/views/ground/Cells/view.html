@@ -1,0 +1,36 @@
+#{extends '/setup/layout.html' /}
+#{set title:cell.name /}
+
+<div>
+    <div>
+        <div>
+            <a href="@{controllers.ground.Cells.list()}">Ванны</a>
+            Сводка
+        </div>
+        <h1>${cell.name}</h1>
+        <div>
+            <div>
+                <h2>Сводка</h2>
+                <a href="@{controllers.ground.Cells.show(cell.id)}">
+                    Редактировать
+                </a>
+            </div>
+            <div>
+                #{f.spec f:controllers.ground.view.CellField.NUMBER, v:cell.number ?: '-'/}
+            </div>
+            <div>
+                #{f.spec f:controllers.ground.view.CellField.ROW, v:cell.row ?: '-'/}
+            </div>
+            <div>
+                #{f.spec f:controllers.ground.view.CellField.NAME, v:cell.name ?: '-'/}
+            </div>
+
+        </div>
+    </div>
+    <div>
+        <div>
+            <a href="@{controllers.ground.Cells.show(cell.id)}">Редактировать</a>
+            <a href="@{controllers.ground.Cells.delete(cell.id)}">Удалить</a>
+        </div>
+    </div>
+</div>

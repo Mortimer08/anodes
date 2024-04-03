@@ -1,5 +1,18 @@
 #{extends '/setup/layout.html' /}
 #{set title:'Takes' /}
+
+<div>
+    <h1>${title}</h1>
+    <a href="@{controllers.ground.Takes.blank()}">
+        Новый подъём
+    </a>
+</div>
 #{list takes}
-<th>${_.name}</th>
+<div>
+    <th>
+        <a href="@{controllers.ground.Takes.view(_.id)}">
+            ${_.name}
+        </a>
+    </th>
+</div>
 #{/ list}

@@ -1,5 +1,18 @@
 #{extends '/setup/layout.html' /}
 #{set title:'Cells' /}
+
+<div>
+    <h1>${title}</h1>
+    <a href="@{controllers.ground.Cells.blank()}">
+        Новая ванна
+    </a>
+</div>
 #{list cells}
-<th>${_.name}</th>
+<div>
+    <th>
+        <a href="@{controllers.ground.Cells.view(_.id)}">
+            ${_.name}
+        </a>
+    </th>
+</div>
 #{/ list}
