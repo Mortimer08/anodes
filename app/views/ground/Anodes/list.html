@@ -1,5 +1,18 @@
 #{extends '/setup/layout.html' /}
-#{set title:'Anodes' /}
+#{set title:'Аноды' /}
+
+<div>
+    <h1>${title}</h1>
+    <a href="@{controllers.ground.Anodes.blank()}">
+        Новый анод
+    </a>
+</div>
 #{list anodes}
-<th>${_.name}</th>
+<div>
+    <th>
+        <a href="@{controllers.ground.Anodes.view(_.id)}">
+            ${_.name}
+        </a>
+    </th>
+</div>
 #{/ list}

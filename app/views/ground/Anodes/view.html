@@ -1,0 +1,39 @@
+#{extends '/setup/layout.html' /}
+#{set title:anode.name /}
+
+<div>
+    <div>
+        <div>
+            <a href="@{controllers.ground.Anodes.list()}">Аноды</a>
+            Сводка
+        </div>
+        <h1>${anode.name}</h1>
+        <div>
+            <div>
+                <h2>Сводка</h2>
+                <a href="@{controllers.ground.Anodes.show(anode.id)}">
+                    Редактировать
+                </a>
+            </div>
+            <div>
+                #{f.spec f:controllers.ground.view.AnodeField.NUMBER, v:anode.number ?: '-'/}
+            </div>
+            <div>
+                #{f.spec f:controllers.ground.view.AnodeField.TAKE, v:anode.take ?: '-'/}
+            </div>
+            <div>
+                #{f.spec f:controllers.ground.view.AnodeField.CELL, v:anode.getCell() ?: '-'/}
+            </div>
+            <div>
+                #{f.spec f:controllers.ground.view.AnodeField.NAME, v:anode.name ?: '-'/}
+            </div>
+
+        </div>
+    </div>
+    <div>
+        <div>
+            <a href="@{controllers.ground.Anodes.show(anode.id)}">Редактировать</a>
+            <a href="@{controllers.ground.Anodes.delete(anode.id)}">Удалить</a>
+        </div>
+    </div>
+</div>

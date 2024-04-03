@@ -1,0 +1,22 @@
+#{extends '/setup/layout.html' /}
+#{set title:anode.name /}
+
+<div>
+    <a href="@{controllers.ground.Anodes.view(anode.id)}">Закрыть</a>
+    Редактировать
+</div>
+<h1>${anode.name}</h1>
+#{form @controllers.ground.Anodes.save(anode.id)}
+    <div>
+        <div>
+            <h2>Сводка</h2>
+        </div>
+        <div>
+            #{f.text f:controllers.ground.view.AnodeField.NUMBER /}
+        </div>
+        <div>
+            #{f.droplist f:controllers.ground.view.AnodeField.CELL, items:models.ground.Cell.findAll(), v:anode.getCell() /}
+        </div>
+        #{f.save /}
+    </div>
+#{/form}

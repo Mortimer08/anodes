@@ -17,6 +17,14 @@ public class Take extends TimeStamped {
     public Take() {
     }
 
+    public static Take findByCellAndNumber(Cell cell, TakeNumber takeNumber) {
+        return find("cell is ?1 and number is ?2", cell, takeNumber).first();
+    }
+
+    public Cell getCell() {
+        return this.cell;
+    }
+
     @Override
     public String toString() {
         return this.name;
