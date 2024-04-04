@@ -32,6 +32,7 @@ public class Anodes extends Bases {
     public static void create(final AnodeCreate rq) {
         final Anode anode = new Anode();
         AnodeMapper.toEntity(anode, rq);
+        System.out.println(anode.name);
         anode.save();
         list();
     }

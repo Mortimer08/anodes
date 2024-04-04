@@ -10,9 +10,15 @@ import models.ground.TakeNumber;
 public class AnodeMapper {
     public static void toEntity(Anode anode, AnodeCreate rq) {
         anode.number = rq.number;
-        Take take = Take.findByCellAndNumber(Cell.findById(rq.cell), TakeNumber.takeNumberByAnode(rq.number));
+        Cell cell = Cell.findById(rq.cell);
+        TakeNumber takeNumber = TakeNumber.takeNumberByAnode(rq.number);
+        Take take = Take.findByCellAndNumber(cell, takeNumber);
+        if (take == null) {
+            take = new Take(cell, takeNumber);
+            take.save();
+        }
         anode.take = take;
-        anode.name = String.format("%s(%s)_%s", take.cell, take.number.number, anode.number);
+        anode.name = String.format("%s(%s)_%s", take.getCell(), take.number.number, anode.number);
     }
 
     public static void toEntity(Anode anode, AnodeUpdate rq) {
