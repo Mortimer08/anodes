@@ -1,21 +1,16 @@
 package controllers.ground;
 
+import controllers.Bases;
 import controllers.ground.dto.CellCreate;
 import controllers.ground.dto.CellUpdate;
-import controllers.ground.dto.RowCreate;
-import controllers.ground.dto.RowUpdate;
 import controllers.ground.mapper.CellMapper;
-import controllers.ground.mapper.RowMapper;
-import jj.play.ns.com.jhlabs.image.CellularFilter;
 import models.ground.Cell;
-import models.ground.Row;
 import play.modules.router.Get;
 import play.modules.router.Post;
-import play.mvc.Controller;
 
 import java.util.List;
 
-public class Cells extends Controller {
+public class Cells extends Bases {
     @Get("/cells/list")
     public static void list() {
         List<Cell> cells = Cell.findAll();

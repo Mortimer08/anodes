@@ -12,10 +12,12 @@ import play.mvc.Http;
 import play.mvc.Util;
 
 public class Secure extends Controller {
-    @Before(unless = {"login"})
+    @Before(unless = {"login", "logout", "auth", "denied"})
     static void checkAccess() {
         final User user = getUser();
-        if (user == null) login();
+        if (user == null) {
+            login();
+        }
     }
 
     public static void login() {
@@ -23,22 +25,35 @@ public class Secure extends Controller {
         render();
     }
 
+    public static void logout() {
+        session.clear();
+        response.removeCookie("me");
+        login();
+    }
+
     public static void auth(String email, String password) {
         final User user = User.connect(email, password);
         if (user == null) {
-            // TODO: 05.04.2024 Add validation
-            /*Validation.addError("email","Secure.login.error");
+            Validation.addError("email", "Secure.login.error");
             Validation.keep();
-            flash.keep("url");*/
+            flash.keep("url");
             login();
         }
+        if (!user.active) {
+            Registration.sendActivationEmail(user);
+            Registration.registerComplete();
+        }
+        isDenied("Пользователь заблокирован", user);
+        rememberMe("Запомнить пользователя", user);
+        openSession("Открыть сессию", user);
+        isValid("Обязательные поля заполнены", user);
         redirectToOriginalURL();
     }
 
     @Util
     public static User getUser() {
         final String userName = connected();
-        if (StringUtils.isNotBlank(userName)) return null;
+        if (StringUtils.isBlank(userName)) return null;
         return getUser(userName);
     }
 
@@ -53,6 +68,10 @@ public class Secure extends Controller {
     @Util
     public static String connected() {
         return session.get("username");
+    }
+
+    public static void denied() {
+        render();
     }
 
     static void recallMe(final String s) {
@@ -71,5 +90,33 @@ public class Secure extends Controller {
     static void redirectToOriginalURL() {
         final String url = flash.get("url");
         redirect(url == null ? Data.HOST : url);
+    }
+
+    @Util
+    public static boolean isConnected() {
+        return session.contains("username");
+    }
+
+    private static void isDenied(String s, User user) {
+        Logger.debug(s);
+        if (user.denied) denied();
+    }
+
+    private static void isValid(String s, User user) {
+        Logger.debug(s);
+        if (!user.valid) {
+            // TODO: 11.04.2024 make Profiles
+//            Profiles.show();
+        }
+    }
+
+    private static void openSession(String s, User user) {
+        Logger.debug(s);
+        session.put("username", user.username);
+    }
+
+    static void rememberMe(final String s, final User user) {
+        Logger.debug(s);
+        response.setCookie("me", Crypto.sign(user.username) + "-" + user.username, "30d");
     }
 }

@@ -1,9 +1,36 @@
 #{extends '/auth.html' /}
 #{set title:'Войти'/}
 
-<form action="">
-
-    <div>
-        login
+<form action="@{controllers.auth.Secure.auth()}" class="form" method="post">
+    #{authenticityToken /}
+    <div class="stack stack-6">
+        <div class="flex flex-between flex-middle">
+            <h1 class="heading-medium">&{'Secure.login'}</h1>
+            <a href="@{controllers.auth.Registration.signup()}">
+                &{'Secure.login.signup'}
+            </a>
+        </div>
+        #{ifError 'email'}
+        <div class="alert">
+            <div>#{error 'email'/}</div>
+        </div>
+        #{/ifError}
+        <input class="input" type="text" placeholder="Email" autocomplete="false"
+               required="required" name="email" value="${flash['email']}">
+        <input class="input" type="password" placeholder="&{'Secure.login.password'}"
+               required="required" name="password">
+        <label class="checkbox">
+            <input type="checkbox" name="remember" value="1">
+            &{'Secure.login.remember.me'}
+        </label>
+        <div class="flex flex-between flex-middle">
+            <button type="submit" class="button">
+                &{'Secure.login.submit'}
+            </button>
+            <a href="#">
+                &{'PasswordReset.passwordChange'}
+            </a>
+        </div>
     </div>
+
 </form>

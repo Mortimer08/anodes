@@ -1,22 +1,16 @@
 package controllers.ground;
 
-import controllers.ground.dto.CellCreate;
-import controllers.ground.dto.CellUpdate;
+import controllers.Bases;
 import controllers.ground.dto.TakeCreate;
 import controllers.ground.dto.TakeUpdate;
-import controllers.ground.mapper.CellMapper;
 import controllers.ground.mapper.TakeMapper;
-import models.ground.Anode;
-import models.ground.Cell;
 import models.ground.Take;
-import models.ground.TakeNumber;
 import play.modules.router.Get;
 import play.modules.router.Post;
-import play.mvc.Controller;
 
 import java.util.List;
 
-public class Takes extends Controller {
+public class Takes extends Bases {
     @Get("/takes/list")
     public static void list() {
         List<Take> takes = Take.findAll();

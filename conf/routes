@@ -7,6 +7,16 @@ GET     /                                       Application.index
 
 # Auth
 GET     /login                                  auth.Secure.login
+POST    /login                                  auth.Secure.auth
+GET     /logout                                 auth.Secure.logout
+
+GET     /auth/signup                            auth.Registration.signup
+POST    /auth/signup                            auth.Registration.register
+GET     /auth/signup/complete                   auth.Registration.registerComplete
+GET     /auth/signup/activation/complete        auth.Registration.activationComplete
+GET     /auth/signup/activation/failure         auth.Registration.activationFailure
+GET     /auth/signup/activation/{activationKey} auth.Registration.activate
+
 
 # Ignore favicon requests
 GET     /favicon.ico                            404

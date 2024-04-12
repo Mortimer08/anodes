@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+</head>
+<body style="background-color: #ffffff;">
+<table width="100%" cellpadding="0" cellspacing="0">
+    <tbody>
+    <tr>
+        <td style="${canvas}; padding-bottom: 48px" align="center">
+            <table width="480" align="center" cellpadding="0" cellspacing="0"
+                   style="border-bottom: 1px solid #eeeeee">
+                <tbody>
+                <tr>
+                    <td style="padding: 18px">
+                        <table align="center" width="420" cellpadding="0" cellspacing="0">
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <a href="@@{Application.index()}" target="_blank">
+                                        <img src="#"
+                                             style="border-style:none;vertical-align:top"
+                                             alt="Чистка анодов">
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 36px 0; font-size: 15px;">
+                                    #{doLayout /}
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td style="padding: 18px">#{include '/Mails/footer.html'/}</td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

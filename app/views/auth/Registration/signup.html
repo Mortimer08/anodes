@@ -1,0 +1,36 @@
+#{extends '/auth.html' /}
+#{set title:'Регистрация' /}
+
+<div class="content">
+    <div class="flex flex-middle flex-between">
+        <h1 class="heading-large">&{'Registration.signup'}</h1>
+        <a href="@{controllers.auth.Secure.login}">&{'Registration.signup.login'}</a>
+    </div>
+    <form action="@{auth.Registration.register}" class="form my-4" method="post">
+        #{authenticityToken /}
+        #{ifError 'register'}
+            <div class="is-error">#{error 'register' /}</div>
+        #{/ifError}
+        <div class="form-item">
+            <label for="regEmail">Email</label>
+            <input id="regEmail" type="email" name="regEmail" value="${flash['regEmail']}"
+                   class="input" maxlength="255" minlength="6" required="required">
+        </div>
+        <div class="form-item">
+            <label for="regPassword">&{'Registration.signup.regPassword'}</label>
+            <input id="regPassword" type="password" name="regPassword"
+                   class="input" maxlength="255" minlength="6" required="required">
+        </div>
+        <div class="form-item agree">
+            <label for="agree">
+                <input id="agree" type="checkbox" required="required" name="agree">
+                    &{'Registration.signup.agreement.before'}
+                <a href="#" target="_blank" class="text-strong">
+                    &{'Registration.signup.agreement'}
+                </a>
+                &{'Registration.signup.agreement.after'}
+            </label>
+        </div>
+        <button class="button">&{'Registration.signup.submit'}</button>
+    </form>
+</div>

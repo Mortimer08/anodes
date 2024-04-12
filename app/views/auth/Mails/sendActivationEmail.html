@@ -1,0 +1,19 @@
+#{extends '/Mails/layout.html' /}
+#{include '/Mails/style.html' /}
+#{set layout:'text-align: center'/}
+
+#{mail.layout}
+<div style="text-align: center">
+    #{mail.secondary}&{'Mails.sendActivationEmail'}#{/mail.secondary}
+    <p>&{'Mails.sendActivationEmail.1'}
+        <a href="@@{controllers.auth.Registration.activate(activationKey)}">
+            &{'Mails.sendActivationEmail.2'}
+        </a>
+    </p>
+    <p>&{'Mails.sendActivationEmail.3', expirationDays}</p>
+    <a href="@@{controllers.auth.Registration.activate(activationKey)}"
+       style='${bt}'>
+        &{'Mails.sendActivationEmail.submit'}
+    </a>
+</div>
+#{/mail.layout}

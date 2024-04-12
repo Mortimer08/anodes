@@ -1,16 +1,16 @@
 package controllers.ground;
 
+import controllers.Bases;
 import controllers.ground.dto.RowCreate;
 import controllers.ground.dto.RowUpdate;
 import controllers.ground.mapper.RowMapper;
 import models.ground.Row;
 import play.modules.router.Get;
 import play.modules.router.Post;
-import play.mvc.Controller;
 
 import java.util.List;
 
-public class Rows extends Controller {
+public class Rows extends Bases {
     @Get("/rows/list")
     public static void list() {
         List<Row> rows = Row.findAll();

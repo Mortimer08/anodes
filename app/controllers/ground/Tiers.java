@@ -1,15 +1,15 @@
 package controllers.ground;
 
+import controllers.Bases;
 import models.ground.Tier;
 import play.modules.router.Get;
 import play.modules.router.Post;
-import play.mvc.Controller;
 import controllers.ground.dto.TierUpdate;
 import controllers.ground.mapper.TierMapper;
 
 import java.util.List;
 
-public class Tiers extends Controller {
+public class Tiers extends Bases {
     @Get("/tiers/list")
     public static void list() {
         List<Tier> tiers = Tier.findAll();
