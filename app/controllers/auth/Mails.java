@@ -17,14 +17,15 @@ public class Mails extends Mailer {
         setSubject(Messages.get("Mails.sendActivationEmail"));
         try {
             setFrom(new InternetAddress(Data.MAILER_FROM_ADDRESS, Data.MAILER_FROM_PERSONAL));
+            Logger.info("setFrom: ");
         } catch (UnsupportedEncodingException e) {
             setFrom(Data.MAILER_FROM_ADDRESS);
         }
         addRecipient(user.email);
         setContentType("text/html");
+        Logger.info("emailfrom: "+Data.MAILER_FROM_ADDRESS);
         send(user, activationKey, expirationDays);
         Logger.info("emailed to: "+user.email);
-        Logger.info("emailfrom: "+Data.MAILER_FROM_ADDRESS);
 
     }
 }
