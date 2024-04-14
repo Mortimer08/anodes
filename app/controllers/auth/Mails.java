@@ -2,6 +2,7 @@ package controllers.auth;
 
 import common.Data;
 import models.auth.User;
+import play.Logger;
 import play.i18n.Messages;
 import play.mvc.Mailer;
 
@@ -22,5 +23,6 @@ public class Mails extends Mailer {
         addRecipient(user.email);
         setContentType("text/html");
         send(user, activationKey, expirationDays);
+        Logger.info("email to: " + user.email);
     }
 }
