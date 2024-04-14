@@ -1,0 +1,454 @@
+a, a:hover, a:focus {
+    text-decoration: none;
+    color: darkred;
+}
+
+h1 {
+    font-size: 24px;
+    line-height: 1.2;
+}
+
+h2 {
+    font-size: 20px;
+    line-height: 1.2;
+    color: #333;
+}
+
+.auth-layout {
+    min-height: 100vh;
+}
+
+.auth-main {
+    width: 360px;
+}
+
+.auth-main img {
+    max-width: 240px;
+}
+
+.auth-aside {
+    background-color: #333;
+    background-image: url("/public/images/cover.jpg");
+    background-position: center;
+    background-size: cover;
+}
+
+.flex-sidebar {
+    width: 20%;
+    height: 100vh;
+    background-color: #f6f6f6;
+    position: fixed;
+    border-right: 1px solid #ededed;
+}
+
+.flex-content {
+    margin-left: 20%;
+    padding: 24px 18rem;
+}
+
+.flex-menu {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    height: 100%;
+}
+
+.flex-logo {
+    display: flex;
+    padding: 24px 12rem 24px 10rem;
+    font-weight: bold;
+}
+
+.flex-menu a {
+    display: flex;
+    align-items: center;
+    padding: 10px 12rem;
+    color: #555;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-weight: 300;
+    border-left: 6px solid transparent;
+}
+
+.flex-menu a:first-child {
+    font-weight: bold;
+}
+
+.flex-menu a:hover {
+    background-color: #ffffff;
+}
+
+.flex-menu a.active {
+    border-left-color: darkred;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    margin-top: auto;
+    border-radius: 0;
+    padding: 24px 36px 24px;
+    grid-gap: 12px;
+    flex-wrap: nowrap;
+    position: sticky;
+    bottom: 0;
+}
+
+.avatar {
+    display: flex;
+    flex-shrink: 0;
+    background-color: #536d96;
+    opacity: .6;
+    font-size: 12px;
+    color: white;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 18px;
+}
+
+.layout {
+    display: flex;
+}
+
+.content {
+    flex-grow: 1;
+    min-width: 0;
+}
+
+.content > *, .card > *, .sidebar > *  {
+    margin-bottom: 24px;
+}
+
+.content > *:last-child, .card > *:last-child {
+    margin-bottom: 0;
+}
+
+.sidebar {
+    padding: 0 32px;
+    flex: 0 0 300px;
+}
+
+input:focus {
+    outline-color: #ddd !important;
+}
+
+.card {
+    background-color: #f5f5f5;
+    padding: 36px;
+}
+
+.card.padless {
+    padding: 0 !important;
+}
+
+input[required] {
+    background-image: url('/public/images/as.svg');
+    background-repeat: no-repeat;
+    background-position: right 0.15em center;
+    padding-right: 32px !important;
+}
+
+.notify {
+    width: 80%;
+    min-width: 300px;
+    max-width: 350px;
+    padding: 10px 30px 10px 20px;
+    border-radius: 4px;
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    z-index: 100501;
+    background-color: black;
+    color: white;
+}
+
+.box, .todo {
+    color: #555;
+    font-size: 16px;
+    background-color: #f6f6f6;
+    border-radius: 8px;
+    counter-reset: todo;
+}
+
+.todo > *:first-child {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.todo > *:last-child {
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.todo .active {
+    border-radius: 8px;
+    color: black !important;
+    background-color: #eee;
+}
+
+.todo > a, .todo > button {
+    display: flex;
+    padding: 3rem 8rem;
+    border: none;
+    background-color: transparent;
+    width: 100%;
+}
+
+.todo > a:hover, .todo > button:hover {
+    background-color: #eaeaea;
+}
+
+.todo > * + a, .todo > * + button {
+    border-top: 2px solid #fff;
+}
+
+.count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(53, 63, 82, .1);
+    font-size: 14px;
+    border-radius: 20px;
+    padding: 0 16px;
+    height: 28px;
+    font-weight: 400;
+    min-width: 50px;
+    text-align: center;
+    line-height: 1.4;
+    font-family: Roboto, sans-serif;
+}
+
+.header {
+    display: flex;
+    margin-bottom: 30px;
+    font-size: 24px;
+    grid-gap: 12px;
+    align-items: center;
+}
+
+.filter {
+    grid-gap: 5px;
+    display: flex;
+    margin-bottom: 6rem;
+}
+
+.filter input {
+    padding-left: 48px;
+    background: #f8f8f8 url(/public/images/q.svg) no-repeat 14px;
+    background-size: 20px 20px;
+    width: 400px;
+    max-width: 400px;
+    flex-shrink: 0;
+}
+
+td {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+th {
+    color: #555;
+    font-weight: normal !important;
+}
+
+tbody > tr:hover {
+    background-color: #fafafa;
+}
+
+td:first-child {
+    padding-left: 16px;
+}
+
+th[hx-post] {
+    cursor: pointer !important;
+}
+
+th.asc:after {
+    content: '↑';
+}
+
+th.desc:after {
+    content: '↓';
+}
+
+.bar {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+}
+
+.bar  a:first-child {
+    padding: 1rem 3rem;
+    border-radius: 5px;
+    background-color: #EEEEEE;
+    margin-right: 3rem;
+}
+
+.card-bar {
+    display: flex;
+    align-items: center;
+}
+
+.card-bar a {
+    margin-left: auto;
+    font-size: 14px;
+}
+
+.overflow  {
+    overflow-x: hidden;
+}
+
+.overflow > div  {
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Dialog */
+
+#dialog {
+    max-width: 100%;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation-name: fadeIn;
+    animation-duration: 150ms;
+    animation-timing-function: ease;
+}
+
+.dialog-underlay {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, .5);
+    cursor: pointer;
+}
+
+.dialog-overflow {
+    padding: 0 12rem;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.dialog-header {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    background-color: white;
+}
+
+.dialog-header-fixed {
+    top: 0;
+    position: sticky;
+    padding: 12rem 0;
+}
+
+.dialog-content.dialog-sm {
+    height: 100%;
+    max-width: 100%;
+    background-color: white;
+    animation-name: slideIn;
+    animation-duration: 150ms;
+    animation-timing-function: ease;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 440px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, .25);
+}
+
+.dialog-content.dialog-sm.dialog-medium {
+    width: 880px;
+}
+
+.dialog-enlarge {
+    padding: 0 1rem;
+    overflow-x: auto;
+}
+
+.dialog-close {
+    cursor: pointer;
+    margin-left: auto;
+}
+
+body.sticky, body.open, body.open-sb {
+    overflow: hidden;
+    /* height: 100vh; */
+}
+
+/* dialog ends */
+
+.button.active {
+    background-color: #ccc;
+}
+
+.trigger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.trigger-lg {
+    width: 36px;
+    height: 36px;
+    background-color: #fafafa;
+}
+
+.trigger:hover {
+    background-color: #e1e1e1;
+}
+
+.sortable-ghost {
+    background-color: #eee;
+}
+
+.w100 {
+    width: 100%;
+}
+
+.table td a, .items td a {
+    display: block;
+    margin: -.75em 0;
+    padding: .75em 0;
+}
+
+.item-grid {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.item-card {
+    width: 246px;
+    margin-right: 12px;
+}
+
+.item-image {
+    height: 360px;
+    border-radius: 6px;
+    background-color: #f5f5f5;
+}
+
+.card img {
+    display: flex;
+    border-radius: 6px;
+}

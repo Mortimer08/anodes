@@ -2,10 +2,10 @@
 <div>
     <a href="@{controllers.auth.Secure.logout()}">Выход</a>
 </div>
+#{doLayout /}
 <div class="avatar">${user.email.charAt(0).toUpperCase()}</div>
 <div class="overflow">
     <div class="text-medium">${user.email}</div>
     <div class="text-small text-muted">${user.role.title}</div>
 </div>
-#{doLayout /}
 
