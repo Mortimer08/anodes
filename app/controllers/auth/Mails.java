@@ -23,9 +23,9 @@ public class Mails extends Mailer {
         }
         addRecipient(user.email);
         setContentType("text/html");
-        Logger.info("emailfrom: "+Data.MAILER_FROM_ADDRESS);
+        Logger.info("emailfrom: " + Data.MAILER_FROM_ADDRESS);
         send(user, activationKey, expirationDays);
-        Logger.info("emailed to: "+user.email);
+        Logger.info("emailed to: " + user.email);
 
     }
 }
