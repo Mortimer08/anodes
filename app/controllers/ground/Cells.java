@@ -5,16 +5,21 @@ import controllers.ground.dto.CellCreate;
 import controllers.ground.dto.CellUpdate;
 import controllers.ground.mapper.CellMapper;
 import models.ground.Cell;
+import models.ground.Row;
 import play.modules.router.Get;
 import play.modules.router.Post;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Cells extends Bases {
     @Get("/cells/list")
     public static void list() {
-        List<Cell> cells = Cell.findAll();
-        render(cells);
+        List<Cell> rowA = Cell.findByRow(Row.find("name like 'A'").first());
+        List<Cell> rowB = Cell.findByRow(Row.find("name like 'B'").first());
+        List<Cell> rowC = Cell.findByRow(Row.find("name like 'C'").first());
+        List<Cell> rowD = Cell.findByRow(Row.find("name like 'D'").first());
+        render(rowA, rowB, rowC, rowD);
     }
 
     @Get("/cells/blank")
@@ -49,6 +54,7 @@ public class Cells extends Bases {
         final Cell cell = Cell.findById(id);
         render(cell);
     }
+
     @Get("/cells/delete/{<\\d+>id}")
     public static void delete(final Long id) {
         final Cell cell = Cell.findById(id);

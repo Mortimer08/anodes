@@ -3,16 +3,63 @@
 
 <div>
     <h1>${title}</h1>
-    <a href="@{controllers.ground.Cells.blank()}">
+    *{<a href="@{controllers.ground.Cells.blank()}">
         Новая ванна
-    </a>
+    </a>}*
 </div>
-#{list cells}
 <div>
-    <th>
-        <a href="@{controllers.ground.Cells.view(_.id)}">
-            ${_.name}
-        </a>
-    </th>
+    <div>
+        <div class="mt-4">
+            <tr>
+                #{list rowA}
+                <td>
+                    <div class="button">
+                        <a href="@{controllers.ground.Cells.view(_.id)}">
+                            ${_.name}
+                        </a>
+                    </div>
+                </td>
+                #{/ list}
+            </tr>
+        </div>
+        <div class="mt-4">
+            <tr>
+                #{list rowB}
+                <td>
+                    <div class="button">
+                        <a href="@{controllers.ground.Cells.view(_.id)}">
+                            ${_.name}
+                        </a>
+                    </div>
+                </td>
+                #{/ list}
+            </tr>
+        </div>
+        <div class="mt-4">
+            <tr>
+                #{list rowC}
+                <td>
+                    <div class="button">
+                        <a href="@{controllers.ground.Cells.view(_.id)}">
+                            ${_.name}
+                        </a>
+                    </div>
+                </td>
+                #{/ list}
+            </tr>
+        </div>
+        <div class="mt-4">
+            <tr>
+                #{list rowD}
+                <td>
+                    <div class="button">
+                        <a href="@{controllers.ground.Cells.view(_.id)}">
+                            ${_.name}
+                        </a>
+                    </div>
+                </td>
+                #{/ list}
+            </tr>
+        </div>
+    </div>
 </div>
-#{/ list}
