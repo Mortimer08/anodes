@@ -9,7 +9,7 @@ import models.ground.Row;
 import play.modules.router.Get;
 import play.modules.router.Post;
 
-import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Cells extends Bases {
@@ -20,6 +20,14 @@ public class Cells extends Bases {
         List<Cell> rowC = Cell.findByRow(Row.find("name like 'C'").first());
         List<Cell> rowD = Cell.findByRow(Row.find("name like 'D'").first());
         render(rowA, rowB, rowC, rowD);
+    }
+
+    @Post("/cells/clean/{<\\d+>id}")
+    public static void clean(Long id){
+        Date date = new Date();
+        Cell cell = Cell.findById(id);
+        cell.clean(date);
+        render();
     }
 
     @Get("/cells/blank")

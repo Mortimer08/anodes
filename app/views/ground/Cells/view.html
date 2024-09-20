@@ -14,7 +14,16 @@
                 <a href="@{controllers.ground.Cells.show(cell.id)}">
                     Редактировать
                 </a>
+                <div>
+                    <form>
+                        <button hx-target="#mock" hx-post="@{controllers.ground.Cells.clean(cell.id)}" class="bt">
+                            Чистить
+                        </button>
+                    </form>
+                </div>
+
             </div>
+            <div id="mock"></div>
             <div>
                 #{f.spec f:controllers.ground.view.CellField.NUMBER, v:cell.number ?: '-'/}
             </div>
