@@ -9,10 +9,13 @@ import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
 public class BaseModel extends GenericModel {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id;
+
     public Long getId(){return id;}
+
     @Override
     public Object _key(){return getId();}
 }

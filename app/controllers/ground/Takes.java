@@ -8,13 +8,24 @@ import models.ground.Take;
 import play.modules.router.Get;
 import play.modules.router.Post;
 
+import java.util.Date;
 import java.util.List;
 
 public class Takes extends Bases {
+
     @Get("/takes/list")
     public static void list() {
         List<Take> takes = Take.findAll();
         render(takes);
+    }
+
+    @Post("/takes/clean")
+    public static void clean(Long id) {
+        Date date = new Date();
+        System.out.println("clean take");
+        Take take = Take.findById(id);
+        take.clean(date);
+        render();
     }
 
     @Get("/takes/blank")
@@ -48,6 +59,7 @@ public class Takes extends Bases {
         take.delete();
         list();
     }
+
     @Post("/takes/save/{<\\d+>id}")
     public static void save(final Long id, final TakeUpdate rq) {
         final Take take = Take.findById(id);

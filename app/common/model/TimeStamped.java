@@ -9,6 +9,7 @@ import java.util.Date;
 
 @MappedSuperclass
 public abstract class TimeStamped extends BaseModel {
+
     public Boolean active = false;
     public Date created = new Date();
     public Date updated = new Date();

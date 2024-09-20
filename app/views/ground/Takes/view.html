@@ -16,6 +16,14 @@
                 </a>
             </div>
             <div>
+                <form>
+                    <button hx-target="#mock" hx-post="@{controllers.ground.Takes.clean(take.id)}" class="bt">
+                        Чистить
+                    </button>
+                </form>
+            </div>
+            <div id="mock"></div>
+            <div>
                 #{f.spec f:controllers.ground.view.TakeField.NUMBER, v:take.number ?: '-'/}
             </div>
             <div>
