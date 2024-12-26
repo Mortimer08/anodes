@@ -46,6 +46,10 @@ public class Take extends TimeStamped {
         return find("cell is ?1 and number is ?2", cell, takeNumber).first();
     }
 
+    public static List<Take> findByCell(final Cell cell) {
+        return find("cell is ?1 order by number asc", cell).fetch();
+    }
+
     public Cell getCell() {
         return this.cell;
     }

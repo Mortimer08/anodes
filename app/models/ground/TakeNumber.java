@@ -23,7 +23,7 @@ public enum TakeNumber {
 
     @Override
     public String toString() {
-        return title;
+        return String.valueOf(number);
     }
 
     public static TakeNumber takeNumberByAnode(Integer anode) {
