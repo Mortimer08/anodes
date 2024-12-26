@@ -22,7 +22,6 @@ public class Takes extends Bases {
     @Post("/takes/clean")
     public static void clean(Long id) {
         Date date = new Date();
-        System.out.println("clean take");
         Take take = Take.findById(id);
         take.clean(date);
         render();
