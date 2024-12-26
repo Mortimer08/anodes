@@ -30,14 +30,21 @@ public class Cell extends TimeStamped {
         this.name = row.name.concat(String.valueOf(this.number));
     }
 
+    public static Take findTake(Cell cell, TakeNumber takeNumber) {
+        return Take.find("select t from Take t where t.cell=?1 and t.number=?2", cell, takeNumber).first();
+    }
+
+    public List<Take> findTakes() {
+        return Take.find("select t from Take t where t.cell=?1", this).fetch();
+    }
+
     public static List<Cell> findByRow(Row row) {
         return Cell.find("select c from Cell c where c.row=?1 order by number", row).fetch();
     }
 
-    public void clean(Date date){
+    public void clean(Date date) {
         Vacuuming vacuuming = new Vacuuming(this);
         vacuuming.act();
-        vacuuming.save();
         this.cleaned = date;
         this.save();
     }
