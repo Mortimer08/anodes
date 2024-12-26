@@ -1,5 +1,7 @@
 #{extends '/setup/layout.html' /}
 #{set title:'Home' /}
+
+#{set 'menu'}
 <div>
     <a href="@{ground.Anodes.list()}">&{'names.anodes'}</a>
 </div>
@@ -15,3 +17,4 @@
 <div>
     <a href="@{ground.Tiers.list()}">&{'tiers'}</a>
 </div>
+#{/set}
