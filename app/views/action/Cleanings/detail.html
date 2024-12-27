@@ -1,0 +1,19 @@
+#{set detail:unit.cellStatus/}
+<div class="my-3">
+    <h1>${detail.cell}</h1>
+</div>
+<div class="my-3">
+    Прокручена: ${detail.vacuumed?.format("dd-MM-yyyy")?:"-"}
+</div>
+<div class="my-3">
+    Примечание: ${detail.comment?:"-"}
+</div>
+<div class="">
+    <h3>Подъёмы</h3>
+    #{list unit.takes}
+    <div>
+        ${_.number}
+    </div>
+    #{/list}
+</div>
+
