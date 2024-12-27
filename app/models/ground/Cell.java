@@ -1,6 +1,7 @@
 package models.ground;
 
 import common.model.TimeStamped;
+import models.Team;
 import models.information.Vacuuming;
 
 import javax.persistence.Entity;
@@ -17,6 +18,7 @@ public class Cell extends TimeStamped {
     public Integer number;
     public Boolean needRepair;
     public Date cleaned;
+    public Team team;
 
     @ManyToOne
     public Row row;
@@ -46,6 +48,15 @@ public class Cell extends TimeStamped {
         Vacuuming vacuuming = new Vacuuming(this);
         vacuuming.act();
         this.cleaned = date;
+        this.save();
+    }
+
+    public static List<Cell> findByTeam(final Team team) {
+        return find("select c from Cell c where c.team = ?1 order by c.row asc, c.number asc", team).fetch();
+    }
+
+    public void setTeam(final Team team) {
+        this.team = team;
         this.save();
     }
 
