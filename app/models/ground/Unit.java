@@ -2,6 +2,8 @@ package models.ground;
 
 import models.Team;
 import models.information.CellStatus;
+import models.information.TakeScrubbing;
+import models.information.TakeStatus;
 import models.information.Vacuuming;
 import org.joda.time.Days;
 import org.joda.time.LocalDate;
@@ -9,47 +11,52 @@ import org.joda.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Unit{
+public class Unit {
 
     public CellStatus cellStatus;
-    public List<Take> takes;
+    public List<TakeStatus> takeStatuses;
 
-    public Unit(CellStatus cellStatus, List<Take> takes) {
+    public Unit(CellStatus cellStatus, List<TakeStatus> takeStatuses) {
         this.cellStatus = cellStatus;
-        this.takes = takes;
+        this.takeStatuses = takeStatuses;
     }
 
     public static List<Unit> findByTeam(final Team team) {
-        List<Cell> cells = Cell.findByTeam(team);
-        List<Unit> units = new ArrayList<>();
+        final List<Cell> cells = Cell.findByTeam(team);
+        final List<Unit> units = new ArrayList<>();
         for (Cell cell : cells) {
-            final CellStatus cellStatus = new CellStatus(cell);
-            final Vacuuming vacuuming = Vacuuming.findLast(cell);
-            if (vacuuming != null) {
-                LocalDate vacuumed = LocalDate.fromDateFields(vacuuming.getHappened());
-                final int days = Days.daysBetween(vacuumed, new LocalDate()).getDays();
-                cellStatus.setComment(vacuuming.comment);
-                cellStatus.setTerm(days);
-                cellStatus.setVacuumed(vacuumed.toDate());
-            }
-            List<Take> takes = Take.findByCell(cell);
-            units.add(new Unit(cellStatus, takes));
+            final Unit unit = getDetail(cell);
+            units.add(unit);
         }
         return units;
     }
 
     public static Unit getDetail(final Cell cell) {
         final CellStatus cellStatus = new CellStatus(cell);
-        final Vacuuming vacuuming = Vacuuming.findLast(cell);
+        final Vacuuming vacuuming = cell.getLastVacuuming();
+        final LocalDate today = new LocalDate();
         if (vacuuming != null) {
             final LocalDate vacuumed = LocalDate.fromDateFields(vacuuming.getHappened());
-            final int days = Days.daysBetween(vacuumed, new LocalDate()).getDays();
+            final int term = Days.daysBetween(vacuumed, today).getDays();
             cellStatus.setComment(vacuuming.comment);
-            cellStatus.setTerm(days);
+            cellStatus.setTerm(term);
             cellStatus.setVacuumed(vacuumed.toDate());
         }
         final List<Take> takes = Take.findByCell(cell);
-        Unit unit = new Unit(cellStatus, takes);
-        return unit;
+            final List<TakeStatus> takeStatuses = new ArrayList<>();
+        for (Take take : takes) {
+            TakeStatus takeStatus = new TakeStatus(take);
+            final TakeScrubbing scrubbing = take.getLastScrubbing();
+            takeStatuses.add(takeStatus);
+            if (scrubbing != null) {
+                final LocalDate scrubbed = LocalDate.fromDateFields(scrubbing.getHappened());
+                final int term = Days.daysBetween(scrubbed, today).getDays();
+                takeStatus.setComment(scrubbing.comment);
+                takeStatus.setFirstDamage(scrubbing.firstDamage);
+                takeStatus.setScrubbed(scrubbing.getHappened());
+                takeStatus.setTerm(term);
+            }
+        }
+        return new Unit(cellStatus, takeStatuses);
     }
 }
