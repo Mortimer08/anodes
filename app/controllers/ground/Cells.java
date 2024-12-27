@@ -7,8 +7,6 @@ import controllers.ground.mapper.CellMapper;
 import controllers.information.dto.CleanDto;
 import models.ground.Cell;
 import models.ground.Take;
-import models.ground.Unit;
-import org.joda.time.LocalDate;
 import play.modules.router.Get;
 import play.modules.router.Post;
 
@@ -19,29 +17,12 @@ public class Cells extends Bases {
 
     @Get("/cells/list")
     public static void list() {
-        final String date = new LocalDate().toString();
-        final List<Unit> units = Unit.findUnits();
-        render(units, date);
+        final List<Cell> cells = Cell.findAll();
+        render(cells);
     }
 
     @Post("/cells/clean")
     public static void clean(CleanDto rq) {
-        Date date = rq.date;
-        if (date == null) {
-            date = new Date();
-        }
-        if (rq.cell != null) {
-            for (Long id : rq.cell) {
-                final Cell cell = Cell.findById(id);
-                cell.clean(date);
-            }
-        }
-        if (rq.take != null) {
-            for (Long id : rq.take) {
-                final Take take = Take.findById(id);
-                take.clean(date);
-            }
-        }
         list();
     }
 
