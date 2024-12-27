@@ -22,4 +22,10 @@ public class Vacuuming extends Event {
     public void act(Date acted) {
         this.happened = acted != null ? acted : happened;
     }
+
+    public static Vacuuming findLast(final Cell cell) {
+        return find(" select v from Vacuuming v where v.cell = ?1 order by happened desc", cell).first();
+    }
+
+
 }
