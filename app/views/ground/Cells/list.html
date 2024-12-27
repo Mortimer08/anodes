@@ -21,86 +21,36 @@
 <div>
     <a href="@{ground.Tiers.list()}">&{'tiers'}</a>
 </div>
+<div>
+    <a href="@{controllers.action.Cleanings.list(1)}">Чистка бригада 1</a>
+</div>
+<div>
+    <a href="@{controllers.action.Cleanings.list(2)}">Чистка бригада 2</a>
+</div>
+<div>
+    <a href="@{controllers.action.Cleanings.list(3)}">Чистка бригада 3</a>
+</div>
+<div>
+    <a href="@{controllers.action.Cleanings.list(4)}">Чистка бригада 4</a>
+</div>
+<div>
+    <a href="@{controllers.action.Cleanings.list(5)}">Чистка бригада 5</a>
+</div>
 #{/set}
 
 
 <div>
     <h1>${title}</h1>
+    <a href="@{controllers.ground.Cells.blank()}">
+        Новая ванна
+    </a>
 </div>
+#{list cells}
 <div>
-    <div>
-        <form action="@{controllers.ground.Cells.clean()}" method="post">
-            <div>
-                <input type="date" name="rq.date" value="${date}" class="input"/>
-            </div>
-            *{
-            <div class="mt-4 grid">
-                #{list rowA}
-                <div class="">
-                    <div class="flex">
-                        <a href="@{controllers.ground.Cells.view(_.id)}">
-                            ${_.name}
-                        </a>
-                    </div>
-                    <div>
-                        Ванна:<input type="checkbox" name="rq.cell" value="${_.id}">
-                    </div>
-                    <div>
-                        Подъёмы:
-                        <div class="flex">
-                            #{list _.findTakes()}
-                            <div>
-                                <div>
-                                    ${_.number}
-                                </div>
-                                <div>
-
-                                    <input type="checkbox" name="rq.take" value="${_.id}">
-                                </div>
-                            </div>
-                            #{/ list}
-                        </div>
-                    </div>
-                </div>
-                #{/ list}
-                <button type="submit" class="bt">
-                    Сохранить
-                </button>
-            </div>
-            }*
-
-            <div class="mt-4 grid">
-                #{list units}
-                <div class="list-bordered">
-                    <div class="flex flex-around">
-                        <div class="p-2">
-                            <a href="@{controllers.ground.Cells.view(_.cell.id)}">
-                                ${_.cell.name}
-                            </a>
-                        </div>
-                        <div class="p-2">
-                            <label for="cell_'${_.cell.id}'"></label>
-                            <input type="checkbox" name="rq.cell" value="${_.cell.id}" id="cell_'${_.cell.id}'">
-                        </div>
-                    </div>
-                    <div>
-                        <div class="flex flex-around">
-                            #{list _.takes}
-                            <div class="flex-center">
-                                <div class="align-center">
-                                    <label for="take_'${_.id}'">${_.number}</label>
-                                    <input class="mx-1" type="checkbox" name="rq.take" value="${_.id}" id="take_'${_.id}'">
-                                </div>
-                            </div>
-                            #{/ list}
-                        </div>
-                    </div>
-                </div>
-                #{/ list}
-                <button type="submit" class="bt">
-                    Сохранить
-                </button>
-            </div>
-        </form>
-    </div>
+    <th>
+        <a href="@{controllers.ground.Cells.view(_.id)}">
+            ${_.name}
+        </a>
+    </th>
 </div>
+#{/ list}
