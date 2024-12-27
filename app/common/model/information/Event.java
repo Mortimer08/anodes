@@ -21,4 +21,11 @@ public class Event extends TimeStamped implements EventInterface {
         this.happened = new Date();
         this.save();
     }
+
+    @Override
+    public Date getHappened() {
+        return this.happened;
+    }
+
+
 }
