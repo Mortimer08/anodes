@@ -8,6 +8,7 @@ public class TakeStatus {
 
     public Take take;
     public Date scrubbed;
+    public int term;
     public String comment;
     public int firstDamage;
 
@@ -17,6 +18,10 @@ public class TakeStatus {
 
     public void setScrubbed(Date scrubbed) {
         this.scrubbed = scrubbed;
+    }
+
+    public void setTerm(int term) {
+        this.term = term;
     }
 
     public void setComment(String comment) {
