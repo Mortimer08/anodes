@@ -21,6 +21,7 @@ public class Vacuuming extends Event {
 
     public void act(Date acted) {
         this.happened = acted != null ? acted : happened;
+        cell.lastVacuuming = this;
     }
 
     public static Vacuuming findLast(final Cell cell) {

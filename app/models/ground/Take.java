@@ -3,9 +3,7 @@ package models.ground;
 import common.model.TimeStamped;
 import models.information.TakeScrubbing;
 
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
@@ -20,6 +18,8 @@ public class Take extends TimeStamped {
     public TakeNumber number;
     public Date scrubbed;
     public Date smacked;
+    @OneToOne
+    public TakeScrubbing lastScrubbing;
 
 
     public Take() {
@@ -56,6 +56,14 @@ public class Take extends TimeStamped {
 
     public Integer getQuantity() {
         return this.number.quantity;
+    }
+
+    public TakeScrubbing getLastScrubbing() {
+        if (lastScrubbing == null) {
+            lastScrubbing = TakeScrubbing.findLast(this);
+            save();
+        }
+        return lastScrubbing;
     }
 
     @Override

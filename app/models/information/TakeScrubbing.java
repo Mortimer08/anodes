@@ -1,6 +1,7 @@
 package models.information;
 
 import common.model.information.Event;
+import models.ground.Cell;
 import models.ground.Take;
 
 import javax.persistence.Entity;
@@ -31,6 +32,11 @@ public class TakeScrubbing extends Event {
 
     public void act(Date acted) {
         this.happened = acted != null ? acted : happened;
+        take.lastScrubbing = this;
+    }
+
+    public static TakeScrubbing findLast(final Take take) {
+        return find(" select s from TakeScrubbing s where s.take = ?1 order by happened desc", take).first();
     }
 
 }

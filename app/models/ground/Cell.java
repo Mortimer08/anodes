@@ -6,6 +6,7 @@ import models.information.Vacuuming;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import java.util.Date;
 import java.util.List;
@@ -20,6 +21,8 @@ public class Cell extends TimeStamped {
     public Date cleaned;
     public Team team;
 
+    @OneToOne
+    public Vacuuming lastVacuuming;
     @ManyToOne
     public Row row;
 
@@ -58,6 +61,14 @@ public class Cell extends TimeStamped {
     public void setTeam(final Team team) {
         this.team = team;
         this.save();
+    }
+
+    public Vacuuming getLastVacuuming() {
+        if (lastVacuuming == null) {
+            lastVacuuming = Vacuuming.findLast(this);
+            save();
+        }
+        return lastVacuuming;
     }
 
     @Override
