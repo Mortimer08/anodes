@@ -1,6 +1,7 @@
 package models.ground;
 
 import common.model.BaseModel;
+import models.Team;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,8 +16,8 @@ public class Unit extends BaseModel {
         this.takes = takes;
     }
 
-    public static List<Unit> findUnits() {
-        List<Cell> rowA = Cell.findByRow(Row.find("name like 'A'").first());
+    public static List<Unit> findByTeam(final Team team) {
+        List<Cell> rowA = Cell.findByTeam(team);
         List<Unit> units = new ArrayList<>();
         for (Cell cell : rowA) {
             List<Take> takes = Take.findByCell(cell);
