@@ -18,7 +18,6 @@ public class Cell extends TimeStamped {
     public String name;
     public Integer number;
     public Boolean needRepair;
-    public Date cleaned;
     public Team team;
 
     @OneToOne
@@ -48,9 +47,10 @@ public class Cell extends TimeStamped {
     }
 
     public void clean(Date date) {
-        Vacuuming vacuuming = new Vacuuming(this);
-        vacuuming.act();
-        this.cleaned = date;
+        Vacuuming vacuuming = new Vacuuming();
+        vacuuming.happened = date;
+        vacuuming.save();
+        this.lastVacuuming = vacuuming;
         this.save();
     }
 
