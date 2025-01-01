@@ -4,15 +4,15 @@ import models.ground.Take;
 
 import java.util.Date;
 
-public class TakeStatus {
+public class TakeDetail {
 
     public Take take;
     public Date scrubbed;
-    public int term;
+    public Integer term;
     public String comment;
-    public int firstDamage;
+    public Integer firstDamage;
 
-    public TakeStatus(Take take) {
+    public TakeDetail(Take take) {
         this.take = take;
     }
 
@@ -28,7 +28,7 @@ public class TakeStatus {
         this.comment = comment;
     }
 
-    public void setFirstDamage(int firstDamage) {
+    public void setFirstDamage(Integer firstDamage) {
         this.firstDamage = firstDamage;
     }
 }

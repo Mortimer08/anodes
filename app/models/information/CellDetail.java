@@ -4,14 +4,14 @@ import models.ground.Cell;
 
 import java.util.Date;
 
-public class CellStatus {
+public class CellDetail {
 
     public Cell cell;
     public Date vacuumed;
     public int term;
     public String comment;
 
-    public CellStatus(Cell cell) {
+    public CellDetail(Cell cell) {
         this.cell = cell;
     }
 
