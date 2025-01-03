@@ -4,13 +4,10 @@ import controllers.Bases;
 import controllers.ground.dto.CellCreate;
 import controllers.ground.dto.CellUpdate;
 import controllers.ground.mapper.CellMapper;
-import controllers.information.dto.CleanDto;
 import models.ground.Cell;
-import models.ground.Take;
 import play.modules.router.Get;
 import play.modules.router.Post;
 
-import java.util.Date;
 import java.util.List;
 
 public class Cells extends Bases {
@@ -19,11 +16,6 @@ public class Cells extends Bases {
     public static void list() {
         final List<Cell> cells = Cell.findAll();
         render(cells);
-    }
-
-    @Post("/cells/clean")
-    public static void clean(CleanDto rq) {
-        list();
     }
 
     @Get("/cells/blank")
