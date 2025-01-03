@@ -1,0 +1,12 @@
+<div hx-swap-oob="true" id="detailCellDate">
+    <input type="date" name="rq.happened" value="${unit.cellDetail.vacuumed?.format()}" class="input">
+</div>
+<div class="p-2" hx-target="#detail" id="cell_${id}"
+     hx-post="@{controllers.action.Cleanings.cellDetail(id)}"
+     hx-trigger="click">
+    <input type="checkbox" name="cellRq.id" value="${id}" checked>
+    <input type="hidden" name="rq.happened" value="${unit.cellDetail.vacuumed}">
+    <input type="hidden" name="rq.comment" value="${unit.cellDetail.comment}"
+           class="moment">
+    <input type="hidden" name="date" value="${unit.cellDetail.vacuumed}" class="moment">
+</div>
