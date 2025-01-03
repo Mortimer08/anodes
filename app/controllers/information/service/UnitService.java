@@ -1,4 +1,4 @@
-package controllers.information;
+package controllers.information.service;
 
 import controllers.information.mapper.CellDetailMapper;
 import controllers.information.mapper.TakeDetailMapper;
