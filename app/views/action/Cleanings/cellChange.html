@@ -1,5 +1,8 @@
 <div hx-swap-oob="true" id="detailCellDate">
-    <input type="date" name="rq.happened" value="${unit.cellDetail.vacuumed?.format()}" class="input">
+    <label class="label label-light" for="cDetail_vacuumed">Прокручена</label>
+    <input type="date" name="rq.happened" value="${unit.cellDetail.vacuumed?.format()}" class="input"
+           id="cDetail_vacuumed">
+
 </div>
 <div class="p-2" hx-target="#detail" id="cell_${id}"
      hx-post="@{controllers.action.Cleanings.cellDetail(id)}"

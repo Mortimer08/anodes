@@ -44,13 +44,13 @@
     <div>
         <div class="flex">
 
-            <div>
+            <div class="mr-3">
                 <div class="flex flex-between">
                     <div>
                         <h1>${title}</h1>
                     </div>
-                    <div class="flex" hx-post="" hx-target=".moment">
-                        <label class="label" for="date">Дата чистки</label>
+                    <div class="" hx-post="" hx-target=".moment">
+                        <label class="label label-light" for="date">Дата чистки</label>
                         <input type="date" name="date" value="${date.format()}" class="input" id="date"/>
                     </div>
                 </div>
@@ -81,33 +81,7 @@
                             <div class="flex flex-around">
                                 #{list _.takeDetails}
                                 #{set take:_.take/}
-                                <div class="flex-center">
-                                    <form>
-                                        <div class="align-center" hx-target="#detail"
-                                             hx-post="@{controllers.action.Cleanings.takeDetail(cell.id)}"
-                                             hx-trigger="click">
-                                            <label for="take_${take.id}">${take.number}</label>
-                                            <input type="checkbox" name="rq.id" value="${take.id}"
-                                                   id="take_${take.id}">
-                                            <input type="hidden" name="rq.takeNumber"
-                                                   value="${take.number}">
-                                            <input type="hidden" name="rq.happened"
-                                                   value="${_.scrubbed}">
-                                            <input type="hidden" name="rq.comment"
-                                                   value="${_.comment}">
-                                            <input type="hidden" name="rq.machined"
-                                                   value="${_.machined}">
-                                            <input type="hidden" name="rq.firstDamage"
-                                                   value="${_.firstDamage}">
-                                            <input type="hidden" name="rq.toChange"
-                                                   value="${_.toChange}">
-                                            <input type="hidden" name="rq.changed"
-                                                   value="${_.changed}">
-                                            <input type="hidden" name="rq.moment"
-                                                   value="${date.format()}">
-                                        </div>
-                                    </form>
-                                </div>
+                                #{include './cellBrick.html'/}
                                 #{/list}
                             </div>
                         </div>
@@ -124,13 +98,12 @@
                 </form>
             </div>
             <div class="flex-layout">
-                <div class="ml-6">
-                    <div class="max-100 my-3">
+                <div class="pl-3 border-left border-dark-low">
+                    <div class="flex flex-between flex-middle max-100">
                         <h1>Подробно</h1>
+                        <div class="" id="cDetail_nane"></div>
                     </div>
-                    <div id="detail">
-
-                    </div>
+                    <div id="detail"></div>
                 </div>
             </div>
 

@@ -1,0 +1,27 @@
+<div class="flex-center">
+    <form>
+        <div class="align-center" hx-target="#detail"
+             hx-post="@{controllers.action.Cleanings.takeDetail(cell.id)}"
+             hx-trigger="click">
+            <label for="take_${take.id}">${take.number}</label>
+            <input type="checkbox" name="rq.id" value="${take.id}"
+                   id="take_${take.id}">
+            <input type="hidden" name="rq.takeNumber"
+                   value="${take.number}">
+            <input type="hidden" name="rq.happened"
+                   value="${_.scrubbed}">
+            <input type="hidden" name="rq.comment"
+                   value="${_.comment}">
+            <input type="hidden" name="rq.machined"
+                   value="${_.machined}">
+            <input type="hidden" name="rq.firstDamage"
+                   value="${_.firstDamage}">
+            <input type="hidden" name="rq.toChange"
+                   value="${_.toChange}">
+            <input type="hidden" name="rq.changed"
+                   value="${_.changed}">
+            <input type="hidden" name="rq.moment"
+                   value="${date.format()}">
+        </div>
+    </form>
+</div>

@@ -1,83 +1,17 @@
 #{set cDetail:unit.cellDetail/}
 #{set tDetails:unit.takeDetails/}
 
-<div class="my-3">
+<div class="" hx-swap-oob="true" id="cDetail_nane">
     <h1>${cDetail.cell}</h1>
 </div>
-<form hx-post="@{controllers.action.Cleanings.cellChange(cDetail.cell.id)}"
-      hx-target="#cell_${cDetail.cell.id}"
-      hx-trigger="submit, change"
-      hx-swap="outerHTML">
-    <div>
-        <div class="flex flex-start my-3">
-            <div class="mr-3">Прокручена:</div>
-            <div id="detailCellDate">
-                <input type="date" name="rq.happened" value="${unit.cellDetail.vacuumed?.format()}" class="input">
-            </div>
-            <input type="hidden" name="rq.id" value="${cDetail.cell.id}">
-        </div>
-        <div class="flex flex-start my-3">
-            <div class="my-3">
-                Примечание:
-            </div>
-            <div>
-                <input type="text" name="rq.comment" value="${cDetail.comment}" autocomplete="off" placeholder="Комментарий">
-            </div>
-        </div>
-    </div>
-</form>
+<h3>Ванна</h3>
+#{include './cellDetail.html'/}
 <div class="">
     <h3>Подъёмы</h3>
     #{list tDetails}
-    <form>
-        <div class="mt-4 flex" hx-post="@{controllers.action.Cleanings.takeChange(cDetail.cell.id)}"
-             hx-trigger="change delay:500ms"
-             hx-target="#take_${_.take.id}"
-             hx-swap="outerHTML">
-            <div>
-                ${_.take.number}
-                <input type="hidden" name="rq.id" value="${_.take.id}">
-            </div>
-            <div>
-                <input type="date" name="rq.moment"
-                       value="${_.scrubbed?.format()}"
-                class="input"
-                autocomplete="off">
-            </div>
-            <div>
-                <input type="text" name="rq.firstDamage" value="${_.firstDamage}"
-                       class="input"
-                       autocomplete="off">
-            </div>
-            <div>
-                <div>
-                    <input type="text" name="rq.machined" value="${_.machined}"
-                           class="input"
-                           autocomplete="off">
-                </div>
-                <div>
-                    <input type="text" name="rq.changed" value="${_.changed}"
-                           placeholder="Заменили"
-                           class="input"
-                           autocomplete="off">
-                </div>
-                <div>
-                    <input type="text" name="rq.toChange" value="${_.toChange}"
-                           placeholder="На замену"
-                           class="input"
-                           autocomplete="off">
-                </div>
-                <div>
-                    <input type="text" name="rq.comment" value="${_.comment}"
-                           placeholder="Комментарий"
-                           class="input"
-                           autocomplete="off">
-                </div>
-            </div>
-        </div>
-    </form>
+    <div class=" list-stacked">
+        #{include './takeDetail.html'/}
+    </div>
     #{/list}
-
-
 </div>
 
