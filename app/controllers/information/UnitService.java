@@ -1,18 +1,13 @@
 package controllers.information;
 
-import controllers.information.dto.CellDetailDto;
-import controllers.information.dto.TakeDetailDto;
 import controllers.information.mapper.CellDetailMapper;
 import controllers.information.mapper.TakeDetailMapper;
 import models.Team;
 import models.ground.Cell;
 import models.ground.Take;
 import models.information.*;
-import org.joda.time.Days;
-import org.joda.time.LocalDate;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class UnitService {
 
@@ -26,60 +21,27 @@ public class UnitService {
         return units;
     }
 
-    public static Unit getDetail(final Cell cell,
-                                 final CellDetailDto cellDetailDto,
-                                 final TakeDetailDto takeDetailDto) {
-        final CellDetail cellStatus = new CellDetail(cell);
-        if (cellDetailDto.id != null) {
-            cellStatus.setVacuumed(cellDetailDto.happened);
-            cellStatus.setComment(cellDetailDto.comment);
-        } else {
-            final Vacuuming vacuuming = cell.getLastVacuuming();
-            if (vacuuming != null) {
-                cellStatus.setVacuumed(vacuuming.getHappened());
-                cellStatus.setComment(vacuuming.comment);
-            }
+    public static Map<Long, Unit> mapFrom(List<Unit> units) {
+        Map<Long, Unit> unitMap = new TreeMap<>();
+        for (Unit unit : units) {
+            unitMap.put(unit.cellDetail.cell.id, unit);
         }
-        final LocalDate today = new LocalDate();
-        final LocalDate vacuumed = new LocalDate(cellDetailDto.happened);
-        int term = Days.daysBetween(vacuumed, today).getDays();
-        cellStatus.setTerm(term);
-        final List<Take> takes = Take.findByCell(cell);
-        final List<TakeDetail> takeStatuses = new ArrayList<>();
-        for (Take take : takes) {
-            TakeDetail takeStatus = new TakeDetail(take);
-            if (take.id != null && take.id.equals(takeDetailDto.id)) {
-                TakeDetailMapper.toEntity(takeStatus, takeDetailDto);
-            } else {
-                final TakeScrubbing scrubbing = take.getLastScrubbing();
-                if (scrubbing != null) {
-                    TakeDetailMapper.toEntity(takeStatus, scrubbing);
-                }
-            }
-            final LocalDate scrubbed = new LocalDate(takeStatus.scrubbed);
-            term = Days.daysBetween(scrubbed, today).getDays();
-            takeStatus.setTerm(term);
-            takeStatuses.add(takeStatus);
-        }
-        return new Unit(cellStatus, takeStatuses);
+        return unitMap;
     }
 
     public static Unit getDetail(final Cell cell) {
         final CellDetail cellDetail = new CellDetail(cell);
         final Vacuuming vacuuming = cell.getLastVacuuming();
-        if (vacuuming != null) {
-            CellDetailMapper.toEntity(cellDetail, vacuuming);
-        }
+        CellDetailMapper.toDetail(cellDetail, vacuuming);
         final List<Take> takes = Take.findByCell(cell);
-        final List<TakeDetail> takeStatuses = new ArrayList<>();
+        final List<TakeDetail> takeDetails = new ArrayList<>();
         for (Take take : takes) {
-            TakeDetail takeDetail = new TakeDetail(take);
+            final TakeDetail takeDetail = new TakeDetail(take);
             final TakeScrubbing scrubbing = take.getLastScrubbing();
-            takeStatuses.add(takeDetail);
-            if (scrubbing != null) {
-                TakeDetailMapper.toEntity(takeDetail, scrubbing);
-            }
+            takeDetails.add(takeDetail);
+            TakeDetailMapper.toDetail(takeDetail, scrubbing);
         }
-        return new Unit(cellDetail, takeStatuses);
+        return new Unit(cellDetail, takeDetails);
     }
+
 }
