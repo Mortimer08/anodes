@@ -18,7 +18,6 @@ public class Event extends TimeStamped implements EventInterface {
 
     @Override
     public void act() {
-        this.happened = new Date();
         this.save();
     }
 
@@ -27,5 +26,7 @@ public class Event extends TimeStamped implements EventInterface {
         return this.happened;
     }
 
-
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
 }

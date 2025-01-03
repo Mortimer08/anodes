@@ -10,7 +10,12 @@ public class TakeDetail {
     public Date scrubbed;
     public Integer term;
     public String comment;
+    public Integer machined;
     public Integer firstDamage;
+    public Integer toChange;
+    public Integer changed;
+    public Boolean checked = false;
+    public Date date;
 
     public TakeDetail(Take take) {
         this.take = take;
@@ -30,5 +35,9 @@ public class TakeDetail {
 
     public void setFirstDamage(Integer firstDamage) {
         this.firstDamage = firstDamage;
+    }
+
+    public boolean isScrubbed() {
+        return this.take != null && this.checked;
     }
 }

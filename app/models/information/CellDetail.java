@@ -10,6 +10,7 @@ public class CellDetail {
     public Date vacuumed;
     public int term;
     public String comment;
+    public Boolean checked = false;
 
     public CellDetail(Cell cell) {
         this.cell = cell;
@@ -25,5 +26,9 @@ public class CellDetail {
 
     public void setComment(String comment) {
         this.comment = comment != null ? comment : "";
+    }
+
+    public boolean isVacuumed() {
+        return this.cell != null && this.checked;
     }
 }

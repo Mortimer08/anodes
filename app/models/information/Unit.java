@@ -12,4 +12,13 @@ public class Unit {
         this.takeDetails = takeDetails;
     }
 
+    public TakeDetail takeDetailById(Long id) {
+        for (TakeDetail takeDetail : takeDetails) {
+            if (takeDetail.take.id.equals(id)) {
+                return takeDetail;
+            }
+        }
+        return null;
+    }
+
 }

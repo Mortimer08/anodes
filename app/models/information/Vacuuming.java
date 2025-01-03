@@ -15,7 +15,10 @@ public class Vacuuming extends Event {
     @OneToOne
     public Cell cell;
 
-    public Vacuuming(Cell cell) {
+    public Vacuuming() {
+    }
+
+    public Vacuuming(Cell cell, Date happened) {
         this.cell = cell;
     }
 

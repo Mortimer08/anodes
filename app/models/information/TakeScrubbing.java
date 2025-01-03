@@ -16,10 +16,13 @@ public class TakeScrubbing extends Event {
     @OneToOne
     public Take take;
 
-    public Integer machined;
-    public Integer firstDamage;
-    public Integer toChange;
-    public Integer changed;
+    public Integer machined = 0;
+    public Integer firstDamage = 0;
+    public Integer toChange = 0;
+    public Integer changed = 0;
+
+    public TakeScrubbing() {
+    }
 
     public TakeScrubbing(Take take, Date date) {
         this.happened = date;
