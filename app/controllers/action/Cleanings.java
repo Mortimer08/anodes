@@ -13,7 +13,6 @@ import models.ground.Cell;
 import models.ground.Take;
 import models.information.*;
 import org.joda.time.LocalDate;
-import play.Logger;
 import play.modules.router.Get;
 import play.modules.router.Post;
 
@@ -68,14 +67,10 @@ public class Cleanings extends Bases {
 
     @Post("/cleanings/take/detail/change/{<\\d+>id}")
     public static void takeChange(final long id, final TakeDetailDto rq) {
-        Logger.info("take changed: " + rq.id);
-
-        final Take take = Take.findById(rq.id);
-        notFoundIfNull(take);
         final Unit unit = getUnit(id);
         correctUnit(unit, rq);
-        final Long takeId = take.id;
-        render(id, takeId);
+        final TakeDetail tDetail = unit.takeDetailById(rq.id);
+        render(unit, id, tDetail);
     }
 
     private static void correctUnit(final Unit unit, final CellDetailDto rq) {
