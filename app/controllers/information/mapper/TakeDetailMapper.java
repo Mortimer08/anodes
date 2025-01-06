@@ -5,10 +5,12 @@ import models.information.TakeScrubbing;
 import models.information.TakeDetail;
 import org.joda.time.Days;
 import org.joda.time.LocalDate;
+import java.util.Date;
 
 public class TakeDetailMapper {
 
     public static void toDetail(final TakeDetail takeDetail, final TakeDetailDto dto) {
+        if (dto.moment == null) dto.moment = new Date();
         takeDetail.checked = true;
         takeDetail.scrubbed = dto.moment;
         takeDetail.comment = dto.comment;
