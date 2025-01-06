@@ -1,1 +1,2 @@
-<input type="checkbox" name="rq.id" value="${id}" id="take_${takeId}" checked>
+<input type="checkbox" name="rq.id" value="${tDetail.take.id}" id="take_${tDetail.take.id}" checked hx-swap-oob="true">
+#{include './takeDetail.html'/}

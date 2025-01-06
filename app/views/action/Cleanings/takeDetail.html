@@ -1,59 +1,60 @@
-<form>
-
-    <div class="mt-4 flex flex-middle list-item shadow-150 pb-3 pr-3"
-         hx-post="@{controllers.action.Cleanings.takeChange(cDetail.cell.id)}"
-         hx-trigger="change delay:500ms"
-         hx-target="#take_${_.take.id}"
-         hx-swap="outerHTML">
-        <div class="mr-2">
-            ${_.take.number}
-            <input type="hidden" name="rq.id" value="${_.take.id}">
-        </div>
-        <div class="">
-            <div class="flex flex-middle">
-                <div class="mr-2">
-                    <label for="sc_${_.take.id}" class="label label-light">Почищен</label>
-                    <input type="date" name="rq.moment"
-                           value="${_.scrubbed?.format()}"
-                           id="sc_${_.take.id}"
-                           class="input"
-                           autocomplete="off">
-                </div>
-                <div class="mr-2">
-                    <label for="fd_${_.take.id}" class="label label-light">10%</label>
-                    <input type="text" name="rq.firstDamage" value="${_.firstDamage}" id="fd_${_.take.id}"
-                           class="input"
-                           autocomplete="off">
-                </div>
-                <div class="mr-2">
-                    <label for="m_${_.take.id}" class="label label-light">W703</label>
-                    <input type="text" name="rq.machined" value="${_.machined}" id="m_${_.take.id}"
-                           class="input"
-                           autocomplete="off">
-                </div>
-                <div class="mr-2">
-                    <label for="ch_${_.take.id}" class="label label-light">Заменили</label>
-                    <input type="text" name="rq.changed" value="${_.changed}" id="ch_${_.take.id}"
-                           placeholder="Заменили"
-                           class="input"
-                           autocomplete="off">
-                </div>
-                <div class="mr-2">
-                    <label for="tc_${_.take.id}" class="label label-light">Менять</label>
-                    <input type="text" name="rq.toChange" value="${_.toChange}" id="tc_${_.take.id}"
-                           placeholder="На замену"
-                           class="input"
-                           autocomplete="off">
-                </div>
+<div class=" list-stacked" id="tDetail_${tDetail.take.id}">
+    <form>
+        <div class="mt-4 flex flex-middle list-item shadow-150 pb-3 pr-3"
+             hx-post="@{controllers.action.Cleanings.takeChange(unit.cellDetail.cell.id)}"
+             hx-trigger="change delay:500ms"
+             hx-target="#tDetail_${tDetail.take.id}"
+             hx-swap="outerHTML">
+            <div class="mr-2">
+                ${tDetail.take.number}
+                <input type="hidden" name="rq.id" value="${tDetail.take.id}">
             </div>
             <div class="">
-                <label for="c_${_.take.id}" class="label label-light">Примечание</label>
-                <input type="text" name="rq.comment" value="${_.comment}" id="c_${_.take.id}"
-                       placeholder="Комментарий"
-                       class="input"
-                       autocomplete="off">
+                <div class="flex flex-middle">
+                    <div class="mr-2">
+                        <label for="sc_${tDetail.take.id}" class="label label-light">Почищен</label>
+                        <input type="date" name="rq.moment"
+                               value="${tDetail.scrubbed?.format()}"
+                               id="sc_${tDetail.take.id}"
+                               class="input"
+                               autocomplete="off">
+                    </div>
+                    <div class="mr-2">
+                        <label for="fd_${tDetail.take.id}" class="label label-light">10%</label>
+                        <input type="text" name="rq.firstDamage" value="${tDetail.firstDamage}"
+                               id="fd_${tDetail.take.id}"
+                               class="input"
+                               autocomplete="off">
+                    </div>
+                    <div class="mr-2">
+                        <label for="m_${tDetail.take.id}" class="label label-light">W703</label>
+                        <input type="text" name="rq.machined" value="${tDetail.machined}" id="m_${tDetail.take.id}"
+                               class="input"
+                               autocomplete="off">
+                    </div>
+                    <div class="mr-2">
+                        <label for="ch_${tDetail.take.id}" class="label label-light">Заменили</label>
+                        <input type="text" name="rq.changed" value="${tDetail.changed}" id="ch_${tDetail.take.id}"
+                               placeholder="Заменили"
+                               class="input"
+                               autocomplete="off">
+                    </div>
+                    <div class="mr-2">
+                        <label for="tc_${tDetail.take.id}" class="label label-light">Менять</label>
+                        <input type="text" name="rq.toChange" value="${tDetail.toChange}" id="tc_${tDetail.take.id}"
+                               placeholder="На замену"
+                               class="input"
+                               autocomplete="off">
+                    </div>
+                </div>
+                <div class="">
+                    <label for="c_${tDetail.take.id}" class="label label-light">Примечание</label>
+                    <input type="text" name="rq.comment" value="${tDetail.comment}" id="c_${tDetail.take.id}"
+                           placeholder="Комментарий"
+                           class="input"
+                           autocomplete="off">
+                </div>
             </div>
         </div>
-
-    </div>
-</form>
+    </form>
+</div>
