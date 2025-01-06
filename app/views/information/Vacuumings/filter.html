@@ -7,7 +7,8 @@
         <thead>
         <tr>
             #{list controllers.information.view.VacuumingView.values()}
-            <th>
+            <th hx-post="@{controllers.information.Vacuumings.sort(_)}" hx-target="#items"
+                class="${_.name == f.sort ? f.order : ''}">
                 ${_.title}
             </th>
             #{/list}
