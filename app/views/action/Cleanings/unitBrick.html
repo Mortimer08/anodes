@@ -1,0 +1,13 @@
+#{set cell:_.cellDetail.cell/}
+
+<div class="list-bordered">
+    #{include './cellBrick.html'/}
+    <div>
+        <div class="flex flex-around">
+            #{list _.takeDetails}
+            #{set take:_.take/}
+            #{include './takeBrick.html'/}
+            #{/list}
+        </div>
+    </div>
+</div>
