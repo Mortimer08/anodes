@@ -21,4 +21,38 @@ public class Unit {
         return null;
     }
 
+    public Integer getCellTerm() {
+        return this.cellDetail.term;
+    }
+
+    public Integer getTakeMaxTerm() {
+        Integer max = 0;
+        for (TakeDetail takeDetail : takeDetails) {
+            if (takeDetail.term != null && takeDetail.term > max) {
+                max = takeDetail.term;
+            }
+        }
+        return max;
+    }
+
+    public Integer getFirstDamageSum() {
+        Integer sum = 0;
+        for (TakeDetail takeDetail : takeDetails) {
+            if (takeDetail.firstDamage != null) {
+                sum += takeDetail.firstDamage;
+            }
+        }
+        return sum;
+    }
+
+    public Integer getToChangeSum() {
+        Integer sum = 0;
+        for (TakeDetail takeDetail : takeDetails) {
+            if (takeDetail.toChange != null) {
+                sum += takeDetail.toChange;
+            }
+        }
+        return sum;
+    }
+
 }

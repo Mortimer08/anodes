@@ -47,7 +47,7 @@
             <div class="mr-3">
                 <div class="flex flex-between">
                     <div>
-                        <h1>${title}</h1>
+                       <a href="@{controllers.action.Cleanings.list(number)}"><h1>${title}</h1></a>
                     </div>
                     <div class="" hx-post="" hx-target=".moment">
                         <label class="label label-light" for="date">Дата чистки</label>
@@ -68,12 +68,8 @@
                 </form>
             </div>
             <div class="flex-layout">
-                <div class="pl-3 border-left border-dark-low">
-                    <div class="flex flex-start flex-middle max-100">
-                        <h1>Подробно</h1>
-                        <div class="" id="cDetail_nane"></div>
-                    </div>
-                    <div id="detail"></div>
+                <div class="pl-3 border-left border-dark-low" id="detail">
+                    <div>#{include './teamDetail.html'/}</div>
                 </div>
             </div>
 
