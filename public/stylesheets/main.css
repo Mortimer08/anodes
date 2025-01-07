@@ -41,10 +41,10 @@ h2 {
     border-right: 1px solid #ededed;
 }
 
-.flex-content {
+/*.flex-content {
     margin-left: 20%;
     padding: 24px 18rem;
-}
+}*/
 
 .flex-menu {
     display: flex;
@@ -451,4 +451,24 @@ body.sticky, body.open, body.open-sb {
 .card img {
     display: flex;
     border-radius: 6px;
+}
+
+.brick {
+    cursor: pointer;
+}
+
+.term-1 {
+    box-shadow: 0 6px 12px -2px rgba(31, 194, 103, 0.1), 0 3px 7px -3px rgba(31, 194, 103, 0.2)
+}
+
+.term-2 {
+    box-shadow: 0 6px 12px -2px rgba(230, 219, 0, 0.1), 0 3px 7px -3px rgba(230, 219, 0, 0.2)
+}
+
+.term-3 {
+    box-shadow: 0 6px 12px -2px rgba(230, 0, 11, 0.1), 0 3px 7px -3px rgba(230, 0, 11, 0.2)
+}
+
+* {
+    color: #00008bc7!important
 }
