@@ -1,0 +1,15 @@
+#{set cell:_.cellDetail.cell/}
+#{set cTerm:_.cellDetail.term/}
+#{set cGradient:(cTerm == null || cTerm > 15) ? '3' : (cTerm > 10 ? '2' : '1')/}
+
+<div class="brick list-bordered  term-${cGradient}">
+    #{include './cellBrick.html'/}
+    <div>
+        <div class="flex flex-around">
+            #{list _.takeDetails}
+            #{set take:_.take/}
+            #{include './takeBrick.html'/}
+            #{/list}
+        </div>
+    </div>
+</div>

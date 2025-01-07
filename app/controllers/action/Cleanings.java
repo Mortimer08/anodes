@@ -13,7 +13,6 @@ import models.ground.Cell;
 import models.ground.Take;
 import models.information.*;
 import org.joda.time.LocalDate;
-import play.Logger;
 import play.modules.router.Get;
 import play.modules.router.Post;
 
@@ -30,7 +29,12 @@ public class Cleanings extends Bases {
         final Date date = LocalDate.now().toDate();
         final List<Unit> units = UnitService.findByTeam(team);
         unitMap = UnitService.mapFrom(units);
-        render(units, date, number);
+        final Integer maxCellTerm = getCellMaxTerm();
+        final Integer maxTakeTerm = getTakeMaxTerm();
+        final Integer firstDamageSum = getFirstDamageSum();
+        final Integer toChangeSum = getToChangeSum();
+        final Integer damaged = firstDamageSum + toChangeSum;
+        render(units, date, number, maxCellTerm, maxTakeTerm, firstDamageSum, toChangeSum, damaged);
     }
 
     @Post("/cleaning/clean/{<\\d+>number}")
@@ -68,14 +72,10 @@ public class Cleanings extends Bases {
 
     @Post("/cleanings/take/detail/change/{<\\d+>id}")
     public static void takeChange(final long id, final TakeDetailDto rq) {
-        Logger.info("take changed: " + rq.id);
-
-        final Take take = Take.findById(rq.id);
-        notFoundIfNull(take);
         final Unit unit = getUnit(id);
         correctUnit(unit, rq);
-        final Long takeId = take.id;
-        render(id, takeId);
+        final TakeDetail tDetail = unit.takeDetailById(rq.id);
+        render(unit, id, tDetail);
     }
 
     private static void correctUnit(final Unit unit, final CellDetailDto rq) {
@@ -125,6 +125,40 @@ public class Cleanings extends Bases {
                 }
             }
         }
+    }
+
+    private static Integer getCellMaxTerm() {
+        Integer maxTerm = 0;
+        for (Unit unit : unitMap.values()) {
+            if (unit.getCellTerm() != null && maxTerm < unit.getCellTerm()) {
+                maxTerm = unit.getCellTerm();
+            }
+        }
+        return maxTerm;
+    }
+
+    private static Integer getTakeMaxTerm() {
+        Integer maxTerm = 0;
+        for (Unit unit : unitMap.values()) {
+            if (unit.getTakeMaxTerm() > maxTerm) maxTerm = unit.getTakeMaxTerm();
+        }
+        return maxTerm;
+    }
+
+    private static Integer getFirstDamageSum() {
+        Integer sum = 0;
+        for (Unit unit : unitMap.values()) {
+            sum += unit.getFirstDamageSum();
+        }
+        return sum;
+    }
+
+    private static Integer getToChangeSum() {
+        Integer sum = 0;
+        for (Unit unit : unitMap.values()) {
+            sum += unit.getToChangeSum();
+        }
+        return sum;
     }
 
 }

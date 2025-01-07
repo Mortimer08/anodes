@@ -56,8 +56,7 @@
                 </div>
                 <div class="mt-4 grid grid-10 gutter-3 gap-3    ">
                     #{list units}
-                    #{set cell:_.cellDetail.cell/}
-                    #{include './cellBrick.html'/}
+                    #{include './unitBrick.html'/}
                     #{/ list}
                 </div>
                 <form action="@{controllers.action.Cleanings.clean(number)}" method="post">
@@ -69,12 +68,8 @@
                 </form>
             </div>
             <div class="flex-layout">
-                <div class="pl-3 border-left border-dark-low">
-                    <div class="flex flex-between flex-middle max-100">
-                        <h1>Подробно</h1>
-                        <div class="" id="cDetail_nane"></div>
-                    </div>
-                    <div id="detail"></div>
+                <div class="pl-3 border-left border-dark-low" id="detail">
+                    <div>#{include './teamDetail.html'/}</div>
                 </div>
             </div>
 

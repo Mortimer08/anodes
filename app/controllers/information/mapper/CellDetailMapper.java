@@ -16,9 +16,9 @@ public class CellDetailMapper {
             makeDefault(cellDetail);
         } else {
             final LocalDate vacuumed = new LocalDate(vacuuming.getHappened());
-            final int term = Days.daysBetween(vacuumed, new LocalDate()).getDays();
+            final Integer term = Days.daysBetween(vacuumed, new LocalDate()).getDays();
             cellDetail.comment = vacuuming.comment;
-            cellDetail.term = term;
+            cellDetail.term = vacuumed == null ? null : term;
             cellDetail.vacuumed = vacuuming.happened;
         }
     }
@@ -41,7 +41,7 @@ public class CellDetailMapper {
 
     private static void makeDefault(final CellDetail cellDetail) {
         cellDetail.comment = "";
-        cellDetail.term = 0;
+        cellDetail.term = null;
         cellDetail.vacuumed = null;
     }
 }

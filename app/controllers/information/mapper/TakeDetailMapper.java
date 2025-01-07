@@ -5,10 +5,12 @@ import models.information.TakeScrubbing;
 import models.information.TakeDetail;
 import org.joda.time.Days;
 import org.joda.time.LocalDate;
+import java.util.Date;
 
 public class TakeDetailMapper {
 
     public static void toDetail(final TakeDetail takeDetail, final TakeDetailDto dto) {
+        if (dto.moment == null) dto.moment = new Date();
         takeDetail.checked = true;
         takeDetail.scrubbed = dto.moment;
         takeDetail.comment = dto.comment;
@@ -30,7 +32,7 @@ public class TakeDetailMapper {
             takeDetail.firstDamage = scrubbing.firstDamage != null ? scrubbing.firstDamage : 0;
             takeDetail.toChange = scrubbing.toChange != null ? scrubbing.toChange : 0;
             takeDetail.changed = scrubbing.changed != null ? scrubbing.changed : 0;
-            takeDetail.term = term;
+            takeDetail.term = scrubbed == null ? null : term;
         }
     }
 
@@ -41,7 +43,7 @@ public class TakeDetailMapper {
         takeDetail.firstDamage = 0;
         takeDetail.toChange = 0;
         takeDetail.changed = 0;
-        takeDetail.term = 0;
+        takeDetail.term = null;
     }
 
 }
