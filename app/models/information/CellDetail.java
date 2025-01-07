@@ -8,7 +8,7 @@ public class CellDetail {
 
     public Cell cell;
     public Date vacuumed;
-    public int term;
+    public Integer term;
     public String comment;
     public Boolean checked = false;
 
