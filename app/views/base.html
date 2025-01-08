@@ -1,14 +1,11 @@
 #{extends 'main.html' /}
 
 <div class="flex vh-full">
-    <div class="flex flex-column p-3 border-right border-dark-low border-1 max-15">
+    <div class="flex-sidebar">
         <div class="flex-menu">
             #{get 'menu'/}
-            <div>
-                <a href="@{controllers.auth.Secure.logout()}">Выход</a>
-            </div>
+            <div><a href="@{controllers.auth.Secure.logout()}">Выход</a></div>
         </div>
-
         <div class="profile">
             <div class="avatar">${user.email.charAt(0).toUpperCase()}</div>
             <div class="overflow">
@@ -17,7 +14,7 @@
             </div>
         </div>
     </div>
-    <div class="p-3 flex-content">
+    <div class="p-3 m-15 flex-content">
         #{doLayout /}
     </div>
 </div>

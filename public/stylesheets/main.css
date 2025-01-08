@@ -472,3 +472,7 @@ body.sticky, body.open, body.open-sb {
 * {
     color: #00008bc7!important
 }
+
+.m-15 {
+    margin-left: 15%
+}
