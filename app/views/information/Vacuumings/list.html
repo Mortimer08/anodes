@@ -1,0 +1,133 @@
+#{extends '/setup/layout.html' /}
+#{set title:'Крутежка' /}
+#{set 'menu'}
+*{
+<div>
+    <a href="@{controllers.Application.index()}">
+        Домой
+    </a>
+</div>
+<div>
+    <a href="@{ground.Anodes.list()}">&{'names.anodes'}</a>
+</div>
+<div>
+    <a href="@{ground.Takes.list()}">&{'takes'}</a>
+</div>
+<div>
+    <a href="@{ground.Cells.list()}">&{'cells'}</a>
+</div>
+<div>
+    <a href="@{ground.Rows.list()}">&{'rows'}</a>
+</div>
+<div>
+    <a href="@{ground.Tiers.list()}">&{'tiers'}</a>
+</div>}*
+<div>
+    <a href="@{controllers.action.Cleanings.list(1)}">Чистка бригада 1</a>
+</div>
+<div>
+    <a href="@{controllers.action.Cleanings.list(2)}">Чистка бригада 2</a>
+</div>
+<div>
+    <a href="@{controllers.action.Cleanings.list(3)}">Чистка бригада 3</a>
+</div>
+<div>
+    <a href="@{controllers.action.Cleanings.list(4)}">Чистка бригада 4</a>
+</div>
+<div>
+    <a href="@{controllers.action.Cleanings.list(5)}">Чистка бригада 5</a>
+</div>
+<div>
+    <a href="@{controllers.information.Vacuumings.list()}">Крутежка</a>
+</div>
+
+#{/set}
+
+<div>
+    <div>
+        <div class="flex">
+
+            <div class="max-80 mr-3">
+                <div class="flex">
+                    <div>
+                        <h1>${title}</h1>
+                    </div>
+                    <div class="badge ml-3" id="count">
+                        <h2>${vacuumings.size()}</h2>
+                    </div>
+                </div>
+                <div class="table" id="items">
+                    <table>
+                        <thead>
+                        <tr>
+                            #{list controllers.information.view.VacuumingView.values()}
+                            <th hx-post="@{controllers.information.Vacuumings.sort(_)}" hx-target="#items"
+                                class="${_.name == f.sort ? f.order : ''}">
+                                ${_.title}
+                            </th>
+                            #{/list}
+                        </tr>
+                        </thead>
+                        <tbody>
+                        #{list vacuumings}
+                        <tr>
+                            <td>
+                                ${_.id}
+                            </td>
+                            <td>
+                                ${_.happened?.format("dd-MM-yyyy")}
+                            </td>
+                            <td>
+                                ${_.cell}
+                            </td>
+                            <td>
+                                ${_.comment}
+                            </td>
+                        </tr>
+                        #{/list}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="flex-layout">
+                <div class="pl-3 border-left border-dark-low">
+                    <div class="flex flex-between flex-middle max-100">
+                        <h1>Фильтр</h1>
+                        <div class="" id="cDetail_nane"></div>
+                    </div>
+                    <form>
+                        <div id="detail" hx-post="@{controllers.information.Vacuumings.filterTeam()}"
+                             hx-target="#items"
+                             hx-trigger="change">
+                            #{list models.Team.values()}
+                            <div class="flex flex-middle">
+                                <div>
+                                    <label class="label label-light" for="team_${_}">${_.name}</label>
+                                </div>
+                                <input class="checkbox" type="checkbox" id="team_${_}" name="teamIndex"
+                                       value="${_.ordinal()}" checked>
+                            </div>
+                            #{/list}
+                        </div>
+                    </form>
+                    <form>
+                        <div id="" hx-post="@{controllers.information.Vacuumings.filterDate()}"
+                             hx-target="#items"
+                             hx-trigger="change">
+                            <label class="label label-light" for="begin">Начало</label>
+                            <input class="input" type="date" id="begin"
+                                   name="begin" value="${f.begin.format()}">
+                            <label class="label label-light" for="end">Окончание</label>
+                            <input class="input" type="date" id="end"
+                                   name="end" value="${f.end.format()}">
+                            <input type="hidden" name="f.sort" value="${f.sort}">
+                            <input type="hidden" name="f.order" value="${f.order}" checked>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
