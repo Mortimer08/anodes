@@ -1,53 +1,14 @@
 #{extends '/setup/layout.html' /}
 #{set title:'Крутежка' /}
 #{set 'menu'}
-*{
+#{list common.view.MainMenu.getMenu(user)}
 <div>
-    <a href="@{controllers.Application.index()}">
-        Домой
-    </a>
+    <a href="${_.url}">${_.title}</a>
 </div>
-<div>
-    <a href="@{ground.Anodes.list()}">&{'names.anodes'}</a>
-</div>
-<div>
-    <a href="@{ground.Takes.list()}">&{'takes'}</a>
-</div>
-<div>
-    <a href="@{ground.Cells.list()}">&{'cells'}</a>
-</div>
-<div>
-    <a href="@{ground.Rows.list()}">&{'rows'}</a>
-</div>
-<div>
-    <a href="@{ground.Tiers.list()}">&{'tiers'}</a>
-</div>}*
-<div>
-    <a href="@{controllers.action.Cleanings.list(1)}">Чистка бригада 1</a>
-</div>
-<div>
-    <a href="@{controllers.action.Cleanings.list(2)}">Чистка бригада 2</a>
-</div>
-<div>
-    <a href="@{controllers.action.Cleanings.list(3)}">Чистка бригада 3</a>
-</div>
-<div>
-    <a href="@{controllers.action.Cleanings.list(4)}">Чистка бригада 4</a>
-</div>
-<div>
-    <a href="@{controllers.action.Cleanings.list(5)}">Чистка бригада 5</a>
-</div>
-<div>
-    <a href="@{controllers.information.Vacuumings.list()}">Крутежка</a>
-</div>
-<div>
-    <a href="@{controllers.information.Scrubbings.list()}">Подъемы</a>
-</div>
-
+#{/list}
 #{/set}
 
 <div class="flex">
-
     <div class="max-80 mr-3">
         <div class="flex">
             <div>
