@@ -1,0 +1,30 @@
+<div hx-swap-oob="true" class="badge ml-3" id="count">
+    <h2>${scrubbings.size()}</h2>
+</div>
+<div class="table" id="items">
+    <table>
+        <thead>
+        <tr>
+            #{list controllers.information.view.ScrubbingView.values()}
+            <th hx-post="@{controllers.information.Scrubbings.sort(_)}" hx-target="#items"
+                class="${_.name == f.sort ? f.order : ''}">
+                ${_.title}
+            </th>
+            #{/list}
+        </tr>
+        </thead>
+        <tbody>
+        #{list scrubbings}
+        <tr>
+            <td>${_.happened?.format("dd-MM-yyyy")}</td>
+            <td>${_.take}</td>
+            <td>${_.machined}</td>
+            <td>${_.firstDamage}</td>
+            <td>${_.toChange}</td>
+            <td>${_.changed}</td>
+            <td>${_.comment}</td>
+        </tr>
+        #{/list}
+        </tbody>
+    </table>
+</div>
