@@ -2,7 +2,6 @@ package controllers.information.view;
 
 public enum VacuumingView {
 
-    ID("id","#"),
     HAPPENED("happened","Дата"),
     CELL("cell","Ванна"),
     COMMENT("comment","Примечание"),
