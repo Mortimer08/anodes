@@ -17,18 +17,9 @@
         <tbody>
         #{list vacuumings}
         <tr>
-            <td>
-                ${_.id}
-            </td>
-            <td>
-                ${_.happened?.format("dd-MM-yyyy")}
-            </td>
-            <td>
-                ${_.cell}
-            </td>
-            <td>
-                ${_.comment}
-            </td>
+            <td>${_.happened?.format("dd-MM-yyyy")}</td>
+            <td>${_.cell}</td>
+            <td>${_.comment}</td>
         </tr>
         #{/list}
         </tbody>
