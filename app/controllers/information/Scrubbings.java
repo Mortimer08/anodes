@@ -38,7 +38,7 @@ public class Scrubbings extends Bases {
         render("information/Scrubbings/filter.html", scrubbings, f);
     }
 
-    @Post("/vacuuming/sort")
+    @Post("/scrubbing/sort")
     public static void sort(final ScrubbingView sort) {
         final ScrubbingFilter f = getNewFilter(ScrubbingFilter.class);
         f.setSort(sort);
