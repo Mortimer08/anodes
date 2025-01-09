@@ -67,7 +67,11 @@ public class Secure extends Controller {
 
     @Util
     public static String connected() {
-        return session.get("username");
+        if (session != null) {
+            return session.get("username");
+        } else {
+            return null;
+        }
     }
 
     public static void denied() {

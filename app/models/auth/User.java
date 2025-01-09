@@ -10,6 +10,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "auth_user")
 public class User extends TimeStamped {
+
     @Column(unique = true)
     public String email;
     @Column(unique = true)
@@ -28,15 +29,15 @@ public class User extends TimeStamped {
 
     public UserRole role = UserRole.USER;
 
-    public User(String email, String password) {
+    public User(final String email, final String password) {
         this.email = email;
         createPassword(password);
         this.username = Codec.UUID();
     }
 
-    public void createPassword(String password) {
+    public void createPassword(final String password) {
         // TODO: 04.04.2024 add empty checking
-        String salt = Codec.UUID().substring(0, 5);
+        final String salt = Codec.UUID().substring(0, 5);
         this.password = String.format("sha1$%s$%s", salt, Codec.hexSHA1(salt + password));
     }
 
@@ -63,5 +64,12 @@ public class User extends TimeStamped {
 
     public static User findByEmail(String email) {
         return find("email = ?1", email).first();
+    }
+
+    public static void createSuperuser(final String email, final String password) {
+        final User user = new User(email, password);
+        user.superuser = true;
+        user.active = true;
+        user.save();
     }
 }
