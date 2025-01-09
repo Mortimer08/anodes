@@ -24,6 +24,15 @@ public class Anode extends TimeStamped {
     public Date scrubbed;
     public Date smacked;
 
+    public Anode() {
+    }
+
+    public Anode(final Integer anodeNumber, final Take take) {
+        this.number = anodeNumber;
+        this.take = take;
+        this.name = String.format("%s(%s)_%s", take.getCell(), take.number.number, anodeNumber);
+    }
+
     public Cell getCell() {
         return this.take.getCell();
     }
