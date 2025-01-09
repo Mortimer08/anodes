@@ -27,6 +27,13 @@
                                autocomplete="off">
                     </div>
                     <div class="mr-2">
+                        <label for="tc_${tDetail.take.id}" class="label label-light">На замену</label>
+                        <input type="text" name="rq.toChange" value="${tDetail.toChange}" id="tc_${tDetail.take.id}"
+                               placeholder="На замену"
+                               class="input"
+                               autocomplete="off">
+                    </div>
+                    <div class="mr-2">
                         <label for="m_${tDetail.take.id}" class="label label-light">W703</label>
                         <input type="text" name="rq.machined" value="${tDetail.machined}" id="m_${tDetail.take.id}"
                                class="input"
@@ -39,13 +46,7 @@
                                class="input"
                                autocomplete="off">
                     </div>
-                    <div class="mr-2">
-                        <label for="tc_${tDetail.take.id}" class="label label-light">Менять</label>
-                        <input type="text" name="rq.toChange" value="${tDetail.toChange}" id="tc_${tDetail.take.id}"
-                               placeholder="На замену"
-                               class="input"
-                               autocomplete="off">
-                    </div>
+
                 </div>
                 <div class="">
                     <label for="c_${tDetail.take.id}" class="label label-light">Примечание</label>
