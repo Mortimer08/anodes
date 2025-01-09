@@ -1,6 +1,7 @@
 package models.information;
 
 import common.model.information.Event;
+import controllers.auth.Secure;
 import controllers.information.dto.ScrubbingFilter;
 import controllers.util.DateUtils;
 import models.ground.Take;
@@ -27,6 +28,7 @@ public class TakeScrubbing extends Event {
     public Integer changed = 0;
 
     public TakeScrubbing() {
+        this.creator = Secure.getUser();
     }
 
     public TakeScrubbing(Take take, Date date) {

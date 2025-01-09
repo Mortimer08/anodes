@@ -1,9 +1,11 @@
 package common.model.information;
 
 import common.model.TimeStamped;
+import models.auth.User;
 
 import javax.persistence.Column;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
 import java.util.Date;
 
@@ -15,6 +17,8 @@ public class Event extends TimeStamped implements EventInterface {
     public String comment;
     @Column
     public Date happened;
+    @ManyToOne
+    public User creator;
 
     @Override
     public void act() {

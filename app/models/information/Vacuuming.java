@@ -1,6 +1,7 @@
 package models.information;
 
 import common.model.information.Event;
+import controllers.auth.Secure;
 import controllers.information.dto.VacuumingFilter;
 import controllers.util.DateUtils;
 import models.ground.Cell;
@@ -22,6 +23,7 @@ public class Vacuuming extends Event {
     public Cell cell;
 
     public Vacuuming() {
+        this.creator = Secure.getUser();
     }
 
     public Vacuuming(Cell cell, Date happened) {
