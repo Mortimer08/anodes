@@ -18,10 +18,10 @@
                     <div>
                         <a href="@{controllers.action.Cleanings.list(number)}"><h1>${title}</h1></a>
                     </div>
-                    <div class="" hx-post="" hx-target=".moment">
+                    *{<div class="" hx-post="" hx-target=".moment">
                         <label class="label label-light" for="date">Дата чистки</label>
                         <input type="date" name="date" value="${date.format()}" class="input" id="date"/>
-                    </div>
+                    </div>}*
                 </div>
                 <div class="mt-4 grid grid-10 gutter-3 gap-3    ">
                     #{list units}
