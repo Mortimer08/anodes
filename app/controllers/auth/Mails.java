@@ -10,6 +10,7 @@ import javax.mail.internet.InternetAddress;
 import java.io.UnsupportedEncodingException;
 
 public class Mails extends Mailer {
+
     public static void sendActivationEmail(
             User user, String activationKey, String expirationDays
     ) {
@@ -26,6 +27,19 @@ public class Mails extends Mailer {
         Logger.info("emailfrom: " + Data.MAILER_FROM_ADDRESS);
         send(user, activationKey, expirationDays);
         Logger.info("emailed to: " + user.email);
+    }
 
+    public static void reportMailing(final User user) {
+        Logger.info("Report Email");
+        setCharset("UTF-8");
+        setContentType("text/html");
+        setSubject(Messages.get("Mails.reportRegistration"));
+        addRecipient(Data.ADMIN_EMAIL);
+        try {
+            setFrom(new InternetAddress(Data.MAILER_FROM_ADDRESS, Data.MAILER_FROM_PERSONAL));
+        } catch (UnsupportedEncodingException ignored) {
+            setFrom(Data.MAILER_FROM_ADDRESS);
+        }
+        send(user);
     }
 }
