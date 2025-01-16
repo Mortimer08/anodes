@@ -38,7 +38,7 @@ public class Ground {
     private static void createCells() {
         final List<Row> rows = Row.findAll();
         for (Row row : rows) {
-            for (int i = 0; i < Default.CELLS_IN_ROW; i++) {
+            for (int i = 1; i < Default.CELLS_IN_ROW; i++) {
                 final Cell cell = new Cell(i, row);
                 cell.create();
                 cell.setTeam(Default.getTeamByCell(cell));

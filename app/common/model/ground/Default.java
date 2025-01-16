@@ -41,18 +41,29 @@ public class Default {
             new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10});
 
     public static Team getTeamByCell(final Cell cell) {
-        Logger.info("cell: " + cell.name);
-        /*if (Arrays.asList(TEAM1_CELLS.get(cell.row.name)).contains(cell.number)) {
+        if (cellMatch(TEAM1_CELLS, cell)) {
             return Team.TEAM_1;
-        } else if (Arrays.asList(TEAM2_CELLS.get(cell.row.name)).contains(cell.number)) {
+        } else if (cellMatch(TEAM2_CELLS, cell)) {
             return Team.TEAM_2;
-        } else if (Arrays.asList(TEAM3_CELLS.get(cell.row.name)).contains(cell.number)) {
+        } else if (cellMatch(TEAM3_CELLS, cell)) {
             return Team.TEAM_3;
-        } else if (Arrays.asList(TEAM4_CELLS.get(cell.row.name)).contains(cell.number)) {
+        } else if (cellMatch(TEAM4_CELLS, cell)) {
             return Team.TEAM_4;
-        } else if (Arrays.asList(TEAM5_CELLS.get(cell.row.name)).contains(cell.number)) {
+        } else if (cellMatch(TEAM5_CELLS, cell)) {
             return Team.TEAM_5;
-        }*/
+        }
         return null;
+    }
+
+    public static boolean cellMatch(final Map<String, Integer[]> cells, final Cell cell) {
+        return rowMatch(cells, cell) && numberMatch(cells, cell);
+    }
+
+    private static boolean rowMatch(final Map<String, Integer[]> cells, final Cell cell) {
+        return cells.get(cell.row.name) != null;
+    }
+
+    private static boolean numberMatch(final Map<String, Integer[]> cells, final Cell cell) {
+        return Arrays.asList(cells.get(cell.row.name)).contains(cell.number);
     }
 }
