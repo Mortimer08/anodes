@@ -10,8 +10,8 @@ public class Ground {
     public static void create() {
         createTiers();
         createRows();
-        /*createCells();
-        createTakes();
+        createCells();
+        /*createTakes();
         createAnodes();*/
     }
 
@@ -40,7 +40,9 @@ public class Ground {
         for (Row row : rows) {
             for (int i = 0; i < Default.CELLS_IN_ROW; i++) {
                 final Cell cell = new Cell(i, row);
+                cell.create();
                 cell.setTeam(Default.getTeamByCell(cell));
+                cell.save();
             }
         }
     }
