@@ -2,6 +2,7 @@ package common.model.ground;
 
 import models.Team;
 import models.ground.Cell;
+import play.Logger;
 
 import java.util.Arrays;
 import java.util.Map;
@@ -40,7 +41,8 @@ public class Default {
             new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10});
 
     public static Team getTeamByCell(final Cell cell) {
-        if (Arrays.asList(TEAM1_CELLS.get(cell.row.name)).contains(cell.number)) {
+        Logger.info("cell: " + cell.name);
+        /*if (Arrays.asList(TEAM1_CELLS.get(cell.row.name)).contains(cell.number)) {
             return Team.TEAM_1;
         } else if (Arrays.asList(TEAM2_CELLS.get(cell.row.name)).contains(cell.number)) {
             return Team.TEAM_2;
@@ -50,7 +52,7 @@ public class Default {
             return Team.TEAM_4;
         } else if (Arrays.asList(TEAM5_CELLS.get(cell.row.name)).contains(cell.number)) {
             return Team.TEAM_5;
-        }
+        }*/
         return null;
     }
 }
