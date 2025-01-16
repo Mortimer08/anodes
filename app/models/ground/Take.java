@@ -16,8 +16,6 @@ public class Take extends TimeStamped {
     @ManyToOne
     public Cell cell;
     public TakeNumber number;
-    public Date scrubbed;
-    public Date smacked;
     @OneToOne
     public TakeScrubbing lastScrubbing;
 
@@ -31,8 +29,6 @@ public class Take extends TimeStamped {
     }
 
     public void clean(Date date) {
-        scrubbed = date;
-        smacked = date;
         this.save();
         TakeScrubbing scrubbing = new TakeScrubbing(this, date);
         scrubbing.act();
