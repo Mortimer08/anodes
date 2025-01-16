@@ -9,10 +9,10 @@ public class Ground {
 
     public static void create() {
         createTiers();
-        createRows();
+/*        createRows();
         createCells();
         createTakes();
-        createAnodes();
+        createAnodes();*/
     }
 
     private static void createTiers() {
