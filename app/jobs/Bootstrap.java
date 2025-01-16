@@ -1,5 +1,6 @@
 package jobs;
 
+import common.utils.Ground;
 import models.auth.User;
 import models.ground.Cell;
 import models.ground.Row;
@@ -14,7 +15,6 @@ import play.jobs.OnApplicationStart;
 public class Bootstrap extends Job {
 
     public void doJob() {
-        Logger.info("bootstrap");
         createSuperuser();
         createGroundData();
     }
@@ -31,8 +31,8 @@ public class Bootstrap extends Job {
 
     private static void createGroundData() {
         if (Tier.count() == 0 && Row.count() == 0 && Cell.count() == 0 && Take.count() == 0) {
-            Logger.info("create");
-//            Ground.create();
+            Logger.info("create default ground");
+            Ground.create();
         }
     }
 
