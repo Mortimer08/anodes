@@ -44,8 +44,8 @@ public class Ground {
         Logger.info("create default cells");
         final List<Row> rows = Row.findAll();
         for (Row row : rows) {
-            for (int i = 1; i < Default.CELLS_IN_ROW; i++) {
-                final Cell cell = new Cell(i, row);
+            for (int i = 0; i < Default.CELLS_IN_ROW; i++) {
+                final Cell cell = new Cell(i + 1, row);
                 cell.create();
                 cell.setTeam(Default.getTeamByCell(cell));
                 cell.active = true;
@@ -67,6 +67,7 @@ public class Ground {
     }
 
     private static void createAnodes() {
+        Logger.info("create default anodes");
         final List<Take> takes = Take.findAll();
         for (Take take : takes) {
             for (Integer number : take.number.anodes) {
