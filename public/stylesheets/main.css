@@ -79,7 +79,7 @@ h2 {
 }
 
 .flex-menu a.active {
-    border-left-color: darkred;
+    border-left-color: #03045E;
 }
 
 .profile {

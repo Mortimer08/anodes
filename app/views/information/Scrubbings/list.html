@@ -1,9 +1,10 @@
 #{extends '/setup/layout.html' /}
 #{set title:'Подъемы' /}
+#{set sel:common.view.MainMenu.SCRUBBINGS/}
 #{set 'menu'}
 #{list common.view.MainMenu.getMenu(user)}
 <div>
-    <a href="${_.url}">${_.title}</a>
+    <a href="${_.url}" class="${sel == _? 'active' : ''}">${_.title}</a>
 </div>
 #{/list}
 #{/set}

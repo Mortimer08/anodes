@@ -1,9 +1,10 @@
 #{extends '/setup/layout.html' /}
 #{set title:'Крутежка' /}
+#{set sel:common.view.MainMenu.VACUUMINGS/}
 #{set 'menu'}
 #{list common.view.MainMenu.getMenu(user)}
 <div>
-    <a href="${_.url}">${_.title}</a>
+    <a href="${_.url}" class="${sel == _? 'active' : ''}">${_.title}</a>
 </div>
 #{/list}
 #{/set}

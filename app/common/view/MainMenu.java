@@ -56,4 +56,23 @@ public enum MainMenu {
             );
         }
     }
+
+    public static MainMenu getTeam(final Integer number) {
+        if (number == 1) {
+            return CLEANING_TEAM_1;
+        }
+        if (number == 2) {
+            return CLEANING_TEAM_2;
+        }
+        if (number == 3) {
+            return CLEANING_TEAM_3;
+        }
+        if (number == 4) {
+            return CLEANING_TEAM_4;
+        }
+        if (number == 5) {
+            return CLEANING_TEAM_5;
+        }
+        return null;
+    }
 }
