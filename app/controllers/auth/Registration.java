@@ -54,7 +54,7 @@ public class Registration extends Controller {
         final String activationKey = Signing.dump(user.email);
         final String expirationDays = Data.DAYS_FOR_ACTIVATION;
         Mails.sendActivationEmail(user, activationKey, expirationDays);
-        Mails.reportMailing(user);
+        Mails.reportMailing(user, "Activation");
     }
 
     public static void activate(final String activationKey) {

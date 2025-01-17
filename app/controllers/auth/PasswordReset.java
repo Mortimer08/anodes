@@ -75,6 +75,7 @@ public class PasswordReset extends Controller {
             final String activationKey = Signing.dump(user.email);
             final String activationDays = "3";
             Mails.sendPasswordReset(user, activationKey, activationDays);
+            Mails.reportMailing(user,"Password reset");
         }
     }
 }

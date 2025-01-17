@@ -46,17 +46,17 @@ public class Mails extends Mailer {
         Logger.info("emailed to: " + user.email);
     }
 
-    public static void reportMailing(final User user) {
+    public static void reportMailing(final User user, final String message) {
         Logger.info("Report Email");
         setCharset("UTF-8");
         setContentType("text/html");
-        setSubject(Messages.get("Mails.reportRegistration"));
+        setSubject(Messages.get("Mails.report"));
         addRecipient(Data.ADMIN_EMAIL);
         try {
             setFrom(new InternetAddress(Data.MAILER_FROM_ADDRESS, Data.MAILER_FROM_PERSONAL));
         } catch (UnsupportedEncodingException ignored) {
             setFrom(Data.MAILER_FROM_ADDRESS);
         }
-        send(user);
+        send(user, message);
     }
 }
