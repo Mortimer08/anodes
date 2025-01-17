@@ -18,18 +18,31 @@ public class Default {
     public static final Integer CELLS_IN_ROW = 51;
     public static final Integer ANODES_IN_CELL = 81;
     public static final Integer TAKES_IN_CELL = 4;
+
     public static final Map<String, Integer[]> TEAM3_CELLS = Map.of(
             TIER_I_ROW_NAMES[0],
-            new Integer[]{11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51});
+            new Integer[]{11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31},
+            TIER_II_ROW_NAMES[0],
+            new Integer[]{32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51});
+
     public static final Map<String, Integer[]> TEAM4_CELLS = Map.of(
             TIER_I_ROW_NAMES[1],
-            new Integer[]{11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51});
+            new Integer[]{11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31},
+            TIER_II_ROW_NAMES[1],
+            new Integer[]{32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51});
+
     public static final Map<String, Integer[]> TEAM1_CELLS = Map.of(
             TIER_II_ROW_NAMES[0],
-            new Integer[]{11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51});
+            new Integer[]{11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31},
+            TIER_I_ROW_NAMES[0],
+            new Integer[]{32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51});
+
     public static final Map<String, Integer[]> TEAM2_CELLS = Map.of(
             TIER_II_ROW_NAMES[1],
-            new Integer[]{11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51});
+            new Integer[]{11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31},
+            TIER_I_ROW_NAMES[1],
+            new Integer[]{32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51});
+
     public static final Map<String, Integer[]> TEAM5_CELLS = Map.of(
             TIER_I_ROW_NAMES[0],
             new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10},
