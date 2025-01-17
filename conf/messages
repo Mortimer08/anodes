@@ -46,3 +46,17 @@ Registration.signup.emailExists=\u0412\u044B \u0443\u0436\u0435 \u0437\u0430\u04
 
 PasswordReset.passwordChange=\u0412\u043E\u0441\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C \u043F\u0430\u0440\u043E\u043B\u044C
 PasswordReset.passwordChange.submit=\u0412\u043E\u0441\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C
+PasswordReset.passwordReset.failure=Пользователь с таким email не найден
+PasswordReset.passwordReset.cta=Понятно
+PasswordReset.passwordReset.done=На указанный адрес электронной почты направлено сообщение с инструкцией для смены пароля
+PasswordReset.passwordReset=Сменить пароль
+PasswordReset.passwordReset.submit=Сменить
+PasswordReset.newPassword=Новый пароль
+PasswordReset.newPassword.again=Повторите новый пароль
+PasswordReset.newPassword.notEqual=Пароли не совпадают
+PasswordReset.passwordReset.success=Пароль изменен
+Mails.sendPasswordReset=Восстановление пароля
+Mails.sendPasswordReset.1=Для смены пароля перейдите
+Mails.sendPasswordReset.2=по ссылке
+Mails.sendPasswordReset.3=Ссылка действительна %s дня
+Mails.sendPasswordReset.submit=Сменить пароль

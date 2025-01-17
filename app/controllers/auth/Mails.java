@@ -29,6 +29,23 @@ public class Mails extends Mailer {
         Logger.info("emailed to: " + user.email);
     }
 
+    public static void sendPasswordReset(
+            User user, String activationKey, String expirationDays
+    ) {
+        setCharset("UTF-8");
+        setSubject(Messages.get("Mails.sendPasswordReset"));
+        try {
+            setFrom(new InternetAddress(Data.MAILER_FROM_ADDRESS, Data.MAILER_FROM_PERSONAL));
+        } catch (UnsupportedEncodingException e) {
+            setFrom(Data.MAILER_FROM_ADDRESS);
+        }
+        addRecipient(user.email);
+        setContentType("text/html");
+        Logger.info("emailfrom: " + Data.MAILER_FROM_ADDRESS);
+        send(user, activationKey, expirationDays);
+        Logger.info("emailed to: " + user.email);
+    }
+
     public static void reportMailing(final User user) {
         Logger.info("Report Email");
         setCharset("UTF-8");
