@@ -15,10 +15,10 @@ public class TakeScrubbingMapper {
         takeScrubbing.changed = dto.changed;
     }
 
-    public static void toEntity(final TakeScrubbing takeScrubbing,final TakeDetail takeDetail) {
+    public static void toEntity(final TakeScrubbing takeScrubbing, final TakeDetail takeDetail) {
         takeScrubbing.take = takeDetail.take;
         takeScrubbing.happened = takeDetail.scrubbed;
-        takeScrubbing.machined = takeDetail.machined;
+        takeScrubbing.machined = takeDetail.machined == null ? 0 : takeDetail.machined;
         takeScrubbing.changed = takeDetail.changed;
         takeScrubbing.toChange = takeDetail.toChange;
         takeScrubbing.comment = takeDetail.comment;

@@ -1,3 +1,4 @@
+#{set q:tDetail.take.getQuantity()/}
 <div class=" list-stacked" id="tDetail_${tDetail.take.id}">
     <form>
         <div class="mt-4 flex flex-middle list-item shadow-150 pb-3 pr-3"
@@ -19,32 +20,36 @@
                                class="input"
                                autocomplete="off">
                     </div>
-                    <div class="mr-2">
-                        <label for="fd_${tDetail.take.id}" class="label label-light">10%</label>
-                        <input type="text" name="rq.firstDamage" value="${tDetail.firstDamage}"
-                               id="fd_${tDetail.take.id}"
-                               class="input"
-                               autocomplete="off">
+                    <div class="align-center mr-2">
+                        <label for="m_${tDetail.take.id}" class="label label-light">W703</label>
+                        <div>
+                            <input type="checkbox" name="rq.machined" value="${tDetail.machined}" id="m_${tDetail.take.id}" checked>
+                        </div>
+                    </div>
+                    <div class="align-center mr-2">
+                        <label for="fd_${tDetail.take.id}" class="label label-light px-7">10%</label>
+                        <select name="rq.firstDamage" class="input" id="fd_${tDetail.take.id}">
+                            #{list 0..q}
+                            <option value="${_}" ${_==tDetail.firstDamage?'selected':''}>${_}</option>
+                            #{/list}
+                        </select>
                     </div>
                     <div class="mr-2">
                         <label for="tc_${tDetail.take.id}" class="label label-light">На замену</label>
-                        <input type="text" name="rq.toChange" value="${tDetail.toChange}" id="tc_${tDetail.take.id}"
-                               placeholder="На замену"
-                               class="input"
-                               autocomplete="off">
+                        <select name="rq.toChange" class="input" id="tc_${tDetail.take.id}">
+                            #{list 0..q}
+                            <option value="${_}" ${_==tDetail.toChange?'selected':''}>${_}</option>
+                            #{/list}
+                        </select>
                     </div>
-                    <div class="mr-2">
-                        <label for="m_${tDetail.take.id}" class="label label-light">W703</label>
-                        <input type="text" name="rq.machined" value="${tDetail.machined}" id="m_${tDetail.take.id}"
-                               class="input"
-                               autocomplete="off">
-                    </div>
+
                     <div class="mr-2">
                         <label for="ch_${tDetail.take.id}" class="label label-light">Заменили</label>
-                        <input type="text" name="rq.changed" value="${tDetail.changed}" id="ch_${tDetail.take.id}"
-                               placeholder="Заменили"
-                               class="input"
-                               autocomplete="off">
+                        <select name="rq.changed" class="input" id="ch_${tDetail.take.id}">
+                            #{list 0..q}
+                            <option value="${_}" ${_==tDetail.changed?'selected':''}>${_}</option>
+                            #{/list}
+                        </select>
                     </div>
 
                 </div>
