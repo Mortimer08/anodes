@@ -2,6 +2,7 @@ package controllers.information;
 
 import controllers.Bases;
 import controllers.information.dto.ScrubbingFilter;
+import controllers.information.report.ScrubbingReport;
 import controllers.information.view.ScrubbingView;
 import models.information.TakeScrubbing;
 import play.modules.router.Get;
@@ -45,5 +46,13 @@ public class Scrubbings extends Bases {
         updateFilter(f);
         final List<Tuple> scrubbings = TakeScrubbing.findByFilter(f);
         render("information/Scrubbings/filter.html", scrubbings, f);
+    }
+
+    @Post("/scrubbing/report")
+    public static void report(final ScrubbingFilter f) {
+        final List<Tuple> items = TakeScrubbing.findByFilter(f);
+        final String reportName = ScrubbingReport.create(items);
+        response.setHeader("HX-Redirect", "/download/" + reportName);
+        ok();
     }
 }
