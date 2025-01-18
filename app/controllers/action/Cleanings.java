@@ -97,9 +97,9 @@ public class Cleanings extends Bases {
     }
 
     private static Unit getUnit(final long id) {
-        if (unitMap.isEmpty()) {
-            final Cell cell = Cell.findById(id);
-            final Team team = cell.team;
+        final Cell cell = Cell.findById(id);
+        final Team team = cell.team;
+        if (unitMap.isEmpty() || !isBelongTo(team)) {
             notFoundIfNull(team);
             final List<Unit> units = UnitService.findByTeam(team);
             unitMap = UnitService.mapFrom(units);
@@ -159,6 +159,12 @@ public class Cleanings extends Bases {
             sum += unit.getToChangeSum();
         }
         return sum;
+    }
+
+    private static boolean isBelongTo(final Team team) {
+        final Long cellId = (Long) unitMap.keySet().toArray()[0];
+        final Cell cell = Cell.findById(cellId);
+        return cell.team.equals(team);
     }
 
 }
