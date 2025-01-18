@@ -26,6 +26,7 @@ public class Take extends TimeStamped {
     public Take(Cell cell, TakeNumber takeNumber) {
         this.cell = cell;
         this.number = takeNumber;
+        makeName();
     }
 
     public void clean(Date date) {
@@ -65,5 +66,9 @@ public class Take extends TimeStamped {
     @Override
     public String toString() {
         return this.name;
+    }
+
+    private void makeName() {
+        this.name = this.cell.name + "(" + this.number + ")";
     }
 }
