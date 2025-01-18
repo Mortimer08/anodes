@@ -61,3 +61,14 @@ Mails.sendPasswordReset.1=Для смены пароля перейдите
 Mails.sendPasswordReset.2=по ссылке
 Mails.sendPasswordReset.3=Ссылка действительна %s дня
 Mails.sendPasswordReset.submit=Сменить пароль
+
+ScrubbingReportView.happened=Дата
+ScrubbingReportView.take=Подъём
+ScrubbingReportView.firstDamage=< 10%%
+ScrubbingReportView.toChange=На замену
+ScrubbingReportView.machined=Почищено на машине
+ScrubbingReportView.handled=Почищено вручную
+ScrubbingReportView.changed=Заменили
+ScrubbingReportView.comment=Примечание
+
+Export=Скачать

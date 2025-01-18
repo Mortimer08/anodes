@@ -19,6 +19,15 @@
             <div class="badge ml-3" id="count">
                 <h2>${scrubbings.size()}</h2>
             </div>
+            <button
+                    type="button"
+                    hx-post="@{controllers.information.Scrubbings.report(f)}"
+                    hx-indicator="#db"
+                    hx-disabled-elt="this"
+                    class="push-right button bt-xls">
+                <img id="db" class="htmx-indicator mr-3" src="/public/images/spinner.svg"/>
+                &{'Export'}
+            </button>
         </div>
         <div class="table" id="items">
             <table>
