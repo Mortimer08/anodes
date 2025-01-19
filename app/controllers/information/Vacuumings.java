@@ -2,6 +2,7 @@ package controllers.information;
 
 import controllers.Bases;
 import controllers.information.dto.VacuumingFilter;
+import controllers.information.report.VacuumingReport;
 import controllers.information.view.VacuumingView;
 import models.information.Vacuuming;
 import play.modules.router.Get;
@@ -45,6 +46,15 @@ public class Vacuumings extends Bases {
         updateFilter(f);
         final List<Tuple> vacuumings = Vacuuming.findByFilter(f);
         render("/information/Vacuumings/filter.html", vacuumings, f);
+    }
+
+    @Post("/vacuuming/report")
+    public static void report() {
+        final VacuumingFilter f = getNewFilter(VacuumingFilter.class);
+        final List<Tuple> items = Vacuuming.findByFilter(f);
+        final String reportName = VacuumingReport.create(items);
+        response.setHeader("HX-Redirect", "/download/" + reportName);
+        ok();
     }
 
 }

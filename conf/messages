@@ -71,4 +71,8 @@ ScrubbingReportView.handled=Почищено вручную
 ScrubbingReportView.changed=Заменили
 ScrubbingReportView.comment=Примечание
 
+VacuumingReportView.happened=Дата
+VacuumingReportView.cell=Ванна
+VacuumingReportView.comment=Примечание
+
 Export=Скачать
