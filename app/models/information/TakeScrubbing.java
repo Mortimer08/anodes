@@ -23,6 +23,7 @@ public class TakeScrubbing extends Event {
     public Take take;
 
     public Integer machined = 0;
+    public Integer handled = 0;
     public Integer firstDamage = 0;
     public Integer toChange = 0;
     public Integer changed = 0;

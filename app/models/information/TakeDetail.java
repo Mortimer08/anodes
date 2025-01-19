@@ -11,6 +11,7 @@ public class TakeDetail {
     public Integer term;
     public String comment;
     public Integer machined;
+    public Integer handled;
     public Integer firstDamage;
     public Integer toChange;
     public Integer changed;
