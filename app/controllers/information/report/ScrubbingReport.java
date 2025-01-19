@@ -54,8 +54,7 @@ public class ScrubbingReport {
             newCell(toChange, center, row);
             final int machined = zeroIfNullOrNegative(item.get(ScrubbingReportView.MACHINED.name, Integer.class));
             newCell(machined, center, row);
-            Integer number = (item.get("number", Integer.class));
-            final int handled = zeroIfNullOrNegative(TakeNumber.values()[number].quantity - machined);
+            final int handled = zeroIfNullOrNegative(item.get(ScrubbingReportView.HANDLED.name, Integer.class));
             newCell(handled, center, row);
             final int changed = zeroIfNullOrNegative(item.get(ScrubbingReportView.CHANGED.name, Integer.class));
             newCell(changed, center, row);

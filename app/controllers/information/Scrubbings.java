@@ -49,7 +49,8 @@ public class Scrubbings extends Bases {
     }
 
     @Post("/scrubbing/report")
-    public static void report(final ScrubbingFilter f) {
+    public static void report() {
+        final ScrubbingFilter f = getNewFilter(ScrubbingFilter.class);
         final List<Tuple> items = TakeScrubbing.findByFilter(f);
         final String reportName = ScrubbingReport.create(items);
         response.setHeader("HX-Redirect", "/download/" + reportName);

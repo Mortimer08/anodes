@@ -58,7 +58,9 @@ public class TakeScrubbing extends Event {
         final Date end = DateUtils.plusDays(f.end, 1);
         final String query = String.format("select " +
                 "s.id as id, s.happened as happened, t.name as take, s.comment as comment, " +
-                "s.firstDamage as firstDamage, s.toChange as toChange, s.machined as machined, s.changed as changed, " +
+                "s.firstDamage as firstDamage, s.toChange as toChange, " +
+                "s.machined as machined, s.handled as handled," +
+                "s.changed as changed, " +
                 "t.number as number " +
                 "from take_scrubbing s left join take t on s.take_id = t.id " +
                 "left join cell c on t.cell_id = c.id where " +

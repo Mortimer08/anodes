@@ -21,7 +21,7 @@
             </div>
             <button
                     type="button"
-                    hx-post="@{controllers.information.Scrubbings.report(f)}"
+                    hx-post="@{controllers.information.Scrubbings.report()}"
                     hx-indicator="#db"
                     hx-disabled-elt="this"
                     class="push-right button bt-xls">
@@ -49,6 +49,7 @@
                     <td>${_.firstDamage}</td>
                     <td>${_.toChange}</td>
                     <td>${_.machined}</td>
+                    <td>${_.handled}</td>
                     <td>${_.changed}</td>
                     <td>${_.comment}</td>
                 </tr>

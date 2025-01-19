@@ -7,6 +7,7 @@ public enum ScrubbingView {
     FIRST_DAMAGE("firstDamage","<10%"),
     TO_CHANGE("toChange","На замену"),
     MACHINED("machined","W703"),
+    HANDLED("handled","Вручную"),
     CHANGED("changed","Заменили"),
     COMMENT("comment","Примечание"),
     ;
