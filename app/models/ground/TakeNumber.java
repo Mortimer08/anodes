@@ -33,4 +33,8 @@ public enum TakeNumber {
         else if (Arrays.stream(FOURTH.anodes).anyMatch(anode::equals)) return FOURTH;
         return null;
     }
+
+    public static Integer getQuantity(final Integer number) {
+        return TakeNumber.values()[number - 1].quantity;
+    }
 }
