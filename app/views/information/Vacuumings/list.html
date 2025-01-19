@@ -11,13 +11,22 @@
 
 <div class="flex">
     <div class="max-80 mr-3">
-        <div class="flex">
+        <div class="flex flex-middle">
             <div>
                 <h1>${title}</h1>
             </div>
             <div class="badge ml-3" id="count">
                 <h2>${vacuumings.size()}</h2>
             </div>
+            <button
+                    type="button"
+                    hx-post="@{controllers.information.Vacuumings.report()}"
+                    hx-indicator="#db"
+                    hx-disabled-elt="this"
+                    class="push-right button bt-xls">
+                <img id="db" class="htmx-indicator mr-3" src="/public/images/spinner.svg"/>
+                &{'Export'}
+            </button>
         </div>
         <div class="table" id="items">
             <table>
