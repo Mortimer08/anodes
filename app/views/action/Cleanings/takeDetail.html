@@ -9,6 +9,7 @@
             <div class="mr-2">
                 ${tDetail.take.number}
                 <input type="hidden" name="rq.id" value="${tDetail.take.id}">
+                <input type="hidden" name="rq.takeNumber" value="${tDetail.take.number}">
             </div>
             <div class="">
                 <div class="flex flex-start">
@@ -23,7 +24,9 @@
                     <div class="align-center mr-2">
                         <label for="m_${tDetail.take.id}" class="label label-light  mb-2">W703</label>
                         <div>
-                            <input type="checkbox" name="rq.machined" value="${tDetail.machined}" id="m_${tDetail.take.id}" checked>
+                            #{set check:tDetail.machined > 0 ? 'checked' : ''/}
+                            <input type="checkbox" name="rq.machined" value="${tDetail.machined}" id="m_${tDetail.take.id}" ${check}>
+                            <input type="hidden" name="rq.handled" value="${tDetail.handled}">
                         </div>
                     </div>
                     <div class="align-center mr-2">

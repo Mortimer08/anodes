@@ -29,6 +29,7 @@
                     #{include './unitBrick.html'/}
                     #{/ list}
                 </div>
+                #{include './detailSummary.html'/}
                 <form action="@{controllers.action.Cleanings.clean(number)}" method="post">
                     <div class="flex flex-end mt-3">
                         <button type="submit" class="button">

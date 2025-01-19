@@ -4,6 +4,8 @@
            id="cDetail_vacuumed">
 
 </div>
+#{include './detailSummary.html'/}
+
 <div class="p-2" hx-target="#detail" id="cell_${id}"
      hx-post="@{controllers.action.Cleanings.cellDetail(id)}"
      hx-trigger="click">

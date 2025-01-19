@@ -1,5 +1,6 @@
 #{set cDetail:unit.cellDetail/}
 #{set tDetails:unit.takeDetails/}
+#{include './detailSummary.html'/}
 
 <div class="flex flex-start flex-middle max-100">
     <h1>Подробно</h1>
@@ -13,7 +14,7 @@
 <div class="">
     <h3>Подъёмы</h3>
     #{list items:tDetails, as:'tDetail'}
-        #{include './takeDetail.html'/}
+    #{include './takeDetail.html'/}
     #{/list}
 </div>
 
