@@ -1,5 +1,6 @@
 package controllers.action;
 
+import common.model.information.DetailSummary;
 import controllers.Bases;
 import controllers.information.service.UnitService;
 import controllers.information.dto.CellDetailDto;
@@ -53,29 +54,33 @@ public class Cleanings extends Bases {
     public static void cellDetail(final long id, final CellDetailDto rq) {
         final Unit unit = getUnit(id);
         correctUnit(unit, rq);
-        render("action/Cleanings/detail.html", unit);
+        final DetailSummary sum = getSummary();
+        render("action/Cleanings/detail.html", unit, sum);
     }
 
     @Post("/cleanings/take/detail/{<\\d+>id}")
     public static void takeDetail(final long id, final TakeDetailDto rq) {
         final Unit unit = getUnit(id);
         correctUnit(unit, rq);
-        render("action/Cleanings/detail.html", unit);
+        final DetailSummary sum = getSummary();
+        render("action/Cleanings/detail.html", unit, sum);
     }
 
     @Post("/cleanings/cell/detail/change/{<\\d+>id}")
     public static void cellChange(final long id, final CellDetailDto rq) {
         final Unit unit = getUnit(id);
         correctUnit(unit, rq);
-        render(unit, id);
+        final DetailSummary sum = getSummary();
+        render(unit, id, sum);
     }
 
     @Post("/cleanings/take/detail/change/{<\\d+>id}")
     public static void takeChange(final long id, final TakeDetailDto rq) {
         final Unit unit = getUnit(id);
         correctUnit(unit, rq);
+        final DetailSummary sum = getSummary();
         final TakeDetail tDetail = unit.takeDetailById(rq.id);
-        render(unit, id, tDetail);
+        render(unit, id, tDetail, sum);
     }
 
     private static void correctUnit(final Unit unit, final CellDetailDto rq) {
@@ -94,6 +99,21 @@ public class Cleanings extends Bases {
                 TakeDetailMapper.toDetail(tDetail, takeScrubbing);
             }
         }
+    }
+
+    private static DetailSummary getSummary() {
+        DetailSummary summary = new DetailSummary();
+        for (Unit unit : unitMap.values()) {
+            int inc = unit.cellDetail.checked ? 1 : 0;
+            summary.incCellVacuumed(inc);
+            for (TakeDetail takeDetail : unit.takeDetails) {
+                if (takeDetail.checked) {
+                    summary.incAnodesMachined(takeDetail.machined);
+                    summary.incAnodesHandled(takeDetail.handled);
+                }
+            }
+        }
+        return summary;
     }
 
     private static Unit getUnit(final long id) {
