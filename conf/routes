@@ -17,10 +17,6 @@ GET     /auth/signup/activation/complete        auth.Registration.activationComp
 GET     /auth/signup/activation/failure         auth.Registration.activationFailure
 GET     /auth/signup/activation/{activationKey} auth.Registration.activate
 
-GET     /password/change                        auth.PasswordReset.passwordChange
-POST    /password/change                        auth.PasswordReset._passwordChange
-
-
 # Ignore favicon requests
 GET     /favicon.ico                            404
 

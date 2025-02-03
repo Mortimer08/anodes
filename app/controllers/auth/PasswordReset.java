@@ -28,13 +28,13 @@ public class PasswordReset extends Controller {
         render();
     }
 
-    @Get("/password/change/{activationKey}")
+    @Get("/password/reset/{activationKey}/")
     public static void passwordReset(final String activationKey) {
         notFoundIfNull(activationKey);
         render(activationKey);
     }
 
-    @Post("/password/change/{activationKey}")
+    @Post("/password/reset/{activationKey}/")
     public static void _passwordReset(
             @Required final String activationKey,
             @Required @MinSize(8) @MaxSize(250) final String password,
@@ -55,13 +55,11 @@ public class PasswordReset extends Controller {
             user.createPassword(password);
             user.save();
         }
-        Logger.info("before success");
         passwordChangeComplete();
     }
 
     @Get("/password/change/complete")
     public static void passwordChangeComplete() {
-        Logger.info("success");
         render();
     }
 
@@ -75,7 +73,7 @@ public class PasswordReset extends Controller {
             final String activationKey = Signing.dump(user.email);
             final String activationDays = "3";
             Mails.sendPasswordReset(user, activationKey, activationDays);
-            Mails.reportMailing(user,"Password reset");
+            Mails.reportMailing(user, "Password reset");
         }
     }
 }
