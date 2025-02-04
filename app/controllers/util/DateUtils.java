@@ -28,4 +28,12 @@ public class DateUtils {
     public static Date plusDays(Date date, int days) {
         return LocalDate.fromDateFields(date).plusDays(days).toDate();
     }
+
+    public static Date yearFirstDate(final Date date) {
+        return LocalDate.fromDateFields(date).monthOfYear().withMinimumValue().dayOfMonth().withMinimumValue().toDate();
+    }
+
+    public static Date yearLastDate(final Date date) {
+        return LocalDate.fromDateFields(date).monthOfYear().withMaximumValue().dayOfMonth().withMaximumValue().toDate();
+    }
 }
