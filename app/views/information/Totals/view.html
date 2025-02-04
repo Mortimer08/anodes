@@ -30,17 +30,17 @@
                 <tbody>
                     <tr>
                         <td>Цикл чистки ванн</td>
-                        #{list results}
+                        #{list cellTerms}
                         <td>${_.get("cellTerm")}</td>
                         #{/list}
-                        <td>${total.get("cellTerm")}</td>
+                        <td>${cellMaxTerm}</td>
                     </tr>
                     <tr>
                         <td>Цикл чистки анодов</td>
-                        #{list results}
+                        #{list takeTerms}
                         <td>${_.get("takeTerm")}</td>
                         #{/list}
-                        <td>${total.get("takeTerm")}</td>
+                        <td>${takeMaxTerm}</td>
                     </tr>
                     <tr>
                         <td>Прогаров <10%</td>

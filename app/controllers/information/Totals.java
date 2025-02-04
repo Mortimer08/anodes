@@ -13,10 +13,14 @@ public class Totals extends Bases {
 
     @Get("/total")
     public static void view() {
-        final List<Tuple> results = TotalRepo.findResults();
-        final Tuple total = TotalRepo.findTotal();
         final Date begin = DateUtils.yearFirstDate(new Date());
         final Date end = DateUtils.yearLastDate(new Date());
-        render(results, total, begin, end);
+        final List<Tuple> results = TotalRepo.findTakeResults(begin, end);
+        final List<Tuple> cellTerms = TotalRepo.findCellTerms();
+        final List<Tuple> takeTerms = TotalRepo.findTakeTerms();
+        final Integer cellMaxTerm = TotalRepo.findCellMaxTerm();
+        final Integer takeMaxTerm = TotalRepo.findTakeMaxTerm();
+        final Tuple total = TotalRepo.findTakeTotal(begin, end);
+        render(results, cellTerms, cellMaxTerm, takeTerms, takeMaxTerm, total, begin, end);
     }
 }
