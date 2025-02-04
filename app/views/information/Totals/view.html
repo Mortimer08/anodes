@@ -1,0 +1,93 @@
+#{extends '/setup/layout.html' /}
+#{set title:'Показатели' /}
+#{set sel:common.view.MainMenu.TOTALS/}
+#{set 'menu'}
+#{list common.view.MainMenu.getMenu(user)}
+<div>
+    <a href="${_.url}" class="${sel == _? 'active' : ''}">${_.title}</a>
+</div>
+#{/list}
+#{/set}
+
+<div class="flex">
+    <div class="max-80 mr-3">
+        <div class="flex flex-middle">
+            <div>
+                <h1>${title}</h1>
+            </div>
+        </div>
+        <div class="table" id="">
+            <table>
+                <thead>
+                <tr>
+                    <td>Наименование</td>
+                    #{list models.Team.values()}
+                    <td>${_.name}</td>
+                    #{/list}
+                    <td>Итого</td>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Цикл чистки ванн</td>
+                        #{list results}
+                        <td>${_.get("cellTerm")}</td>
+                        #{/list}
+                        <td>${total.get("cellTerm")}</td>
+                    </tr>
+                    <tr>
+                        <td>Цикл чистки анодов</td>
+                        #{list results}
+                        <td>${_.get("takeTerm")}</td>
+                        #{/list}
+                        <td>${total.get("takeTerm")}</td>
+                    </tr>
+                    <tr>
+                        <td>Прогаров <10%</td>
+                        #{list results}
+                        <td>${_.get("firstDamage")}</td>
+                        #{/list}
+                        <td>${total.get("firstDamage")}</td>
+                    </tr>
+                    <tr>
+                        <td>Прогаров >10%</td>
+                        #{list results}
+                        <td>${_.get("toChange")}</td>
+                        #{/list}
+                        <td>${total.get("toChange")}</td>
+                    </tr>
+                    <tr>
+                        <td>Прогаров всего</td>
+                        #{list results}
+                        <td>${_.get("totalDamage")}</td>
+                        #{/list}
+                        <td>${total.get("totalDamage")}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="flex-content">
+        <div class="pl-3 border-left border-dark-low">
+            <div class="flex flex-between flex-middle max-100">
+                <h1>Период</h1>
+                <div class="" id="cDetail_nane"></div>
+            </div>
+            <form>
+                <div class="flex flex-between flex-middle my-3 shadow-150 pb-3 pr-3">
+                    <div id="" hx-post="#"
+                         hx-target="#items"
+                         hx-trigger="change">
+                        <div><h3 class="mb-3">Даты</h3></div>
+                        <label class="label label-light" for="begin">Начало</label>
+                        <input class="input ml-3" type="date" id="begin"
+                               name="begin" value="${begin.format()}">
+                        <label class="label label-light" for="end">Окончание</label>
+                        <input class="input ml-3" type="date" id="end"
+                               name="end" value="${end.format()}">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

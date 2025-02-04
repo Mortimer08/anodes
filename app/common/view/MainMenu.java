@@ -18,6 +18,7 @@ public enum MainMenu {
     CLEANING_TEAM_5("", "Чистка бригада 5", "/cleaning/team/5"),
     VACUUMINGS("", "Крутежка", "/vacuuming"),
     SCRUBBINGS("", "Подъемы", "/scrubbing"),
+    TOTALS("", "Показатели", "/total"),
     EXIT("", "Выход", "/logout"),
     ;
 
@@ -41,6 +42,7 @@ public enum MainMenu {
                     CLEANING_TEAM_5,
                     VACUUMINGS,
                     SCRUBBINGS,
+                    TOTALS,
                     EXIT
             );
         } else {
