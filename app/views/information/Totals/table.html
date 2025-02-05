@@ -13,14 +13,14 @@
         <tr>
             <td>Цикл чистки ванн</td>
             #{list cellTerm}
-            <td>${_.get("cellTerm")}</td>
+            <td>${_.get("cellTerm")?:'-'}</td>
             #{/list}
             <td>${cellMaxTerm}</td>
         </tr>
         <tr>
             <td>Цикл чистки анодов</td>
-            #{list takeTerms}
-            <td>${_.get("takeTerm")}</td>
+            #{list takeTerm}
+            <td>${_.get("takeTerm")?:'-'}</td>
             #{/list}
             <td>${takeMaxTerm}</td>
         </tr>
