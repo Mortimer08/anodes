@@ -5,7 +5,6 @@ import play.db.jpa.JPA;
 
 import javax.persistence.Tuple;
 import java.util.Date;
-import java.util.List;
 
 public class TotalRepo {
 
@@ -15,9 +14,10 @@ public class TotalRepo {
                 "from cell c " +
                 "join vacuuming v on c.lastVacuuming_id = v.id " +
                 "where c.team = ?1";
-        return ((Number) JPA.em().createNativeQuery(query)
-                .setParameter(1,team.ordinal())
-                .getSingleResult()).intValue();
+        final Number result = (Number) JPA.em().createNativeQuery(query)
+                .setParameter(1, team.ordinal())
+                .getSingleResult();
+        return result != null ? result.intValue() : 0;
     }
 
     public static Integer findCellMaxTerm() {
@@ -26,8 +26,9 @@ public class TotalRepo {
                 "from cell c " +
                 "join vacuuming v " +
                 "on c.lastVacuuming_id = v.id ";
-        return ((Number) JPA.em().createNativeQuery(query)
-                .getSingleResult()).intValue();
+        final Number result = (Number) JPA.em().createNativeQuery(query)
+                .getSingleResult();
+        return result != null ? result.intValue() : 0;
     }
 
     public static Integer findTakeTerm(final Team team) {
@@ -37,9 +38,10 @@ public class TotalRepo {
                 "left join cell c on t.cell_id = c.id " +
                 "join take_scrubbing s on t.lastScrubbing_id = s.id " +
                 "where c.team = ?1";
-        return ((Number) JPA.em().createNativeQuery(query)
+        final Number result = (Number) JPA.em().createNativeQuery(query)
                 .setParameter(1, team.ordinal())
-                .getSingleResult()).intValue();
+                .getSingleResult();
+        return result != null ? result.intValue() : 0;
     }
 
     public static Integer findTakeMaxTerm() {
@@ -47,8 +49,9 @@ public class TotalRepo {
                 "DATEDIFF(NOW(), MIN(s.happened)) takeMaxTerm " +
                 "from take t " +
                 "join take_scrubbing s on t.lastScrubbing_id = s.id ";
-        return ((Number) JPA.em().createNativeQuery(query)
-                .getSingleResult()).intValue();
+        final Number result = (Number) JPA.em().createNativeQuery(query)
+                .getSingleResult();
+        return result != null ? result.intValue() : 0;
     }
 
     public static Tuple findTakeTotal(final Date begin, final Date end) {
