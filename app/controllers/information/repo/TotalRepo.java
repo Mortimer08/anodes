@@ -43,6 +43,19 @@ public class TotalRepo {
                 .getResultList();
     }
 
+    public static Tuple findCellTerm(final Team team) {
+        final String query = "select " +
+                "DATEDIFF(NOW(), MIN(v.happened)) cellTerm, " +
+                "c.team team " +
+                "from cell c " +
+                "join vacuuming v " +
+                "on c.lastVacuuming_id = v.id " +
+                "where c.team = ?1";
+        return (Tuple) JPA.em().createNativeQuery(query, Tuple.class)
+                .setParameter(1,team.ordinal())
+                .getSingleResult();
+    }
+
     public static Integer findCellMaxTerm() {
         final String query = "select " +
                 "DATEDIFF(NOW(), MIN(v.happened)) cellMaxTerm " +
@@ -112,5 +125,4 @@ public class TotalRepo {
                 .getSingleResult();
     }
 }
-
 
