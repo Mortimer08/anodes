@@ -16,56 +16,7 @@
                 <h1>${title}</h1>
             </div>
         </div>
-        <div class="table" id="">
-            <table>
-                <thead>
-                <tr>
-                    <td>Наименование</td>
-                    #{list models.Team.values()}
-                    <td>${_.name}</td>
-                    #{/list}
-                    <td>Итого</td>
-                </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Цикл чистки ванн</td>
-                        #{list cellTerms}
-                        <td>${_.get("cellTerm")}</td>
-                        #{/list}
-                        <td>${cellMaxTerm}</td>
-                    </tr>
-                    <tr>
-                        <td>Цикл чистки анодов</td>
-                        #{list takeTerms}
-                        <td>${_.get("takeTerm")}</td>
-                        #{/list}
-                        <td>${takeMaxTerm}</td>
-                    </tr>
-                    <tr>
-                        <td>Прогаров <10%</td>
-                        #{list results}
-                        <td>${_.get("firstDamage")}</td>
-                        #{/list}
-                        <td>${total.get("firstDamage")}</td>
-                    </tr>
-                    <tr>
-                        <td>Прогаров >10%</td>
-                        #{list results}
-                        <td>${_.get("toChange")}</td>
-                        #{/list}
-                        <td>${total.get("toChange")}</td>
-                    </tr>
-                    <tr>
-                        <td>Прогаров всего</td>
-                        #{list results}
-                        <td>${_.get("totalDamage")}</td>
-                        #{/list}
-                        <td>${total.get("totalDamage")}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+        #{include './table.html'/}
     </div>
     <div class="flex-content">
         <div class="pl-3 border-left border-dark-low">
@@ -75,7 +26,7 @@
             </div>
             <form>
                 <div class="flex flex-between flex-middle my-3 shadow-150 pb-3 pr-3">
-                    <div id="" hx-post="#"
+                    <div hx-post="@{controllers.information.Totals.period()}"
                          hx-target="#items"
                          hx-trigger="change">
                         <div><h3 class="mb-3">Даты</h3></div>

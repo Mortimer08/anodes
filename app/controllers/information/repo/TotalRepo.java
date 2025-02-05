@@ -1,5 +1,6 @@
 package controllers.information.repo;
 
+import models.Team;
 import play.db.jpa.JPA;
 
 import javax.persistence.Tuple;
@@ -15,7 +16,7 @@ public class TotalRepo {
                 "SUM(s.firstDamage) + SUM(s.toChange) totalDamage, " +
                 "c.team team " +
                 "from take t " +
-                "join take_scrubbing s " +
+                "left join take_scrubbing s " +
                 "on t.lastScrubbing_id = s.id " +
                 "left join cell c " +
                 "on t.cell_id = c.id " +
@@ -92,5 +93,24 @@ public class TotalRepo {
                 .setParameter(2, end)
                 .getSingleResult();
     }
+
+    public static Tuple findTeamResult(final Team team, final Date begin, final Date end) {
+        final String query = "select " +
+                "SUM(s.firstDamage) firstDamage, " +
+                "SUM(s.toChange) toChange, " +
+                "SUM(s.firstDamage) + SUM(s.toChange) totalDamage " +
+                "from take t " +
+                "join cell c on t.cell_id = c.id " +
+                "join take_scrubbing s on t.lastScrubbing_id = s.id " +
+                "where s.happened > ?1 " +
+                "and s.happened < ?2 " +
+                "and c.team = ?3";
+        return (Tuple) JPA.em().createNativeQuery(query, Tuple.class)
+                .setParameter(1, begin)
+                .setParameter(2, end)
+                .setParameter(3, team.ordinal())
+                .getSingleResult();
+    }
 }
+
 

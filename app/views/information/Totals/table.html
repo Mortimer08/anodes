@@ -1,0 +1,50 @@
+<div class="table" id="items">
+    <table>
+        <thead>
+        <tr>
+            <td>Наименование</td>
+            #{list models.Team.values()}
+            <td>${_.name}</td>
+            #{/list}
+            <td>Итого</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Цикл чистки ванн</td>
+            #{list cellTerms}
+            <td>${_.get("cellTerm")}</td>
+            #{/list}
+            <td>${cellMaxTerm}</td>
+        </tr>
+        <tr>
+            <td>Цикл чистки анодов</td>
+            #{list takeTerms}
+            <td>${_.get("takeTerm")}</td>
+            #{/list}
+            <td>${takeMaxTerm}</td>
+        </tr>
+        <tr>
+            <td>Прогаров <10%</td>
+            #{list res}
+            <td>${_.get("firstDamage")?:'0'}</td>
+            #{/list}
+            <td>${total.get("firstDamage")?:'0'}</td>
+        </tr>
+        <tr>
+            <td>Прогаров >10%</td>
+            #{list res}
+            <td>${_.get("toChange")?:'0'}</td>
+            #{/list}
+            <td>${total.get("toChange")?:'0'}</td>
+        </tr>
+        <tr>
+            <td>Прогаров всего</td>
+            #{list res}
+            <td>${_.get("totalDamage")?:'0'}</td>
+            #{/list}
+            <td>${total.get("totalDamage")?:'0'}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
