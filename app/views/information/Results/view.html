@@ -1,0 +1,44 @@
+#{extends '/setup/layout.html' /}
+#{set title:'Результаты' /}
+#{set sel:common.view.MainMenu.RESULTS/}
+#{set 'menu'}
+#{list common.view.MainMenu.getMenu(user)}
+<div>
+    <a href="${_.url}" class="${sel == _? 'active' : ''}">${_.title}</a>
+</div>
+#{/list}
+#{/set}
+
+<div class="flex">
+    <div class="max-80 mr-3">
+        <div class="flex flex-middle">
+            <div>
+                <h1>${title}</h1>
+            </div>
+        </div>
+        #{include './table.html'/}
+    </div>
+    <div class="flex-content">
+        <div class="pl-3 border-left border-dark-low">
+            <div class="flex flex-between flex-middle max-100">
+                <h1>Период</h1>
+                <div class="" id="cDetail_nane"></div>
+            </div>
+            <form>
+                <div class="flex flex-between flex-middle my-3 shadow-150 pb-3 pr-3">
+                    <div hx-post="@{controllers.information.Results.period()}"
+                         hx-target="#items"
+                         hx-trigger="change">
+                        <div><h3 class="mb-3">Даты</h3></div>
+                        <label class="label label-light" for="begin">Начало</label>
+                        <input class="input ml-3" type="date" id="begin"
+                               name="begin" value="${begin.format()}">
+                        <label class="label label-light" for="end">Окончание</label>
+                        <input class="input ml-3" type="date" id="end"
+                               name="end" value="${end.format()}">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

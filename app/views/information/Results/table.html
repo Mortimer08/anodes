@@ -1,0 +1,50 @@
+<div class="table" id="items">
+    <table>
+        <thead>
+        <tr>
+            <td>Наименование</td>
+            #{list models.Team.values()}
+            <td>${_.name}</td>
+            #{/list}
+            <td>Итого</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Почищено ванн</td>
+            #{list vacuumings}
+            <td>${_}</td>
+            #{/list}
+            <td>${vacuumingsTotal}</td>
+        </tr>
+        <tr>
+            <td>Почищено на машине</td>
+            #{list machined}
+            <td>${_}</td>
+            #{/list}
+            <td>${machinedTotal}</td>
+        </tr>
+        <tr>
+            <td>Почищено вручную</td>
+            #{list handled}
+            <td>${_}</td>
+            #{/list}
+            <td>${handledTotal}</td>
+        </tr>
+        <tr>
+            <td>Заменили анодов</td>
+            #{list changed}
+            <td>${_}</td>
+            #{/list}
+            <td>${changedTotal}</td>
+        </tr>
+        *{<tr>
+            <td>Прогаров всего</td>
+            #{list res}
+            <td>${_.get("totalDamage")?:'0'}</td>
+            #{/list}
+            <td>${total.get("totalDamage")?:'0'}</td>
+        </tr>}*
+        </tbody>
+    </table>
+</div>

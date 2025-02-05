@@ -19,6 +19,7 @@ public enum MainMenu {
     VACUUMINGS("", "Крутежка", "/vacuuming"),
     SCRUBBINGS("", "Подъемы", "/scrubbing"),
     TOTALS("", "Показатели", "/total"),
+    RESULTS("", "Результаты", "/result"),
     EXIT("", "Выход", "/logout"),
     ;
 
@@ -43,6 +44,7 @@ public enum MainMenu {
                     VACUUMINGS,
                     SCRUBBINGS,
                     TOTALS,
+                    RESULTS,
                     EXIT
             );
         } else {
