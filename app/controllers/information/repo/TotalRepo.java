@@ -9,17 +9,15 @@ import java.util.List;
 
 public class TotalRepo {
 
-    public static Tuple findCellTerm(final Team team) {
+    public static Integer findCellTerm(final Team team) {
         final String query = "select " +
-                "DATEDIFF(NOW(), MIN(v.happened)) cellTerm, " +
-                "c.team team " +
+                "DATEDIFF(NOW(), MIN(v.happened)) cellTerm " +
                 "from cell c " +
-                "join vacuuming v " +
-                "on c.lastVacuuming_id = v.id " +
+                "join vacuuming v on c.lastVacuuming_id = v.id " +
                 "where c.team = ?1";
-        return (Tuple) JPA.em().createNativeQuery(query, Tuple.class)
+        return ((Number) JPA.em().createNativeQuery(query)
                 .setParameter(1,team.ordinal())
-                .getSingleResult();
+                .getSingleResult()).intValue();
     }
 
     public static Integer findCellMaxTerm() {
@@ -32,25 +30,23 @@ public class TotalRepo {
                 .getSingleResult()).intValue();
     }
 
-    public static Tuple findTakeTerm(final Team team) {
+    public static Integer findTakeTerm(final Team team) {
         final String query = "select " +
-                "DATEDIFF(NOW(), MIN(s.happened)) takeTerm, " +
-                "c.team team " +
+                "DATEDIFF(NOW(), MIN(s.happened)) takeTerm " +
                 "from take t " +
                 "left join cell c on t.cell_id = c.id " +
                 "join take_scrubbing s on t.lastScrubbing_id = s.id " +
                 "where c.team = ?1";
-        return (Tuple) JPA.em().createNativeQuery(query, Tuple.class)
-                .setParameter(1, team)
-                .getSingleResult();
+        return ((Number) JPA.em().createNativeQuery(query)
+                .setParameter(1, team.ordinal())
+                .getSingleResult()).intValue();
     }
 
     public static Integer findTakeMaxTerm() {
         final String query = "select " +
                 "DATEDIFF(NOW(), MIN(s.happened)) takeMaxTerm " +
                 "from take t " +
-                "join take_scrubbing s " +
-                "on t.lastScrubbing_id = s.id ";
+                "join take_scrubbing s on t.lastScrubbing_id = s.id ";
         return ((Number) JPA.em().createNativeQuery(query)
                 .getSingleResult()).intValue();
     }

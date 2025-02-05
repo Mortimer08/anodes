@@ -20,9 +20,9 @@ public class Totals extends Bases {
         final Integer cellMaxTerm = TotalRepo.findCellMaxTerm();
         final Integer takeMaxTerm = TotalRepo.findTakeMaxTerm();
         final Tuple total = TotalRepo.findTakeTotal(begin, end);
-        Tuple[] res = new Tuple[5];
-        Tuple[] cellTerm = new Tuple[5];
-        Tuple[] takeTerm = new Tuple[5];
+        Tuple[] res = new Tuple[Team.values().length];
+        Integer[] cellTerm = new Integer[Team.values().length];
+        Integer[] takeTerm = new Integer[Team.values().length];
         for (Team team : Team.values()) {
             cellTerm[team.ordinal()] = TotalRepo.findCellTerm(team);
             takeTerm[team.ordinal()] = TotalRepo.findTakeTerm(team);
@@ -37,9 +37,9 @@ public class Totals extends Bases {
         final Integer cellMaxTerm = TotalRepo.findCellMaxTerm();
         final Integer takeMaxTerm = TotalRepo.findTakeMaxTerm();
         final Tuple total = TotalRepo.findTakeTotal(begin, end);
-        Tuple[] res = new Tuple[5];
-        Tuple[] cellTerm = new Tuple[5];
-        Tuple[] takeTerm = new Tuple[5];
+        Tuple[] res = new Tuple[Team.values().length];
+        Integer[] cellTerm = new Integer[Team.values().length];
+        Integer[] takeTerm = new Integer[Team.values().length];
         for (Team team : Team.values()) {
             cellTerm[team.ordinal()] = TotalRepo.findCellTerm(team);
             takeTerm[team.ordinal()] = TotalRepo.findTakeTerm(team);
