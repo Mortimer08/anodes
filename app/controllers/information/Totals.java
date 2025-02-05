@@ -23,10 +23,12 @@ public class Totals extends Bases {
         final Integer takeMaxTerm = TotalRepo.findTakeMaxTerm();
         final Tuple total = TotalRepo.findTakeTotal(begin, end);
         Tuple[] res = new Tuple[5];
+        Tuple[] cellTerm = new Tuple[5];
         for (Team team : Team.values()) {
+            cellTerm[team.ordinal()] = TotalRepo.findCellTerm(team);
             res[team.ordinal()] = TotalRepo.findTeamResult(team, begin, end);
         }
-        render(res,  cellTerms, cellMaxTerm, takeTerms, takeMaxTerm, total, begin, end);
+        render(res, cellTerm, cellTerms, cellMaxTerm, takeTerms, takeMaxTerm, total, begin, end);
     }
 
 
