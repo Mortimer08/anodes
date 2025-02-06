@@ -1,5 +1,6 @@
 package controllers.information.mapper;
 
+import controllers.information.dto.ScrubbingUpdate;
 import controllers.information.dto.TakeDetailDto;
 import models.ground.Take;
 import models.information.TakeDetail;
@@ -23,5 +24,15 @@ public class TakeScrubbingMapper {
         takeScrubbing.toChange = takeDetail.toChange;
         takeScrubbing.comment = takeDetail.comment;
         takeScrubbing.firstDamage = takeDetail.firstDamage;
+    }
+
+    public static void toEntity(final TakeScrubbing takeScrubbing, final ScrubbingUpdate scrubbingUpdate) {
+        takeScrubbing.happened = scrubbingUpdate.happened;
+        takeScrubbing.machined = scrubbingUpdate.machined;
+        takeScrubbing.handled = scrubbingUpdate.handled;
+        takeScrubbing.changed = scrubbingUpdate.changed;
+        takeScrubbing.firstDamage = scrubbingUpdate.firstDamage;
+        takeScrubbing.toChange = scrubbingUpdate.toChange;
+        takeScrubbing.comment = scrubbingUpdate.comment;
     }
 }

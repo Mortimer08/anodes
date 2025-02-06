@@ -1,0 +1,29 @@
+<div class="table mt-10" id="items">
+    <table>
+        <thead>
+        <tr>
+            #{list controllers.information.view.ScrubbingView.values()}
+            <th hx-post="@{controllers.information.Scrubbings.sort(_)}" hx-target="#items"
+                class="${_.name == f.sort ? f.order : ''}">
+                ${_.title}
+            </th>
+            #{/list}
+        </tr>
+        </thead>
+        <tbody>
+        #{list scrubbings}
+        #{set url:@controllers.information.Scrubbings.show(_.id)/}
+        <tr>
+            <td><a href="${url}">${_.happened?.format("dd-MM-yyyy")}</a></td>
+            <td><a href="${url}">${_.take}</a></td>
+            <td><a href="${url}">${_.firstDamage}</a></td>
+            <td><a href="${url}">${_.toChange}</a></td>
+            <td><a href="${url}">${_.machined}</a></td>
+            <td><a href="${url}">${_.handled}</a></td>
+            <td><a href="${url}">${_.changed}</a></td>
+            <td><a href="${url}">${_.comment}</a></td>
+        </tr>
+        #{/list}
+        </tbody>
+    </table>
+</div>

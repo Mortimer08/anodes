@@ -29,34 +29,7 @@
                 &{'Export'}
             </button>
         </div>
-        <div class="table mt-10" id="items">
-            <table>
-                <thead>
-                <tr>
-                    #{list controllers.information.view.ScrubbingView.values()}
-                    <th hx-post="@{controllers.information.Scrubbings.sort(_)}" hx-target="#items"
-                        class="${_.name == f.sort ? f.order : ''}">
-                        ${_.title}
-                    </th>
-                    #{/list}
-                </tr>
-                </thead>
-                <tbody>
-                #{list scrubbings}
-                <tr>
-                    <td>${_.happened?.format("dd-MM-yyyy")}</td>
-                    <td>${_.take}</td>
-                    <td>${_.firstDamage}</td>
-                    <td>${_.toChange}</td>
-                    <td>${_.machined}</td>
-                    <td>${_.handled}</td>
-                    <td>${_.changed}</td>
-                    <td>${_.comment}</td>
-                </tr>
-                #{/list}
-                </tbody>
-            </table>
-        </div>
+        #{include './table.html'/}
     </div>
     <div class="flex-content">
         <div class="pl-3 border-left border-dark-low">

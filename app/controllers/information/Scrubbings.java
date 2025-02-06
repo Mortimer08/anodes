@@ -2,6 +2,8 @@ package controllers.information;
 
 import controllers.Bases;
 import controllers.information.dto.ScrubbingFilter;
+import controllers.information.dto.ScrubbingUpdate;
+import controllers.information.mapper.TakeScrubbingMapper;
 import controllers.information.report.ScrubbingReport;
 import controllers.information.view.ScrubbingView;
 import models.information.TakeScrubbing;
@@ -55,5 +57,28 @@ public class Scrubbings extends Bases {
         final String reportName = ScrubbingReport.create(items);
         response.setHeader("HX-Redirect", "/download/" + reportName);
         ok();
+    }
+
+    @Get("/scrubbing/view/{<\\d+>id}")
+    public static void view(final Long id) {
+        final TakeScrubbing takeScrubbing = TakeScrubbing.findById(id);
+        notFoundIfNull(takeScrubbing);
+        render(takeScrubbing);
+    }
+
+    @Get("/scrubbing/show/{<\\d+>id}")
+    public static void show(final Long id) {
+        final TakeScrubbing takeScrubbing = TakeScrubbing.findById(id);
+        notFoundIfNull(takeScrubbing);
+        render(takeScrubbing);
+    }
+
+    @Post("/scrubbing/save/{<\\d+>id}")
+    public static void save(final Long id, final ScrubbingUpdate rq) {
+        final TakeScrubbing takeScrubbing = TakeScrubbing.findById(id);
+        notFoundIfNull(takeScrubbing);
+        TakeScrubbingMapper.toEntity(takeScrubbing, rq);
+        takeScrubbing.save();
+        list();
     }
 }

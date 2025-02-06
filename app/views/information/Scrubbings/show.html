@@ -1,0 +1,75 @@
+#{extends '/setup/layout.html' /}
+#{set title:'Подъемы' /}
+#{set sel:common.view.MainMenu.SCRUBBINGS/}
+#{set 'menu'}
+#{list common.view.MainMenu.getMenu(user)}
+<div>
+    <a href="${_.url}" class="${sel == _? 'active' : ''}">${_.title}</a>
+</div>
+#{/list}
+#{/set}
+#{set q:takeScrubbing.take.getQuantity()/}
+
+<div class="flex">
+    <div class="max-80 p-10 mr-3">
+        <div class="flex">
+            <div>
+                <h1>Чистка ${takeScrubbing.take.name}</h1>
+            </div>
+        </div>
+        <div class="shadow-150 p-6 mt-8" id="items">
+            <form action="@{controllers.information.Scrubbings.save(takeScrubbing.id)}" method="post" class="">
+                <div class="form-item">
+                    <label for="happened" class="label label-light">Дата чистки</label>
+                    <input id="happened" type="date" class="input" name="rq.happened"
+                           value="${takeScrubbing.happened?.format()}">
+                </div>
+                    <div class="form-item">
+                        <label for="machined" class="label label-light">Почищено на машине</label>
+                        <select id="machined" class="input" name="rq.machined">
+                            #{list 0..q}
+                            <option value="${_}" ${_==takeScrubbing.machined?'selected':''}>${_}</option>
+                            #{/list}
+                        </select>
+                    </div>
+                    <div class="form-item">
+                        <label for="handled" class="label label-light">Почищено вручную</label>
+                        <select id="handled" class="input" name="rq.handled">
+                            #{list 0..q}
+                            <option value="${_}" ${_==takeScrubbing.handled?'selected':''}>${_}</option>
+                            #{/list}
+                        </select>
+                    </div>
+                    <div class="form-item">
+                        <label for="firstDamage" class="label label-light">Прогаров <10%</label>
+                        <select id="firstDamage" class="input" name="rq.firstDamage">
+                            #{list 0..q}
+                            <option value="${_}" ${_==takeScrubbing.firstDamage?'selected':''}>${_}</option>
+                            #{/list}
+                        </select>
+                    </div>
+                    <div class="form-item">
+                        <label for="toChange" class="label label-light">Прогаров >10%</label>
+                        <select id="toChange" class="input" name="rq.toChange">
+                            #{list 0..q}
+                            <option value="${_}" ${_==takeScrubbing.toChange?'selected':''}>${_}</option>
+                            #{/list}
+                        </select>
+                    </div>
+                    <label for="changed" class="label label-light">Заменили</label>
+                    <select id="changed" class="input" name="rq.changed">
+                        #{list 0..q}
+                        <option value="${_}" ${_==takeScrubbing.toChange?'selected':''}>${_}</option>
+                        #{/list}
+                    </select>
+                <div class="form-item">
+                    <label for="comment" class="label label-light">Примечание</label>
+                    <input id="comment" type="text" class="input" name="rq.comment" value="${takeScrubbing.comment}">
+                </div>
+                <div class="form-item align-right">
+                    <button type="submit" class="button">Сохранить</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
