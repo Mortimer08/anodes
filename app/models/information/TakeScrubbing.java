@@ -7,10 +7,7 @@ import controllers.util.DateUtils;
 import models.ground.Take;
 import play.db.jpa.JPA;
 
-import javax.persistence.Entity;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-import javax.persistence.Tuple;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -19,7 +16,7 @@ import java.util.List;
 @Table(name = "take_scrubbing")
 public class TakeScrubbing extends Event {
 
-    @OneToOne
+    @ManyToOne
     public Take take;
 
     public Integer machined = 0;
@@ -71,6 +68,17 @@ public class TakeScrubbing extends Event {
                 .setParameter(2, begin)
                 .setParameter(3, end)
                 .getResultList();
+    }
+
+    private TakeScrubbing findClosest() {
+        return find("take = ?1 and created < ?2 order by created desc", this.take, this.created).first();
+    }
+
+    public void remove() {
+        final Take take = this.take;
+        take.lastScrubbing = findClosest();
+        take.save();
+        this.delete();
     }
 
 }

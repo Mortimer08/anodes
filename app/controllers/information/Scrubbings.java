@@ -79,6 +79,21 @@ public class Scrubbings extends Bases {
         notFoundIfNull(takeScrubbing);
         TakeScrubbingMapper.toEntity(takeScrubbing, rq);
         takeScrubbing.save();
+        view(id);
+    }
+
+    @Get("/scrubbing/delete/{<\\d+>id}")
+    public static void delete(final Long id) {
+        final TakeScrubbing takeScrubbing = TakeScrubbing.findById(id);
+        notFoundIfNull(takeScrubbing);
+        render(takeScrubbing);
+    }
+
+    @Post("/scrubbing/delete/{<\\d+>id}")
+    public static void _delete(final Long id) {
+        final TakeScrubbing takeScrubbing = TakeScrubbing.findById(id);
+        notFoundIfNull(takeScrubbing);
+        takeScrubbing.remove();
         list();
     }
 }

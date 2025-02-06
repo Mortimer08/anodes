@@ -483,3 +483,8 @@ body.sticky, body.open, body.open-sb {
     display: none;
     transition: opacity 500ms ease-in;
 }
+
+.button-error {
+    background: #fb8500;
+    color: #ffffff;
+}

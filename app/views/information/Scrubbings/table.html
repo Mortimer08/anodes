@@ -12,7 +12,7 @@
         </thead>
         <tbody>
         #{list scrubbings}
-        #{set url:@controllers.information.Scrubbings.show(_.id)/}
+        #{set url:@controllers.information.Scrubbings.view(_.id)/}
         <tr>
             <td><a href="${url}">${_.happened?.format("dd-MM-yyyy")}</a></td>
             <td><a href="${url}">${_.take}</a></td>
