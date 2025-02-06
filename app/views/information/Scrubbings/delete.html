@@ -1,38 +1,13 @@
-#{extends '/setup/layout.html' /}
-#{set title:'Подъемы' /}
-#{set sel:common.view.MainMenu.SCRUBBINGS/}
-#{set 'menu'}
-#{list common.view.MainMenu.getMenu(user)}
-<div>
-    <a href="${_.url}" class="${sel == _? 'active' : ''}">${_.title}</a>
-</div>
-#{/list}
-#{/set}
+#{extends './layout.html' /}
+#{set nav:controllers.information.view.ScrubbingNav.DELETE/}
 
-<div class="flex">
-    <div class="max-80 p-10 mr-3">
-        <div class="flex">
-            <div>
-                <h1>Чистка ${takeScrubbing.take.name} ${takeScrubbing.happened?.format()}</h1>
-            </div>
+<div class="shadow-150 p-6 mt-8" id="items">
+    <form action="@{controllers.information.Scrubbings._delete(takeScrubbing.id)}" method="post">
+        <div class="my-6">
+            <h6>Запись будет удалена. Вы уверены?</h6>
         </div>
-
-        <div class="shadow-150 p-6 mt-8" id="items">
-            <form action="@{controllers.information.Scrubbings._delete(takeScrubbing.id)}" method="post">
-                <div class="my-6">
-                    <h6>Запись будет удалена. Вы уверены?</h6>
-                </div>
-                <div class="align-center">
-                    <button type="submit" class="button button-error">Удалить</button>
-                </div>
-            </form>
+        <div class="align-center">
+            <button type="submit" class="button button-error">Удалить</button>
         </div>
-    </div>
-    <div class="flex-content">
-        <div class="todo mt-10 max-80 ">
-            <a href="@{controllers.information.Scrubbings.view(takeScrubbing.id)}">Подробности</a>
-            <a href="@{controllers.information.Scrubbings.show(takeScrubbing.id)}">Изменить</a>
-            <a href="@{controllers.information.Scrubbings.delete(takeScrubbing.id)}"  class="active">Удалить</a>
-        </div>
-    </div>
+    </form>
 </div>

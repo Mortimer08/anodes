@@ -1,59 +1,35 @@
-#{extends '/setup/layout.html' /}
-#{set title:'Подъемы' /}
-#{set sel:common.view.MainMenu.SCRUBBINGS/}
-#{set 'menu'}
-#{list common.view.MainMenu.getMenu(user)}
-<div>
-    <a href="${_.url}" class="${sel == _? 'active' : ''}">${_.title}</a>
-</div>
-#{/list}
-#{/set}
+#{extends './layout.html' /}
+#{set nav:controllers.information.view.ScrubbingNav.DETAILS/}
 
-<div class="flex">
-    <div class="max-80 p-10 mr-3">
-        <div class="flex">
-            <div>
-                <h1>Чистка ${takeScrubbing.take.name}</h1>
-            </div>
-        </div>
-        <div class="shadow-150 p-8 mt-8" id="items">
-            <table class="table">
-                <tr>
-                    <td>Дата чистки</td>
-                    <td>${takeScrubbing.happened?.format()}</td>
-                </tr>
-                <tr>
-                    <td>Почищено на машине</td>
-                    <td>${takeScrubbing.machined}</td>
-                </tr>
-                <tr>
-                    <td>Почищено вручную</td>
-                    <td>${takeScrubbing.handled}</td>
-                </tr>
-                <tr>
-                    <td>Прогаров <10%</td>
-                    <td>${takeScrubbing.firstDamage}</td>
-                </tr>
-                <tr>
-                    <td>Прогаров >10%</td>
-                    <td>${takeScrubbing.toChange}</td>
-                </tr>
-                <tr>
-                    <td>Заменили</td>
-                    <td>${takeScrubbing.changed}</td>
-                </tr>
-                <tr>
-                    <td>Примечание</td>
-                    <td>${takeScrubbing.comment}</td>
-                </tr>
-            </table>
-        </div>
-    </div>
-    <div class="flex-content">
-        <div class="todo mt-10 max-80 ">
-            <a href="@{controllers.information.Scrubbings.view(takeScrubbing.id)}" class="active">Подробности</a>
-            <a href="@{controllers.information.Scrubbings.show(takeScrubbing.id)}">Изменить</a>
-            <a href="@{controllers.information.Scrubbings.delete(takeScrubbing.id)}">Удалить</a>
-        </div>
-    </div>
+<div class="shadow-150 p-8 mt-8" id="items">
+    <table class="table">
+        <tr>
+            <td>Дата чистки</td>
+            <td>${takeScrubbing.happened?.format()}</td>
+        </tr>
+        <tr>
+            <td>Почищено на машине</td>
+            <td>${takeScrubbing.machined}</td>
+        </tr>
+        <tr>
+            <td>Почищено вручную</td>
+            <td>${takeScrubbing.handled}</td>
+        </tr>
+        <tr>
+            <td>Прогаров <10%</td>
+            <td>${takeScrubbing.firstDamage}</td>
+        </tr>
+        <tr>
+            <td>Прогаров >10%</td>
+            <td>${takeScrubbing.toChange}</td>
+        </tr>
+        <tr>
+            <td>Заменили</td>
+            <td>${takeScrubbing.changed}</td>
+        </tr>
+        <tr>
+            <td>Примечание</td>
+            <td>${takeScrubbing.comment}</td>
+        </tr>
+    </table>
 </div>

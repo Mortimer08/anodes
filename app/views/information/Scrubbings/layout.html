@@ -1,0 +1,28 @@
+#{extends '/setup/layout.html' /}
+#{set title:'Подъемы' /}
+#{set sel:common.view.MainMenu.SCRUBBINGS/}
+#{set 'menu'}
+#{list common.view.MainMenu.getMenu(user)}
+<div>
+    <a href="${_.url}" class="${sel == _? 'active' : ''}">${_.title}</a>
+</div>
+#{/list}
+#{/set}
+
+<div class="flex">
+    <div class="max-80 p-10 mr-3">
+        <div class="flex">
+            <div>
+                <h1>Чистка ${takeScrubbing.take.name}  ${takeScrubbing.happened?.format()}</h1>
+            </div>
+        </div>
+        #{doLayout/}
+    </div>
+    <div class="flex-content">
+        <div class="todo mt-10 max-80 ">
+            #{list controllers.information.view.ScrubbingNav.values()}
+            <a href="${_.getUrl(takeScrubbing.id)}" class="${nav.equals(_)?'active':''}">${_}</a>
+            #{/list}
+        </div>
+    </div>
+</div>
