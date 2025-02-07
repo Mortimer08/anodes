@@ -41,12 +41,14 @@
                 #{/list}
             </select>
         </div>
+        <div class="form-item">
         <label for="changed" class="label label-light">Заменили</label>
         <select id="changed" class="input" name="rq.changed">
             #{list 0..q}
             <option value="${_}" ${_==takeScrubbing.toChange?'selected':''}>${_}</option>
             #{/list}
         </select>
+        </div>
         <div class="form-item">
             <label for="comment" class="label label-light">Примечание</label>
             <input id="comment" type="text" class="input" name="rq.comment" value="${takeScrubbing.comment}">
