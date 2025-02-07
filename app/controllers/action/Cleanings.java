@@ -71,7 +71,8 @@ public class Cleanings extends Bases {
         final Unit unit = getUnit(id);
         correctUnit(unit, rq);
         final DetailSummary sum = getSummary();
-        render(unit, id, sum);
+        final CellDetail cDetail = unit.cellDetail;
+        render(unit, id, cDetail, sum);
     }
 
     @Post("/cleanings/take/detail/change/{<\\d+>id}")

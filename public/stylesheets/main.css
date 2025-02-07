@@ -488,3 +488,7 @@ body.sticky, body.open, body.open-sb {
     background: #fb8500;
     color: #ffffff;
 }
+
+.muted {
+    filter: opacity(0.50);
+}

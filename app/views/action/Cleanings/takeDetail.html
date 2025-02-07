@@ -1,7 +1,7 @@
 #{set q:tDetail.take.getQuantity()/}
 <div class=" list-stacked" id="tDetail_${tDetail.take.id}">
     <form>
-        <div class="mt-4 flex flex-middle list-item shadow-150 pb-3 pr-3"
+        <div class="mt-4 flex flex-middle list-item shadow-150 pb-3 pr-3 ${!tDetail.checked?'muted':''}"
              hx-post="@{controllers.action.Cleanings.takeChange(unit.cellDetail.cell.id)}"
              hx-trigger="change delay:500ms"
              hx-target="#tDetail_${tDetail.take.id}"

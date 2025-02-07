@@ -1,8 +1,17 @@
-<div hx-swap-oob="true" id="detailCellDate">
-    <label class="label label-light" for="cDetail_vacuumed">Прокручена</label>
-    <input type="date" name="rq.happened" value="${unit.cellDetail.vacuumed?.format()}" class="input"
-           id="cDetail_vacuumed">
-
+<div class="ml-5" hx-swap-oob="true" id="cDetail">
+    <div class="flex flex-between flex-middle my-3 shadow-150 pb-3 pr-3 ${!cDetail.checked?'muted':''}">
+        <div id="detailCellDate" class="mr-2">
+            <label class="label label-light" for="cDetail_vacuumed">Прокручена</label>
+            <input type="date" name="rq.happened" value="${unit.cellDetail.vacuumed?.format()}" class="input"
+                   id="cDetail_vacuumed">
+        </div>
+        <div class="flex-content">
+            <label for="cDetail_comment" class="label label-light">Примечание</label>
+            <input class="input" type="text" name="rq.comment" value="${cDetail.comment}" id="cDetail_comment" autocomplete="off"
+                   placeholder="Комментарий">
+        </div>
+        <input type="hidden" name="rq.id" value="${cDetail.cell.id}">
+    </div>
 </div>
 #{include './detailSummary.html'/}
 
