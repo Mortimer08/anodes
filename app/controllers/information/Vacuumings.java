@@ -2,6 +2,8 @@ package controllers.information;
 
 import controllers.Bases;
 import controllers.information.dto.VacuumingFilter;
+import controllers.information.dto.VacuumingUpdate;
+import controllers.information.mapper.VacuumingMapper;
 import controllers.information.report.VacuumingReport;
 import controllers.information.view.VacuumingView;
 import models.information.Vacuuming;
@@ -55,6 +57,44 @@ public class Vacuumings extends Bases {
         final String reportName = VacuumingReport.create(items);
         response.setHeader("HX-Redirect", "/download/" + reportName);
         ok();
+    }
+
+    @Get("/vacuuming/view/{<\\d+>id}")
+    public static void view(final Long id) {
+        final Vacuuming vacuuming = Vacuuming.findById(id);
+        notFoundIfNull(vacuuming);
+        render(vacuuming);
+    }
+
+    @Get("/vacuuming/show/{<\\d+>id}")
+    public static void show(final Long id) {
+        final Vacuuming vacuuming = Vacuuming.findById(id);
+        notFoundIfNull(vacuuming);
+        render(vacuuming);
+    }
+
+    @Post("/vacuuming/save/{<\\d+>id}")
+    public static void save(final Long id, final VacuumingUpdate rq) {
+        final Vacuuming vacuuming = Vacuuming.findById(id);
+        notFoundIfNull(vacuuming);
+        VacuumingMapper.toEntity(vacuuming, rq);
+        vacuuming.save();
+        view(id);
+    }
+
+    @Get("/vacuuming/delete/{<\\d+>id}")
+    public static void delete(final Long id) {
+        final Vacuuming vacuuming = Vacuuming.findById(id);
+        notFoundIfNull(vacuuming);
+        render(vacuuming);
+    }
+
+    @Post("/vacuuming/delete/{<\\d+>id}")
+    public static void _delete(final Long id) {
+        final Vacuuming vacuuming = Vacuuming.findById(id);
+        notFoundIfNull(vacuuming);
+        vacuuming.remove();
+        list();
     }
 
 }

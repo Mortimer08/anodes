@@ -1,0 +1,21 @@
+#{extends './layout.html' /}
+#{set nav:controllers.information.view.VacuumingNav.DETAILS/}
+
+<div class="shadow-150 p-8 mt-8" id="items">
+    <table class="table">
+        <form action="@{controllers.information.Vacuumings.save(vacuuming.id)}" method="post" class="">
+            <div class="form-item">
+                <label for="happened" class="label label-light">Дата крутежки</label>
+                <input id="happened" type="date" class="input" name="rq.happened"
+                       value="${vacuuming.happened?.format()}">
+            </div>
+            <div class="form-item">
+                <label for="comment" class="label label-light">Примечание</label>
+                <input id="comment" type="text" class="input" name="rq.comment" value="${vacuuming.comment}">
+            </div>
+            <div class="form-item align-right">
+                <button type="submit" class="button">Сохранить</button>
+            </div>
+        </form>
+    </table>
+</div>

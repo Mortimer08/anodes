@@ -1,0 +1,15 @@
+#{extends './layout.html' /}
+#{set nav:controllers.information.view.VacuumingNav.DETAILS/}
+
+<div class="shadow-150 p-8 mt-8" id="items">
+    <table class="table">
+        <tr>
+            <td>Дата чистки</td>
+            <td>${vacuuming.happened?.format()}</td>
+        </tr>
+        <tr>
+            <td>Примечание</td>
+            <td>${vacuuming.comment}</td>
+        </tr>
+    </table>
+</div>

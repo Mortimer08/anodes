@@ -1,0 +1,28 @@
+#{extends '/setup/layout.html' /}
+#{set title:'Крутежка' /}
+#{set sel:common.view.MainMenu.VACUUMINGS/}
+#{set 'menu'}
+#{list common.view.MainMenu.getMenu(user)}
+<div>
+    <a href="${_.url}" class="${sel == _? 'active' : ''}">${_.title}</a>
+</div>
+#{/list}
+#{/set}
+
+<div class="flex">
+    <div class="max-80 p-10">
+        <div class="flex">
+            <div>
+                <h1>Крутежка ${vacuuming.cell.name} ${vacuuming.happened?.format()}</h1>
+            </div>
+        </div>
+        #{doLayout/}
+    </div>
+    <div class="flex-content">
+        <div class="todo mt-10 max-80 ">
+            #{list controllers.information.view.VacuumingNav.values()}
+            <a href="${_.getUrl(vacuuming.id)}" class="${nav.equals(_)?'active':''}">${_}</a>
+            #{/list}
+        </div>
+    </div>
+</div>

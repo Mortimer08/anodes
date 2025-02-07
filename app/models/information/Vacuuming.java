@@ -57,5 +57,14 @@ public class Vacuuming extends Event {
                 .getResultList();
     }
 
+    private Vacuuming findClosest() {
+        return find("cell = ?1 and created < ?2 order by created desc", this.cell, this.created).first();
+    }
 
+    public void remove() {
+        final Cell cell = this.cell;
+        cell.lastVacuuming = findClosest();
+        cell.save();
+        this.delete();
+    }
 }

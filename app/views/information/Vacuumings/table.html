@@ -1,0 +1,21 @@
+<table class="items">
+    <thead>
+    <tr>
+        #{list controllers.information.view.VacuumingView.values()}
+        <th hx-post="@{controllers.information.Vacuumings.sort(_)}" hx-target="#items"
+            class="${_.name == f.sort ? f.order : ''}">
+            ${_.title}
+        </th>
+        #{/list}
+    </tr>
+    </thead>
+    <tbody>
+    #{list vacuumings}
+    <tr>
+        <td><a href="@{controllers.information.Vacuumings.view(_.id)}">${_.happened?.format("dd-MM-yyyy")}</a></td>
+        <td><a href="@{controllers.information.Vacuumings.view(_.id)}">${_.cell}</a></td>
+        <td><a href="@{controllers.information.Vacuumings.view(_.id)}">${_.comment?'...':''}</a></td>
+    </tr>
+    #{/list}
+    </tbody>
+</table>

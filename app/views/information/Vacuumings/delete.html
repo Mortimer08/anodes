@@ -1,0 +1,13 @@
+#{extends './layout.html' /}
+#{set nav:controllers.information.view.VacuumingNav.DELETE/}
+
+<div class="shadow-150 p-6 mt-8" id="items">
+    <form action="@{controllers.information.Vacuumings._delete(vacuuming.id)}" method="post">
+        <div class="my-6">
+            <h6>Запись будет удалена. Вы уверены?</h6>
+        </div>
+        <div class="align-center">
+            <button type="submit" class="button button-error">Удалить</button>
+        </div>
+    </form>
+</div>

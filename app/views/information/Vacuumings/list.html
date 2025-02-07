@@ -10,7 +10,7 @@
 #{/set}
 
 <div class="flex">
-    <div class="max-80 mr-3">
+    <div class="max-80 p-10">
         <div class="flex flex-middle">
             <div>
                 <h1>${title}</h1>
@@ -28,71 +28,50 @@
                 &{'Export'}
             </button>
         </div>
-        <div class="table mt-10" id="items">
-            <table>
-                <thead>
-                <tr>
-                    #{list controllers.information.view.VacuumingView.values()}
-                    <th hx-post="@{controllers.information.Vacuumings.sort(_)}" hx-target="#items"
-                        class="${_.name == f.sort ? f.order : ''}">
-                        ${_.title}
-                    </th>
-                    #{/list}
-                </tr>
-                </thead>
-                <tbody>
-                #{list vacuumings}
-                <tr>
-                    <td>${_.happened?.format("dd-MM-yyyy")}</td>
-                    <td>${_.cell}</td>
-                    <td>${_.comment}</td>
-                </tr>
-                #{/list}
-                </tbody>
-            </table>
+        <div>
+            <div class="table-scrollable mt-10" id="items">
+                #{include './table.html'/}
+            </div>
         </div>
     </div>
-    <div class="flex-content">
-        <div class="pl-3 border-left border-dark-low">
-            <div class="flex flex-between flex-middle max-100">
-                <h1>Фильтр</h1>
-                <div class="" id="cDetail_nane"></div>
-            </div>
-            <form>
-                <div class="flex flex-between flex-middle my-3 shadow-150 pb-3 pr-3">
-                    <div id="detail" hx-post="@{controllers.information.Vacuumings.filterTeam()}"
-                         hx-target="#items"
-                         hx-trigger="change">
-                        <div><h3 class="mb-3">Бригады</h3></div>
-                        #{list models.Team.values()}
-                        <div class="flex flex-middle">
-                            <div>
-                                <label class="label label-light" for="team_${_}">${_.name}</label>
-                            </div>
-                            <input class="checkbox" type="checkbox" id="team_${_}" name="teamIndex"
-                                   value="${_.ordinal()}" checked>
-                        </div>
-                        #{/list}
-                    </div>
-                </div>
-            </form>
-            <form>
-                <div class="flex flex-between flex-middle my-3 shadow-150 pb-3 pr-3">
-                    <div id="" hx-post="@{controllers.information.Vacuumings.filterDate()}"
-                         hx-target="#items"
-                         hx-trigger="change">
-                        <div><h3 class="mb-3">Даты</h3></div>
-                        <label class="label label-light" for="begin">Начало</label>
-                        <input class="input ml-3" type="date" id="begin"
-                               name="begin" value="${f.begin.format()}">
-                        <label class="label label-light" for="end">Окончание</label>
-                        <input class="input ml-3" type="date" id="end"
-                               name="end" value="${f.end.format()}">
-                        <input type="hidden" name="f.sort" value="${f.sort}">
-                        <input type="hidden" name="f.order" value="${f.order}" checked>
-                    </div>
-                </div>
-            </form>
+    <div class="flex-content p-10">
+        <div class="flex flex-between flex-middle max-100">
+            <h1>Фильтр</h1>
         </div>
+        <form>
+            <div class="flex flex-between flex-middle my-3 shadow-150 p-3">
+                <div id="detail" hx-post="@{controllers.information.Vacuumings.filterTeam()}"
+                     hx-target="#items"
+                     hx-trigger="change">
+                    <div><h3 class="mb-3">Бригады</h3></div>
+                    #{list models.Team.values()}
+                    <div class="flex flex-middle">
+                        <div>
+                            <label class="label label-light" for="team_${_}">${_.name}</label>
+                        </div>
+                        <input class="checkbox" type="checkbox" id="team_${_}" name="teamIndex"
+                               value="${_.ordinal()}" checked>
+                    </div>
+                    #{/list}
+                </div>
+            </div>
+        </form>
+        <form>
+            <div class="flex flex-between flex-middle my-3 shadow-150 p-3">
+                <div id="" hx-post="@{controllers.information.Vacuumings.filterDate()}"
+                     hx-target="#items"
+                     hx-trigger="change">
+                    <div><h3 class="mb-3">Даты</h3></div>
+                    <label class="label label-light" for="begin">Начало</label>
+                    <input class="input ml-3" type="date" id="begin"
+                           name="begin" value="${f.begin.format()}">
+                    <label class="label label-light" for="end">Окончание</label>
+                    <input class="input ml-3" type="date" id="end"
+                           name="end" value="${f.end.format()}">
+                    <input type="hidden" name="f.sort" value="${f.sort}">
+                    <input type="hidden" name="f.order" value="${f.order}" checked>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
