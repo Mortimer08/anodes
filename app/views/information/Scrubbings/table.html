@@ -1,5 +1,5 @@
-<div class="table mt-10" id="items">
-    <table>
+
+    <table class="items">
         <thead>
         <tr>
             #{list controllers.information.view.ScrubbingView.values()}
@@ -21,9 +21,8 @@
             <td><a href="${url}">${_.machined}</a></td>
             <td><a href="${url}">${_.handled}</a></td>
             <td><a href="${url}">${_.changed}</a></td>
-            <td><a href="${url}">${_.comment}</a></td>
+            <td><a href="${url}">${_.comment?'...':''}</a></td>
         </tr>
         #{/list}
         </tbody>
     </table>
-</div>
