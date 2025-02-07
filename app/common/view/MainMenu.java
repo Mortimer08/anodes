@@ -6,16 +6,11 @@ import java.util.EnumSet;
 
 public enum MainMenu {
 
-    /*ANODES("", "&{'names.anodes'}", "@{ground.Anodes.list()}"),
-    TAKES("", "&{'takes'}", "@{ground.Takes.list()}"),
-    CELLS("", "&{'cells'}", "@{ground.Cells.list()}"),
-    ROWS("", "&{'rows'}", " @{ground.Rows.list()}"),
-    TIERS("", "&{'tiers'}", " @{ground.Tiers.list()}"),*/
-    CLEANING_TEAM_1("", "Чистка бригада 1", "/cleaning/team/1"),
-    CLEANING_TEAM_2("", "Чистка бригада 2", "/cleaning/team/2"),
-    CLEANING_TEAM_3("", "Чистка бригада 3", "/cleaning/team/3"),
-    CLEANING_TEAM_4("", "Чистка бригада 4", "/cleaning/team/4"),
-    CLEANING_TEAM_5("", "Чистка бригада 5", "/cleaning/team/5"),
+    CLEANING_TEAM_1("", "Бригада 1", "/cleaning/team/1"),
+    CLEANING_TEAM_2("", "Бригада 2", "/cleaning/team/2"),
+    CLEANING_TEAM_3("", "Бригада 3", "/cleaning/team/3"),
+    CLEANING_TEAM_4("", "Бригада 4", "/cleaning/team/4"),
+    CLEANING_TEAM_5("", "Бригада 5", "/cleaning/team/5"),
     VACUUMINGS("", "Крутежка", "/vacuuming"),
     SCRUBBINGS("", "Подъемы", "/scrubbing"),
     TOTALS("", "Показатели", "/total"),
