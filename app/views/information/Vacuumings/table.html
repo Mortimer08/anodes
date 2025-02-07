@@ -1,3 +1,4 @@
+#{if vacuumings.size() > 0}
 <table class="items">
     <thead>
     <tr>
@@ -19,3 +20,9 @@
     #{/list}
     </tbody>
 </table>
+#{/if}
+#{else}
+<div class="shadow-150 p-6 mt-6">
+    Записей не найдено
+</div>
+#{/else}
