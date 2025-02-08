@@ -15,6 +15,7 @@ public enum MainMenu {
     SCRUBBINGS("", "Подъемы", "/scrubbing"),
     TOTALS("", "Показатели", "/total"),
     RESULTS("", "Результаты", "/result"),
+    PHOTOS("", "Фото", "/photo"),
     EXIT("", "Выход", "/logout"),
     ;
 
@@ -40,6 +41,7 @@ public enum MainMenu {
                     SCRUBBINGS,
                     TOTALS,
                     RESULTS,
+                    PHOTOS,
                     EXIT
             );
         } else {
@@ -51,6 +53,9 @@ public enum MainMenu {
                     CLEANING_TEAM_5,
                     VACUUMINGS,
                     SCRUBBINGS,
+                    TOTALS,
+                    RESULTS,
+                    PHOTOS,
                     EXIT
             );
         }

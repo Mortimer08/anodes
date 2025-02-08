@@ -1,0 +1,24 @@
+#{extends '/setup/layout.html' /}
+#{set title:'Фото' /}
+#{set sel:common.view.MainMenu.PHOTOS/}
+#{set 'menu'}
+#{list common.view.MainMenu.getMenu(user)}
+<div>
+    <a href="${_.url}" class="${sel == _? 'active' : ''}">${_.title}</a>
+</div>
+#{/list}
+#{/set}
+
+<div class="flex">
+    <div class="max-80 p-10">
+        <div class="flex flex-middle">
+            <div>
+                <h1>${title}</h1>
+            </div>
+
+        </div>
+        <div class="shadow-150 p-6 mt-6">
+            Здесь будут фото отчеты
+        </div>
+    </div>
+</div>
