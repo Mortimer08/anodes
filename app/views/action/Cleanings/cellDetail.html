@@ -2,8 +2,9 @@
       hx-target="#cell_${cDetail.cell.id}"
       hx-trigger="submit, change"
       hx-swap="outerHTML">
-    <div class="ml-5" id="cDetail">
+    <div class="" id="cDetail">
         <div class="flex flex-between flex-middle my-3 shadow-150 pb-3 pr-3 ${!cDetail.checked?'muted':''}">
+            <div class="px-4"></div>
             <div id="detailCellDate" class="mr-2">
                 <label class="label label-light" for="cDetail_vacuumed">Прокручена</label>
                 <input type="date" name="rq.happened" value="${unit.cellDetail.vacuumed?.format()}" class="input"

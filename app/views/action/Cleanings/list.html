@@ -9,42 +9,36 @@
 #{/list}
 #{/set}
 
-
-<div>
-    <div>
-        <div class="flex">
-
-            <div class="p-10">
-                <div class="flex flex-between">
-                    <div>
-                        <a href="@{controllers.action.Cleanings.list(number)}"><h1>${title}</h1></a>
-                    </div>
-                    *{<div class="" hx-post="" hx-target=".moment">
-                        <label class="label label-light" for="date">Дата чистки</label>
-                        <input type="date" name="date" value="${date.format()}" class="input" id="date"/>
-                    </div>}*
-                </div>
-                <div class="mt-4 grid grid-10 gutter-3 gap-3    ">
-                    #{list units}
-                    #{include './unitBrick.html'/}
-                    #{/ list}
-                </div>
-                #{include './detailSummary.html'/}
-                <form action="@{controllers.action.Cleanings.clean(number)}" method="post">
-                    <div class="flex flex-end mt-3">
-                        <button type="submit" class="button">
-                            Сохранить
-                        </button>
-                    </div>
-                </form>
+<div class="flex">
+    <div class="p-10">
+        <div class="flex flex-between">
+            <div>
+                <a href="@{controllers.action.Cleanings.list(number)}"><h1>${title}</h1></a>
             </div>
-            <div class="flex-layout p-10 shadow-150">
-                <div class="" id="detail">
-                    <div>#{include './teamDetail.html'/}</div>
-                </div>
+            *{
+            <div class="" hx-post="" hx-target=".moment">
+                <label class="label label-light" for="date">Дата чистки</label>
+                <input type="date" name="date" value="${date.format()}" class="input" id="date"/>
             </div>
-
+            }*
         </div>
-
+        <div class="mt-4 grid grid-10 gutter-3 gap-3    ">
+            #{list units}
+            #{include './unitBrick.html'/}
+            #{/ list}
+        </div>
+        #{include './detailSummary.html'/}
+        <form action="@{controllers.action.Cleanings.clean(number)}" method="post">
+            <div class="flex flex-end mt-3">
+                <button type="submit" class="button">
+                    Сохранить
+                </button>
+            </div>
+        </form>
+    </div>
+    <div class="flex-layout p-10 shadow-150 nav-full">
+        <div class="nav-full" id="detail">
+            <div>#{include './teamDetail.html'/}</div>
+        </div>
     </div>
 </div>
