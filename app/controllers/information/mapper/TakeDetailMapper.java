@@ -12,7 +12,7 @@ import java.util.Date;
 public class TakeDetailMapper {
 
     public static void toDetail(final TakeDetail takeDetail, final TakeDetailDto dto) {
-        if (dto.moment == null) dto.moment = new Date();
+        dto.moment = new Date();
         takeDetail.checked = true;
         takeDetail.scrubbed = dto.moment;
         takeDetail.comment = dto.comment;
