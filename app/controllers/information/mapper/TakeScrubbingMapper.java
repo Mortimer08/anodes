@@ -19,7 +19,8 @@ public class TakeScrubbingMapper {
     public static void toEntity(final TakeScrubbing takeScrubbing, final TakeDetail takeDetail) {
         takeScrubbing.take = takeDetail.take;
         takeScrubbing.happened = takeDetail.scrubbed;
-        takeScrubbing.machined = takeDetail.machined == null ? 0 : takeDetail.machined;
+        takeScrubbing.machined = takeDetail.machined;
+        takeScrubbing.handled = takeDetail.handled;
         takeScrubbing.changed = takeDetail.changed;
         takeScrubbing.toChange = takeDetail.toChange;
         takeScrubbing.comment = takeDetail.comment;
