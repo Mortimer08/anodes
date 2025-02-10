@@ -111,6 +111,7 @@ public class Cleanings extends Bases {
                 if (takeDetail.checked) {
                     summary.incAnodesMachined(takeDetail.machined);
                     summary.incAnodesHandled(takeDetail.handled);
+                    summary.incAnodesChanged(takeDetail.changed);
                 }
             }
         }
