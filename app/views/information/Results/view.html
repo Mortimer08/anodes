@@ -9,8 +9,8 @@
 #{/list}
 #{/set}
 
-<div class="flex">
-    <div class="max-80 p-10">
+<div class="layout">
+    <div class="table-container">
         <div class="flex flex-middle py-2">
             #{include 'logoside.html'/}
             <div>
@@ -19,30 +19,22 @@
         </div>
         #{include './table.html'/}
     </div>
-    <div class="flex-content  p-10">
-        <div class="">
-            <div class="flex flex-between flex-middle max-100">
-                <h1>Фильтр</h1>
-                <div class="" id="cDetail_nane"></div>
+    <div class="p-10">
+        <h1>Фильтр</h1>
+        <form class="flex flex-content mb-3 mt-3 shadow-150 p-5"
+              hx-post="@{controllers.information.Results.period()}"
+              hx-target="#items"
+              hx-trigger="change"
+              hx-swap="outerHTML">
+            <div class="">
+                <h3 class="mb-3">Даты</h3>
+                <label class="label label-light" for="begin">Начало</label>
+                <input class="input ml-3" type="date" id="begin"
+                       name="begin" value="${begin.format()}">
+                <label class="label label-light" for="end">Окончание</label>
+                <input class="input ml-3" type="date" id="end"
+                       name="end" value="${end.format()}">
             </div>
-            <form>
-                <div class="flex flex-between flex-middle my-3 shadow-150 p-5">
-                    <div hx-post="@{controllers.information.Results.period()}"
-                         hx-target="#items"
-                         hx-trigger="change"
-                         class="mr-5 mb-3">
-                        <div>
-                            <h3 class="mb-3">Даты</h3>
-                        </div>
-                        <label class="label label-light" for="begin">Начало</label>
-                        <input class="input ml-3" type="date" id="begin"
-                               name="begin" value="${begin.format()}">
-                        <label class="label label-light" for="end">Окончание</label>
-                        <input class="input ml-3" type="date" id="end"
-                               name="end" value="${end.format()}">
-                    </div>
-                </div>
-            </form>
-        </div>
+        </form>
     </div>
 </div>

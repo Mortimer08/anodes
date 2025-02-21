@@ -45,3 +45,9 @@
     overflow: scroll;
 }
 
+.table-container {
+    width: 90%;
+    min-width: 90%;
+    max-width: 90%;
+    padding: 10px;
+}

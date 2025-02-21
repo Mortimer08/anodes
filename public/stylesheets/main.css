@@ -525,3 +525,10 @@ body.sticky, body.open, body.open-sb {
     grid-template-columns: repeat(10,1fr);
 }
 
+.table-container {
+    width: 80%;
+    min-width: 80%;
+    max-width: 80%;
+    padding: 40px;
+}
+
