@@ -7,14 +7,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="/public/stylesheets/superkube.min.css">
         <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/main.css'}?version=1">
-        <link rel="styleseet" media="screen and (max-width: 991px)" href="/public/stylesheets/mobile.css">
+        <link rel="stylesheet" media="screen and (max-width: 991px)" href="/public/stylesheets/mobile_main.css">
             #{get 'moreStyles' /}
         <link rel="shortcut icon" type="image/png" href="@{'public/images/anodes-favicon-color.svg'}">
     </head>
     <body>
+    <div _="on click toggle .open on body" class="menu-underlay"></div>
         #{doLayout /}
         
         <script src="@{'/public/javascripts/jquery-1.6.4.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+        <script src="https://unpkg.com/hyperscript.org@0.9.7"></script>
         #{get 'moreScripts' /}
         <script src="https://unpkg.com/htmx.org@1.6.1"></script>
     </body>

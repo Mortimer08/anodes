@@ -9,9 +9,10 @@
 #{/list}
 #{/set}
 
-<div class="flex">
+<div class="layout">
     <div class="p-10">
-        <div class="flex flex-between">
+        <div class="flex flex-start flex-middle row-1">
+            #{include 'logoside.html'/}
             <div>
                 <a href="@{controllers.action.Cleanings.list(number)}"><h1>${title}</h1></a>
             </div>
@@ -22,7 +23,7 @@
             </div>
             }*
         </div>
-        <div class="mt-4 grid grid-10 gutter-3 gap-3    ">
+        <div class="cleaning-grid">
             #{list units}
             #{include './unitBrick.html'/}
             #{/ list}

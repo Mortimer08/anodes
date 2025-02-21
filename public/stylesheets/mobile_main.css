@@ -1,0 +1,47 @@
+.flex-sidebar {
+    display: none;
+    width: 15%;
+    height: 100vh;
+    background-color: #f6f6f6;
+    position: fixed;
+    border-right: 1px solid #ededed;
+}
+
+.main {
+    padding: 0px;
+    margin-left: 0px;
+    max-height: 100vh;
+}
+
+.moby {
+    display: flex;
+}
+
+.open .menu-underlay {
+    display: block;
+}
+
+.open .flex-sidebar {
+
+    display: block;
+    width: 50%;
+    height: 100vh;
+    background-color: #f6f6f6;
+    position: fixed;
+    border-right: 1px solid #ededed;
+}
+
+.cleaning-grid {
+    display: grid;
+    margin-top: 16px;
+    grid-row-gap: 12px;
+    grid-column-gap: 12px;
+    grid-template-columns: repeat(2,1fr);
+}
+
+.layout {
+    max-height: 100vh;
+    max-width: 100vw;
+    overflow: scroll;
+}
+
