@@ -35,7 +35,7 @@ public class Cleanings extends Bases {
         final Integer firstDamageSum = getFirstDamageSum();
         final Integer toChangeSum = getToChangeSum();
         final Integer damaged = firstDamageSum + toChangeSum;
-        render(units, date, number, maxCellTerm, maxTakeTerm, firstDamageSum, toChangeSum, damaged);
+        render(team, units, date, number, maxCellTerm, maxTakeTerm, firstDamageSum, toChangeSum, damaged);
     }
 
     @Post("/cleaning/clean/{<\\d+>number}")

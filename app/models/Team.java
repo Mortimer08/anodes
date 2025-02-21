@@ -29,4 +29,8 @@ public enum Team {
         return Arrays.stream(Team.values()).map(Enum::ordinal).collect(Collectors.toList());
     }
 
+    @Override
+    public String toString() {
+        return name;
+    }
 }
