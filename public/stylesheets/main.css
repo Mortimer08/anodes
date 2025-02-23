@@ -532,3 +532,6 @@ body.sticky, body.open, body.open-sb {
     padding: 40px;
 }
 
+.panel {
+    padding: 40px;
+}

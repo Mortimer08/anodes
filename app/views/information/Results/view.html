@@ -11,7 +11,7 @@
 
 <div class="layout">
     <div class="table-container">
-        <div class="flex flex-middle py-2">
+        <div class="flex flex-middle">
             #{include 'logoside.html'/}
             <div>
                 <h1>${title}</h1>
@@ -19,7 +19,7 @@
         </div>
         #{include './table.html'/}
     </div>
-    <div class="p-10">
+    <div class="panel">
         <h1>Фильтр</h1>
         <form class="flex flex-content mb-3 mt-3 shadow-150 p-5"
               hx-post="@{controllers.information.Results.period()}"
