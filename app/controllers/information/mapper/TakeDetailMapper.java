@@ -13,7 +13,7 @@ public class TakeDetailMapper {
 
     public static void toDetail(final TakeDetail takeDetail, final TakeDetailDto dto) {
         dto.moment = new Date();
-        takeDetail.checked = true;
+        takeDetail.checked = !dto.checked;
         takeDetail.scrubbed = dto.moment;
         takeDetail.comment = dto.comment;
         if (dto.machined != null) {
@@ -43,6 +43,7 @@ public class TakeDetailMapper {
             takeDetail.changed = scrubbing.changed != null ? scrubbing.changed : 0;
             takeDetail.term = scrubbed == null ? null : term;
         }
+        takeDetail.checked = false;
     }
 
     private static void makeDefault(final TakeDetail takeDetail) {

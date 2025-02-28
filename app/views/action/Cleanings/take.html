@@ -1,0 +1,19 @@
+#{set checked:tDetail.checked ? 'checked' : 'term-' + tGradient/}
+<div class="align-center takeLabel ${checked}"
+     id="take_label_${tDetail.take.id}"
+     hx-target="#detail"
+     hx-post="@{controllers.action.Cleanings.takeDetail(cell.id)}"
+     hx-trigger="click"
+     hx-swap-oob="true">
+    <span>${tDetail.take.number}</span>
+    <input type="hidden" name="rq.id" value="${tDetail.take.id}">
+    <input type="hidden" name="rq.checked" value="${tDetail.checked}" id="take_checked_${tDetail.take.id}">
+    <input type="hidden" name="rq.takeNumber" value="${tDetail.take.number}">
+    <input type="hidden" name="rq.happened" value="${tDetail.scrubbed}">
+    <input type="hidden" name="rq.comment" value="${tDetail.comment}">
+    <input type="hidden" name="rq.machined" value="${tDetail.machined}">
+    <input type="hidden" name="rq.firstDamage" value="${tDetail.firstDamage}">
+    <input type="hidden" name="rq.toChange" value="${tDetail.toChange}">
+    <input type="hidden" name="rq.changed" value="${tDetail.changed}">
+    <input type="hidden" name="rq.moment" value="${date.format()}">
+</div>

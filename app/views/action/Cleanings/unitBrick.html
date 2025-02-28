@@ -1,11 +1,10 @@
-#{set cell:_.cellDetail.cell/}
-#{set cTerm:_.cellDetail.term/}
-#{set cGradient:(cTerm == null || cTerm > 15) ? '3' : (cTerm > 10 ? '2' : '1')/}
-
 <div class="unit list-bordered term-${cGradient}">
     #{include './cellBrick.html'/}
-            #{list _.takeDetails}
-            #{set take:_.take/}
-            #{include './takeBrick.html'/}
-            #{/list}
+    #{list unit.takeDetails, as:'tDetail'}
+    #{set tTerm:tDetail.term/}
+    #{set tGradient:(tTerm == null || tTerm > 15) ? '3' : (tTerm > 10 ? '2' : '1')/}
+    <form>
+        #{include './take.html'/}
+    </form>
+    #{/list}
 </div>

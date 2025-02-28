@@ -1,7 +1,11 @@
 #{set q:tDetail.take.getQuantity()/}
+#{set tTerm:tDetail.term/}
+#{set tGradient:(tTerm == null || tTerm > 15) ? '3' : (tTerm > 10 ? '2' : '1')/}
+#{set checked:tDetail.checked ? 'checked' : 'term-' + tGradient/}
+
 <div class="" id="tDetail_${tDetail.take.id}">
     <form>
-        <div class="mt-4 flex flex-middle shadow-150 pb-3 pr-3 ${!tDetail.checked?'muted':''}"
+        <div class="mt-4 flex flex-middle shadow-150 pb-3 pr-3 ${tDetail.checked?'':'muted'}"
              hx-post="@{controllers.action.Cleanings.takeChange(unit.cellDetail.cell.id)}"
              hx-trigger="change delay:500ms"
              hx-target="#tDetail_${tDetail.take.id}"
@@ -9,6 +13,7 @@
             <div class="px-3">
                 ${tDetail.take.number}
                 <input type="hidden" name="rq.id" value="${tDetail.take.id}">
+                <input type="hidden" name="rq.checked" value="false">
                 <input type="hidden" name="rq.takeNumber" value="${tDetail.take.number}">
             </div>
             <div class="nav-full">

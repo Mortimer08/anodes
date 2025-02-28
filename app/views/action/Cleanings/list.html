@@ -24,7 +24,8 @@
             }*
         </div>
         <div class="cleaning-grid">
-            #{list units}
+            #{list units, as:'unit'}
+            #{set cell:unit.cellDetail.cell/}
             #{include './unitBrick.html'/}
             #{/ list}
         </div>

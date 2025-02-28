@@ -46,24 +46,27 @@ public class Cleanings extends Bases {
 
     @Post("/cleanings/detail/{<\\d+>id}")
     public static void detail(final long id) {
+        final Date date = LocalDate.now().toDate();
         final Unit unit = getUnit(id);
-        render(unit);
+        render(unit, date);
     }
 
     @Post("/cleanings/cell/detail/{<\\d+>id}")
     public static void cellDetail(final long id, final CellDetailDto rq) {
+        final Date date = LocalDate.now().toDate();
         final Unit unit = getUnit(id);
         correctUnit(unit, rq);
         final DetailSummary sum = getSummary();
-        render("action/Cleanings/detail.html", unit, sum);
+        render("action/Cleanings/detail.html", unit, sum, date);
     }
 
     @Post("/cleanings/take/detail/{<\\d+>id}")
     public static void takeDetail(final long id, final TakeDetailDto rq) {
+        final Date date = LocalDate.now().toDate();
         final Unit unit = getUnit(id);
-        correctUnit(unit, rq);
+        correctUnit1(unit, rq);
         final DetailSummary sum = getSummary();
-        render("action/Cleanings/detail.html", unit, sum);
+        render("action/Cleanings/detail.html", unit, sum, date);
     }
 
     @Post("/cleanings/cell/detail/change/{<\\d+>id}")
@@ -77,11 +80,12 @@ public class Cleanings extends Bases {
 
     @Post("/cleanings/take/detail/change/{<\\d+>id}")
     public static void takeChange(final long id, final TakeDetailDto rq) {
+        final Date date = LocalDate.now().toDate();
         final Unit unit = getUnit(id);
-        correctUnit(unit, rq);
+        correctUnit1(unit, rq);
         final DetailSummary sum = getSummary();
         final TakeDetail tDetail = unit.takeDetailById(rq.id);
-        render(unit, id, tDetail, sum);
+        render(unit, tDetail, sum, date);
     }
 
     private static void correctUnit(final Unit unit, final CellDetailDto rq) {
@@ -99,6 +103,17 @@ public class Cleanings extends Bases {
                 final TakeScrubbing takeScrubbing = TakeScrubbing.findLast(take);
                 TakeDetailMapper.toDetail(tDetail, takeScrubbing);
             }
+        }
+    }
+
+    private static void correctUnit1(final Unit unit, final TakeDetailDto rq) {
+        final TakeDetail takeDetail = unit.takeDetailById(rq.id);
+        if (rq.checked) {
+            final Take take = Take.findById(rq.id);
+            final TakeScrubbing takeScrubbing = TakeScrubbing.findLast(take);
+            TakeDetailMapper.toDetail(takeDetail, takeScrubbing);
+        } else {
+            TakeDetailMapper.toDetail(takeDetail, rq);
         }
     }
 

@@ -1,16 +1,19 @@
-    <div class="cell p-2" hx-target="#detail"
-         hx-post="@{controllers.action.Cleanings.detail(cell.id)}"
+#{set cTerm:unit.cellDetail.term/}
+#{set cGradient:(cTerm == null || cTerm > 15) ? '3' : (cTerm > 10 ? '2' : '1')/}
+
+<div class="cell p-2" hx-target="#detail"
+     hx-post="@{controllers.action.Cleanings.detail(cell.id)}"
+     hx-trigger="click">
+    ${cell.name}
+</div>
+<form class="cell">
+    <div class="p-2" hx-target="#detail" id="cell_${cell.id}"
+         hx-post="@{controllers.action.Cleanings.cellDetail(cell.id)}"
          hx-trigger="click">
-        ${cell.name}
+        <input type="checkbox" name="rq.id" value="${cell.id}">
+        <input type="hidden" name="rq.happened" value="${date.format()}">
+        <input type="hidden" name="rq.comment" value="${unit.cellDetail.comment}"
+               class="moment">
+        <input type="hidden" name="date" value="${date.format()}" class="moment">
     </div>
-    <form class="cell">
-        <div class="p-2" hx-target="#detail" id="cell_${cell.id}"
-             hx-post="@{controllers.action.Cleanings.cellDetail(cell.id)}"
-             hx-trigger="click">
-            <input type="checkbox" name="rq.id" value="${cell.id}">
-            <input type="hidden" name="rq.happened" value="${date.format()}">
-            <input type="hidden" name="rq.comment" value="${_.cellDetail.comment}"
-                   class="moment">
-            <input type="hidden" name="date" value="${date.format()}" class="moment">
-        </div>
-    </form>
+</form>

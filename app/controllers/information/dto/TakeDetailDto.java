@@ -5,6 +5,7 @@ import java.util.Date;
 public class TakeDetailDto {
 
     public Long id;
+    public Boolean checked;
     public Integer takeNumber;
     public Date happened;
     public String comment;

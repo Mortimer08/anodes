@@ -1,4 +1,5 @@
 #{set cDetail:unit.cellDetail/}
+#{set cell:cDetail.cell/}
 #{set tDetails:unit.takeDetails/}
 #{include './detailSummary.html'/}
 
@@ -15,6 +16,7 @@
     <h3>Подъёмы</h3>
     #{list items:tDetails, as:'tDetail'}
     #{include './takeDetail.html'/}
+    #{include './take.html'/}
     #{/list}
 </div>
 
