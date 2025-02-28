@@ -36,7 +36,7 @@
     margin-top: 16px;
     grid-row-gap: 12px;
     grid-column-gap: 12px;
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns: repeat(3, 1fr);
 }
 
 .layout {

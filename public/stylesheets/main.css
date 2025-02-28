@@ -535,3 +535,17 @@ body.sticky, body.open, body.open-sb {
 .panel {
     padding: 40px;
 }
+
+.unit {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto auto;
+    gap: 1rem;
+    width: 80px;
+    padding: 4px;
+    cursor: pointer
+}
+
+.cell {
+    grid-column: span 2;
+}

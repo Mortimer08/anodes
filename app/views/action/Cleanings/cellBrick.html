@@ -1,11 +1,10 @@
-<div class="flex flex-around">
-    <div class="p-2" hx-target="#detail"
+    <div class="cell p-2" hx-target="#detail"
          hx-post="@{controllers.action.Cleanings.detail(cell.id)}"
          hx-trigger="click">
         ${cell.name}
     </div>
-    <form>
-        <div class="p-2" hx-target="#detail" id="cell_${_.cellDetail.cell.id}"
+    <form class="cell">
+        <div class="p-2" hx-target="#detail" id="cell_${cell.id}"
              hx-post="@{controllers.action.Cleanings.cellDetail(cell.id)}"
              hx-trigger="click">
             <input type="checkbox" name="rq.id" value="${cell.id}">
@@ -15,4 +14,3 @@
             <input type="hidden" name="date" value="${date.format()}" class="moment">
         </div>
     </form>
-</div>
