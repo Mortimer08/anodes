@@ -1,6 +1,3 @@
-#{set cTerm:unit.cellDetail.term/}
-#{set cGradient:(cTerm == null || cTerm > 15) ? '3' : (cTerm > 10 ? '2' : '1')/}
-
 <div class="cell p-2" hx-target="#detail"
      hx-post="@{controllers.action.Cleanings.detail(cell.id)}"
      hx-trigger="click">
