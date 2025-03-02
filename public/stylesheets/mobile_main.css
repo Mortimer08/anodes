@@ -22,8 +22,7 @@
 }
 
 .open .flex-sidebar {
-
-    display: block;
+    display: flex;
     width: 50%;
     height: 100vh;
     background-color: #f6f6f6;
