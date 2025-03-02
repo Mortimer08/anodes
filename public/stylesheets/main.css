@@ -543,7 +543,7 @@ body.sticky, body.open, body.open-sb {
     gap: 1rem;
     width: 80px;
     padding: 4px;
-    cursor: pointer
+    cursor: pointer;
 }
 
 .cell {
