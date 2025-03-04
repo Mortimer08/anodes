@@ -1,3 +1,3 @@
 # anodes
 
-*__CHZP__*
+*__CHZP
